@@ -35,25 +35,28 @@ class CountryCodePicker extends StatefulWidget {
 class _CountryCodePickerState extends State<CountryCodePicker> {
     List<_CElement> elements = [];
 
-    String selectedItem;
+    _CElement _selectedItem;
 
     _CountryCodePickerState(this.elements);
 
 
     @override
-    Widget build(BuildContext context) {
-        return new DropdownButton(
-                items: elements.map((e) =>
-                new DropdownMenuItem<String>(
-                    key: new Key(e.code),
-                    value: e.dial_code,
-                    child: new Text("${e.flag} ${e.dial_code}"),
-                )).toList(),
-                onChanged: (v) {
-                    setState(() {
-                        selectedItem = v;
-                    });
-                });
-    }
-
+    Widget build(BuildContext context) =>
+            new Container(
+                height: 40.0,
+                width: 100.0,
+                child: new DropdownButton<_CElement>(
+                        value: _selectedItem ?? elements[0],
+                        items: elements.map((e) =>
+                        new DropdownMenuItem<_CElement>(
+                            key: new Key(e.code),
+                            value: e,
+                            child: new Text("${e.flag} ${e.name} ${e.dial_code}"),
+                        )).toList(),
+                        onChanged: (v) {
+                            setState(() {
+                                _selectedItem = v;
+                            });
+                        }),
+            );
 }
