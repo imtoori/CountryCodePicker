@@ -2,6 +2,10 @@
 
 A flutter package for showing a country code selector.
 
+![Screenshot](screenshots/screen1.png)
+![Screenshot](screenshots/screen2.png)
+![Screenshot](screenshots/screen3.png)
+
 ## Usage
 
 Just put the component in your application setting the onChanged callback.
