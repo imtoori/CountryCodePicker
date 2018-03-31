@@ -2,9 +2,9 @@
 
 A flutter package for showing a country code selector.
 
-![Screenshot](screenshots/screen1.png)
-![Screenshot](screenshots/screen2.png)
-![Screenshot](screenshots/screen3.png)
+<img src="screenshots/screen1.png" width="240"/>
+<img src="screenshots/screen2.png" width="240"/>
+<img src="screenshots/screen3.png" width="240"/>
 
 ## Usage
 
