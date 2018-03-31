@@ -1,9 +1,7 @@
 # country_code_picker
 
-A new flutter package project.
+A flutter package for showing a country code selector.
 
-## Getting Started
+## Usage
 
-For help getting started with Flutter, view our online [documentation](https://flutter.io/).
-
-For help on editing package code, view the [documentation](https://flutter.io/developing-packages/).
+ 
