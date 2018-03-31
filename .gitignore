@@ -4,3 +4,5 @@
 .packages
 .pub/
 packages
+.vscode
+*.lock
