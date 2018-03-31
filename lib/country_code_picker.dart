@@ -2,7 +2,7 @@ library country_code_picker;
 
 import 'package:country_code_picker/country_codes.dart';
 import 'package:flutter/material.dart';
-import 'package:country_code_picker/selectionDialog.dart';
+import 'package:country_code_picker/selection_dialog.dart';
 import 'package:country_code_picker/celement.dart';
 
 class CountryCodePicker extends StatefulWidget {
