@@ -41,8 +41,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   initState() {
-    selectedItem = elements.firstWhere((e) => e.code == widget.initialSelection,
-        orElse: () => elements[0]);
+    if (widget.initialSelection != null) {
+      selectedItem = elements.firstWhere(
+          (e) => e.code.toUpperCase() == widget.initialSelection.toUpperCase(),
+          orElse: () => elements[0]);
+    }else{
+      selectedItem = elements[0];
+    }
     super.initState();
   }
 
