@@ -26,4 +26,4 @@ Just put the component in your application setting the onChanged callback.
 
 ## Known issues
 
-- On iOS the icons are not showned
+- On iOS the icons are not showed
