@@ -1,3 +1,5 @@
+![Pub](https://img.shields.io/badge/pub-0.0.2-orange.svg)
+
 # country_code_picker
 
 A flutter package for showing a country code selector.
