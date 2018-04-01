@@ -11,18 +11,18 @@ A flutter package for showing a country code selector.
 Just put the component in your application setting the onChanged callback.
 
  ```dart
- ......
+
  @override
   Widget build(BuildContext context) => new Scaffold(
       body: new Center(
         child: new CountryCodePicker(
           onChanged: print,
+          initialSelection: 'IT',
+          favorites: ['IT','FR'],
         ),
       ));
-.....
- ```
 
- It's also possible to select the initial selection using the country code.
+ ```
 
 ## Known issues
 

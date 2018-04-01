@@ -6,10 +6,11 @@ import 'package:country_code_picker/selection_dialog.dart';
 import 'package:country_code_picker/celement.dart';
 
 class CountryCodePicker extends StatefulWidget {
-  final Function(CElement) onChanged;
+  final Function(String) onChanged;
   final String initialSelection;
+  final List<String> favorites;
 
-  CountryCodePicker({this.onChanged, this.initialSelection});
+  CountryCodePicker({this.onChanged, this.initialSelection, this.favorites});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +20,7 @@ class CountryCodePicker extends StatefulWidget {
         .map((s) => new CElement(
               name: s['name'],
               code: s['code'],
-              dial_code: s['dial_code'],
+              dialCode: s['dial_code'],
               flag: s['flag'],
             ))
         .toList();
@@ -30,6 +31,7 @@ class CountryCodePicker extends StatefulWidget {
 class _CountryCodePickerState extends State<CountryCodePicker> {
   CElement selectedItem;
   List<CElement> elements = [];
+  List<CElement> favoriteElements = [];
 
   _CountryCodePickerState(this.elements);
 
@@ -45,23 +47,31 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
       selectedItem = elements.firstWhere(
           (e) => e.code.toUpperCase() == widget.initialSelection.toUpperCase(),
           orElse: () => elements[0]);
-    }else{
+    } else {
       selectedItem = elements[0];
     }
+
+    favoriteElements = elements
+        .where((e) =>
+            widget.favorites.firstWhere((f) => e.code == f.toUpperCase(),
+                orElse: () => null) !=
+            null)
+        .toList();
+    print(favoriteElements);
     super.initState();
   }
 
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      child: new SelectionDialog(elements),
+      child: new SelectionDialog(elements, favoriteElements),
     ).then((e) {
       if (e != null) {
         setState(() {
           selectedItem = e;
         });
         if (widget.onChanged != null) {
-          widget.onChanged(e);
+          widget.onChanged(e.dialCode);
         }
       }
     });

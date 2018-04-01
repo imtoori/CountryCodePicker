@@ -3,8 +3,9 @@ import 'package:country_code_picker/celement.dart';
 
 class SelectionDialog extends StatefulWidget {
   final List<CElement> elements;
+  final List<CElement> favoriteElements;
 
-  SelectionDialog(this.elements);
+  SelectionDialog(this.elements, this.favoriteElements);
 
   @override
   State<StatefulWidget> createState() => new _SelectionDialogState();
@@ -15,17 +16,35 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
   @override
   Widget build(BuildContext context) => new SimpleDialog(
-      title: new TextField(
-        decoration: new InputDecoration(prefixIcon: new Icon(Icons.search)),
-        onChanged: _filterElements,
+      title: new Column(
+        children: <Widget>[
+          new TextField(
+            decoration: new InputDecoration(prefixIcon: new Icon(Icons.search)),
+            onChanged: _filterElements,
+          ),
+        ],
       ),
-      children: showedElements
+      children: [
+        widget.favoriteElements.isEmpty
+            ? new Container()
+            : new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[]
+                  ..addAll(widget.favoriteElements.map((f) {
+                    return new SimpleDialogOption(
+                        child: new Text(f.toLongString()),
+                        onPressed: () {
+                          _selectItem(f);
+                        });
+                  }).toList())
+                  ..add(new Divider())),
+      ]..addAll(showedElements
           .map((e) => new SimpleDialogOption(
               child: new Text(e.toLongString()),
               onPressed: () {
                 _selectItem(e);
               }))
-          .toList());
+          .toList()));
 
   @override
   void initState() {
@@ -39,7 +58,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
       showedElements = widget.elements
           .where((e) =>
               e.code.contains(s) ||
-              e.dial_code.contains(s) ||
+              e.dialCode.contains(s) ||
               e.name.toUpperCase().contains(s))
           .toList();
     });

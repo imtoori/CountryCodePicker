@@ -2,16 +2,16 @@ class CElement {
   String name;
   String flag;
   String code;
-  String dial_code;
+  String dialCode;
 
-  CElement({this.name, this.flag, this.code, this.dial_code});
+  CElement({this.name, this.flag, this.code, this.dialCode});
 
   @override
   String toString() {
-    return "$flag $dial_code";
+    return "$flag $dialCode";
   }
 
   String toLongString() {
-    return "$flag $dial_code $name";
+    return "$flag $dialCode $name";
   }
 }
