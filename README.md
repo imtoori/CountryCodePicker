@@ -1,4 +1,4 @@
-![Pub](https://img.shields.io/badge/pub-0.0.2-orange.svg)
+![Pub](https://img.shields.io/badge/Pub-0.1.0-orange.svg)
 
 # country_code_picker
 
