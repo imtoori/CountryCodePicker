@@ -20,7 +20,7 @@ Just put the component in your application setting the onChanged callback.
         child: new CountryCodePicker(
           onChanged: print,
           initialSelection: 'IT',
-          favorites: ['IT','FR'],
+          favorite: ['IT','FR'],
         ),
       ));
 
