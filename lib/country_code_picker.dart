@@ -8,9 +8,9 @@ import 'package:country_code_picker/celement.dart';
 class CountryCodePicker extends StatefulWidget {
   final Function(String) onChanged;
   final String initialSelection;
-  final List<String> favorites;
+  final List<String> favorite;
 
-  CountryCodePicker({this.onChanged, this.initialSelection, this.favorites});
+  CountryCodePicker({this.onChanged, this.initialSelection, this.favorite});
 
   @override
   State<StatefulWidget> createState() {
@@ -53,7 +53,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorites.firstWhere((f) => e.code == f.toUpperCase(),
+            widget.favorite.firstWhere((f) => e.code == f.toUpperCase(),
                 orElse: () => null) !=
             null)
         .toList();

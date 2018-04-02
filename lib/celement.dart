@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class CElement {
   String name;
   String flag;
@@ -8,10 +10,10 @@ class CElement {
 
   @override
   String toString() {
-    return "$flag $dialCode";
+    return defaultTargetPlatform == TargetPlatform.android ? "$flag $dialCode" : dialCode;
   }
 
   String toLongString() {
-    return "$flag $dialCode $name";
+    return defaultTargetPlatform == TargetPlatform.android ? "$flag $dialCode $name" : "$dialCode $name";
   }
 }
