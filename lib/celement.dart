@@ -10,10 +10,14 @@ class CElement {
 
   @override
   String toString() {
-    return defaultTargetPlatform == TargetPlatform.android ? "$flag $dialCode" : dialCode;
+    return defaultTargetPlatform == TargetPlatform.android
+        ? "$flag $dialCode"
+        : dialCode;
   }
 
   String toLongString() {
-    return defaultTargetPlatform == TargetPlatform.android ? "$flag $dialCode $name" : "$dialCode $name";
+    return defaultTargetPlatform == TargetPlatform.android
+        ? "$flag $dialCode $name"
+        : "$dialCode $name";
   }
 }
