@@ -1,4 +1,4 @@
-![Pub](https://img.shields.io/badge/Pub-0.1.0-orange.svg)
+[![Pub](https://img.shields.io/badge/Pub-0.1.1-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
 
 # country_code_picker
 
