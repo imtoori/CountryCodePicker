@@ -44,10 +44,10 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   @override
   initState() {
     if (widget.initialSelection != null) {
-      selectedItem = elements.firstWhere((e) {
-        e.code.toUpperCase() == widget.initialSelection.toUpperCase() ||
-            e.dialCode == widget.initialSelection.toString();
-      }, orElse: () => elements[0]);
+      selectedItem = elements.firstWhere(
+          (e) => (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
+                (e.dialCode == widget.initialSelection.toString()),
+          orElse: () => elements[0]);
     } else {
       selectedItem = elements[0];
     }
