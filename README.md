@@ -19,6 +19,7 @@ Just put the component in your application setting the onChanged callback.
       body: new Center(
         child: new CountryCodePicker(
           onChanged: print,
+          // Initial selection can be one of code ('IT') OR dial_code('+39')
           initialSelection: 'IT',
           favorite: ['IT','FR'],
         ),
