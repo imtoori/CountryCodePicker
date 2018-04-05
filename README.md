@@ -30,3 +30,6 @@ Just put the component in your application setting the onChanged callback.
 ## Known issues
 
 - On iOS the icons are not showed
+
+## Contributions
+Contributions of any kind are more than welcome! Feel free to fork and improve flutter_chameleon in any way you want, make a pull request, or open an issue.
