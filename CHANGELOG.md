@@ -17,3 +17,7 @@ Tested with dart 2
 ## 0.1.2
 
 Favorite and initial selection can be one of code or dial code
+
+## 0.1.3
+
+Favorite and initial selection can be one of code or dial code
