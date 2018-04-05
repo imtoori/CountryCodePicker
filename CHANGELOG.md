@@ -13,3 +13,7 @@ Removed flags in iOS because they show up weirdly.
 ## 0.1.1
 
 Tested with dart 2
+
+## 0.1.2
+
+Favorite and initial selection can be one of code or dial code

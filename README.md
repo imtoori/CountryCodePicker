@@ -1,4 +1,4 @@
-[![Pub](https://img.shields.io/badge/Pub-0.1.1-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
+[![Pub](https://img.shields.io/badge/Pub-0.1.2-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
 
 # country_code_picker
 
@@ -19,9 +19,9 @@ Just put the component in your application setting the onChanged callback.
       body: new Center(
         child: new CountryCodePicker(
           onChanged: print,
-          // Initial selection can be one of code ('IT') OR dial_code('+39')
+          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
           initialSelection: 'IT',
-          favorite: ['IT','FR'],
+          favorite: ['+39','FR'],
         ),
       ));
 
