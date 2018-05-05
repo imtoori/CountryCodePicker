@@ -55,8 +55,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorite
-                .firstWhere((f) => e.code == f.toUpperCase() || e.dialCode == f.toString(), orElse: () => null) !=
+            widget.favorite.firstWhere(
+                (f) => e.code == f.toUpperCase() || e.dialCode == f.toString(),
+                orElse: () => null) !=
             null)
         .toList();
     super.initState();

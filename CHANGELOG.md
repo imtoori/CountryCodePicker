@@ -25,3 +25,7 @@ Favorite and initial selection can be one of code or dial code
 ## 0.2.0
 
 Now onChanged has a full CElement as argument and not only a string. (issue #4)
+
+## 0.2.1
+
+Added some documentation

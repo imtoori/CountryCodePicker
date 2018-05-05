@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:country_code_picker/celement.dart';
+import 'package:flutter/material.dart';
 
+/// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CElement> elements;
+
+  /// elements passed as favorite
   final List<CElement> favoriteElements;
 
   SelectionDialog(this.elements, this.favoriteElements);
@@ -12,6 +15,7 @@ class SelectionDialog extends StatefulWidget {
 }
 
 class _SelectionDialogState extends State<SelectionDialog> {
+  /// this is useful for filtering purpose
   List<CElement> showedElements = [];
 
   @override
@@ -56,10 +60,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
     s = s.toUpperCase();
     setState(() {
       showedElements = widget.elements
-          .where((e) =>
-              e.code.contains(s) ||
-              e.dialCode.contains(s) ||
-              e.name.toUpperCase().contains(s))
+          .where((e) => e.code.contains(s) || e.dialCode.contains(s) || e.name.toUpperCase().contains(s))
           .toList();
     });
   }
