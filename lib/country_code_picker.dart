@@ -1,12 +1,12 @@
 library country_code_picker;
 
-import 'package:country_code_picker/country_codes.dart';
-import 'package:flutter/material.dart';
-import 'package:country_code_picker/selection_dialog.dart';
 import 'package:country_code_picker/celement.dart';
+import 'package:country_code_picker/country_codes.dart';
+import 'package:country_code_picker/selection_dialog.dart';
+import 'package:flutter/material.dart';
 
 class CountryCodePicker extends StatefulWidget {
-  final Function(String) onChanged;
+  final Function(CElement) onChanged;
   final String initialSelection;
   final List<String> favorite;
 
@@ -45,8 +45,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   initState() {
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
-          (e) => (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
-                (e.dialCode == widget.initialSelection.toString()),
+          (e) =>
+              (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
+              (e.dialCode == widget.initialSelection.toString()),
           orElse: () => elements[0]);
     } else {
       selectedItem = elements[0];
@@ -54,12 +55,10 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorite.firstWhere(
-                (f) => e.code == f.toUpperCase() || e.dialCode == f.toString(),
-                orElse: () => null) !=
+            widget.favorite
+                .firstWhere((f) => e.code == f.toUpperCase() || e.dialCode == f.toString(), orElse: () => null) !=
             null)
         .toList();
-    print(favoriteElements);
     super.initState();
   }
 
@@ -72,8 +71,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         setState(() {
           selectedItem = e;
         });
+
         if (widget.onChanged != null) {
-          widget.onChanged(e.dialCode);
+          widget.onChanged(e);
         }
       }
     });
