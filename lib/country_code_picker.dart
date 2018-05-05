@@ -5,12 +5,21 @@ import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
 import 'package:flutter/material.dart';
 
+export 'celement.dart';
+
 class CountryCodePicker extends StatefulWidget {
   final Function(CElement) onChanged;
   final String initialSelection;
   final List<String> favorite;
+  final TextStyle textStyle;
+  final EdgeInsetsGeometry padding;
 
-  CountryCodePicker({this.onChanged, this.initialSelection, this.favorite});
+  CountryCodePicker(
+      {this.onChanged,
+      this.initialSelection,
+      this.favorite,
+      this.textStyle,
+      this.padding});
 
   @override
   State<StatefulWidget> createState() {
@@ -36,9 +45,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   _CountryCodePickerState(this.elements);
 
   @override
-  Widget build(BuildContext context) => new GestureDetector(
-        child: new Text("${selectedItem.toString()}"),
-        onTap: _showSelectionDialog,
+  Widget build(BuildContext context) => new FlatButton(
+        child: new Text(
+          "${selectedItem.toString()}",
+          style: widget.textStyle ?? Theme.of(context).textTheme.button,
+        ),
+        padding: widget.padding,
+        onPressed: _showSelectionDialog,
       );
 
   @override

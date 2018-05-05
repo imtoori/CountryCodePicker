@@ -29,3 +29,7 @@ Now onChanged has a full CElement as argument and not only a string. (issue #4)
 ## 0.2.1
 
 Added some documentation
+
+## 0.2.2
+
+Added textStyle and padding as widget parameters
