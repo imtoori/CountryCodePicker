@@ -1,12 +1,10 @@
-import 'package:flutter/foundation.dart';
-
 /// Country element. This is the element that contains all the information
 class CElement {
   /// the name of the country
   String name;
 
   /// the flag of the country
-  String flag;
+  String flagUri;
 
   /// the country code (IT,AF..)
   String code;
@@ -14,18 +12,10 @@ class CElement {
   /// the dial code (+39,+93..)
   String dialCode;
 
-  CElement({this.name, this.flag, this.code, this.dialCode});
+  CElement({this.name, this.flagUri, this.code, this.dialCode});
 
   @override
-  String toString() {
-    return defaultTargetPlatform == TargetPlatform.android
-        ? "$flag $dialCode"
-        : dialCode;
-  }
+  String toString() => "$dialCode";
 
-  String toLongString() {
-    return defaultTargetPlatform == TargetPlatform.android
-        ? "$flag $dialCode $name"
-        : "$dialCode $name";
-  }
+  String toLongString() => "$dialCode $name";
 }

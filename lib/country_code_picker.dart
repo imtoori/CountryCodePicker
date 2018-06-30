@@ -14,12 +14,7 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
 
-  CountryCodePicker(
-      {this.onChanged,
-      this.initialSelection,
-      this.favorite,
-      this.textStyle,
-      this.padding});
+  CountryCodePicker({this.onChanged, this.initialSelection, this.favorite, this.textStyle, this.padding});
 
   @override
   State<StatefulWidget> createState() {
@@ -30,9 +25,10 @@ class CountryCodePicker extends StatefulWidget {
               name: s['name'],
               code: s['code'],
               dialCode: s['dial_code'],
-              flag: s['flag'],
+              flagUri: 'icons/flags/${s['code'].toLowerCase()}.png',
             ))
         .toList();
+
     return new _CountryCodePickerState(elements);
   }
 }
@@ -46,9 +42,27 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   Widget build(BuildContext context) => new FlatButton(
-        child: new Text(
-          "${selectedItem.toString()}",
-          style: widget.textStyle ?? Theme.of(context).textTheme.button,
+        child: Flex(
+          direction: Axis.horizontal,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Image.asset(
+                  selectedItem.flagUri,
+                  package: 'country_icons',
+                  width: 32.0,
+                ),
+              ),
+            ),
+            Flexible(
+              child: Text(
+                selectedItem.toString(),
+                style: widget.textStyle ?? Theme.of(context).textTheme.button,
+              ),
+            ),
+          ],
         ),
         padding: widget.padding,
         onPressed: _showSelectionDialog,
@@ -68,9 +82,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorite.firstWhere(
-                (f) => e.code == f.toUpperCase() || e.dialCode == f.toString(),
-                orElse: () => null) !=
+            widget.favorite
+                .firstWhere((f) => e.code == f.toUpperCase() || e.dialCode == f.toString(), orElse: () => null) !=
             null)
         .toList();
     super.initState();
@@ -79,7 +92,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      child: new SelectionDialog(elements, favoriteElements),
+      builder: (_) => new SelectionDialog(elements, favoriteElements),
     ).then((e) {
       if (e != null) {
         setState(() {
