@@ -155,7 +155,7 @@ List<Map> codes = [
   {"name": "Nauru", "code": "NR", "dial_code": "+674"},
   {"name": "Nepal", "code": "NP", "dial_code": "+977"},
   {"name": "Netherlands", "code": "NL", "dial_code": "+31"},
-  {"name": "Netherlands Antilles", "code": "AN", "dial_code": "+599"},
+  {"name": "Netherlands Antilles", "code": "NL", "dial_code": "+599"},
   {"name": "New Caledonia", "code": "NC", "dial_code": "+687"},
   {"name": "New Zealand", "code": "NZ", "dial_code": "+64"},
   {"name": "Nicaragua", "code": "NI", "dial_code": "+505"},
