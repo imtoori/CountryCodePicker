@@ -44,7 +44,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                                 padding: const EdgeInsets.only(right: 16.0),
                                 child: Image.asset(
                                   f.flagUri,
-                                  package: 'country_icons',
+                                  package: 'country_code_picker',
                                   width: 32.0,
                                 ),
                               ),
@@ -65,6 +65,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                   ..add(new Divider())),
       ]..addAll(showedElements
           .map((e) => new SimpleDialogOption(
+              key: Key(e.toLongString()),
               child: Flex(
                 direction: Axis.horizontal,
                 children: <Widget>[
@@ -73,7 +74,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                       padding: const EdgeInsets.only(right: 16.0),
                       child: Image.asset(
                         e.flagUri,
-                        package: 'country_icons',
+                        package: 'country_code_picker',
                         width: 32.0,
                       ),
                     ),

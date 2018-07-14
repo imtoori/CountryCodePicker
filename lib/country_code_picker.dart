@@ -25,7 +25,7 @@ class CountryCodePicker extends StatefulWidget {
               name: s['name'],
               code: s['code'],
               dialCode: s['dial_code'],
-              flagUri: 'icons/flags/${s['code'].toLowerCase()}.png',
+              flagUri: 'flags/${s['code'].toLowerCase()}.png',
             ))
         .toList();
 
@@ -51,7 +51,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: Image.asset(
                   selectedItem.flagUri,
-                  package: 'country_icons',
+                  package: 'country_code_picker',
                   width: 32.0,
                 ),
               ),

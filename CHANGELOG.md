@@ -33,3 +33,7 @@ Added some documentation
 ## 0.2.2
 
 Added textStyle and padding as widget parameters
+
+## 1.0
+
+Use png flags instead of a font
