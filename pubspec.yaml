@@ -5,7 +5,7 @@ author: Salvatore-Giordano <svtgiordano@gmail.com>
 homepage: https://github.com/Salvatore-Giordano/CountryCodePicker
 
 environment:
-  sdk: ">=1.2.0  <=2.0.0"
+  sdk: ">=1.19.0  <=2.0.0"
 
 dependencies:
   flutter:

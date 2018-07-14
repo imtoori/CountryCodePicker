@@ -14,7 +14,12 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
 
-  CountryCodePicker({this.onChanged, this.initialSelection, this.favorite, this.textStyle, this.padding});
+  CountryCodePicker(
+      {this.onChanged,
+      this.initialSelection,
+      this.favorite,
+      this.textStyle,
+      this.padding});
 
   @override
   State<StatefulWidget> createState() {
@@ -82,8 +87,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorite
-                .firstWhere((f) => e.code == f.toUpperCase() || e.dialCode == f.toString(), orElse: () => null) !=
+            widget.favorite.firstWhere(
+                (f) => e.code == f.toUpperCase() || e.dialCode == f.toString(),
+                orElse: () => null) !=
             null)
         .toList();
     super.initState();

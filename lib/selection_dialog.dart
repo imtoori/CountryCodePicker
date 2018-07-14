@@ -103,7 +103,10 @@ class _SelectionDialogState extends State<SelectionDialog> {
     s = s.toUpperCase();
     setState(() {
       showedElements = widget.elements
-          .where((e) => e.code.contains(s) || e.dialCode.contains(s) || e.name.toUpperCase().contains(s))
+          .where((e) =>
+              e.code.contains(s) ||
+              e.dialCode.contains(s) ||
+              e.name.toUpperCase().contains(s))
           .toList();
     });
   }

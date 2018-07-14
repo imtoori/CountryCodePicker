@@ -25,7 +25,11 @@ List<Map> codes = [
   {"name": "Benin", "code": "BJ", "dial_code": "+229"},
   {"name": "Bermuda", "code": "BM", "dial_code": "+1441"},
   {"name": "Bhutan", "code": "BT", "dial_code": "+975"},
-  {"name": "Bolivia, Plurinational State of bolivia", "code": "BO", "dial_code": "+591"},
+  {
+    "name": "Bolivia, Plurinational State of bolivia",
+    "code": "BO",
+    "dial_code": "+591"
+  },
   {"name": "Bosnia and Herzegovina", "code": "BA", "dial_code": "+387"},
   {"name": "Botswana", "code": "BW", "dial_code": "+267"},
   {"name": "Bouvet Island", "code": "BV", "dial_code": "+47"},
@@ -49,7 +53,11 @@ List<Map> codes = [
   {"name": "Colombia", "code": "CO", "dial_code": "+57"},
   {"name": "Comoros", "code": "KM", "dial_code": "+269"},
   {"name": "Congo", "code": "CG", "dial_code": "+242"},
-  {"name": "Congo, The Democratic Republic of the Congo", "code": "CD", "dial_code": "+243"},
+  {
+    "name": "Congo, The Democratic Republic of the Congo",
+    "code": "CD",
+    "dial_code": "+243"
+  },
   {"name": "Cook Islands", "code": "CK", "dial_code": "+682"},
   {"name": "Costa Rica", "code": "CR", "dial_code": "+506"},
   {"name": "Cote d'Ivoire", "code": "CI", "dial_code": "+225"},
@@ -93,7 +101,11 @@ List<Map> codes = [
   {"name": "Guinea-Bissau", "code": "GW", "dial_code": "+245"},
   {"name": "Guyana", "code": "GY", "dial_code": "+592"},
   {"name": "Haiti", "code": "HT", "dial_code": "+509"},
-  {"name": "Heard Island and Mcdonald Islands", "code": "HM", "dial_code": "+0"},
+  {
+    "name": "Heard Island and Mcdonald Islands",
+    "code": "HM",
+    "dial_code": "+0"
+  },
   {"name": "Holy See (Vatican City State)", "code": "VA", "dial_code": "+379"},
   {"name": "Honduras", "code": "HN", "dial_code": "+504"},
   {"name": "Hong Kong", "code": "HK", "dial_code": "+852"},
@@ -101,7 +113,11 @@ List<Map> codes = [
   {"name": "Iceland", "code": "IS", "dial_code": "+354"},
   {"name": "India", "code": "IN", "dial_code": "+91"},
   {"name": "Indonesia", "code": "ID", "dial_code": "+62"},
-  {"name": "Iran, Islamic Republic of Persian Gulf", "code": "IR", "dial_code": "+98"},
+  {
+    "name": "Iran, Islamic Republic of Persian Gulf",
+    "code": "IR",
+    "dial_code": "+98"
+  },
   {"name": "Iraq", "code": "IQ", "dial_code": "+964"},
   {"name": "Ireland", "code": "IE", "dial_code": "+353"},
   {"name": "Isle of Man", "code": "IM", "dial_code": "+44"},
@@ -114,7 +130,11 @@ List<Map> codes = [
   {"name": "Kazakhstan", "code": "KZ", "dial_code": "+7"},
   {"name": "Kenya", "code": "KE", "dial_code": "+254"},
   {"name": "Kiribati", "code": "KI", "dial_code": "+686"},
-  {"name": "Korea, Democratic People's Republic of Korea", "code": "KP", "dial_code": "+850"},
+  {
+    "name": "Korea, Democratic People's Republic of Korea",
+    "code": "KP",
+    "dial_code": "+850"
+  },
   {"name": "Korea, Republic of South Korea", "code": "KR", "dial_code": "+82"},
   {"name": "Kosovo", "code": "XK", "dial_code": "+383"},
   {"name": "Kuwait", "code": "KW", "dial_code": "+965"},
@@ -142,7 +162,11 @@ List<Map> codes = [
   {"name": "Mauritius", "code": "MU", "dial_code": "+230"},
   {"name": "Mayotte", "code": "YT", "dial_code": "+262"},
   {"name": "Mexico", "code": "MX", "dial_code": "+52"},
-  {"name": "Micronesia, Federated States of Micronesia", "code": "FM", "dial_code": "+691"},
+  {
+    "name": "Micronesia, Federated States of Micronesia",
+    "code": "FM",
+    "dial_code": "+691"
+  },
   {"name": "Moldova", "code": "MD", "dial_code": "+373"},
   {"name": "Monaco", "code": "MC", "dial_code": "+377"},
   {"name": "Mongolia", "code": "MN", "dial_code": "+976"},
@@ -168,7 +192,11 @@ List<Map> codes = [
   {"name": "Oman", "code": "OM", "dial_code": "+968"},
   {"name": "Pakistan", "code": "PK", "dial_code": "+92"},
   {"name": "Palau", "code": "PW", "dial_code": "+680"},
-  {"name": "Palestinian Territory, Occupied", "code": "PS", "dial_code": "+970"},
+  {
+    "name": "Palestinian Territory, Occupied",
+    "code": "PS",
+    "dial_code": "+970"
+  },
   {"name": "Panama", "code": "PA", "dial_code": "+507"},
   {"name": "Papua New Guinea", "code": "PG", "dial_code": "+675"},
   {"name": "Paraguay", "code": "PY", "dial_code": "+595"},
@@ -184,12 +212,20 @@ List<Map> codes = [
   {"name": "Rwanda", "code": "RW", "dial_code": "+250"},
   {"name": "Reunion", "code": "RE", "dial_code": "+262"},
   {"name": "Saint Barthelemy", "code": "BL", "dial_code": "+590"},
-  {"name": "Saint Helena, Ascension and Tristan Da Cunha", "code": "SH", "dial_code": "+290"},
+  {
+    "name": "Saint Helena, Ascension and Tristan Da Cunha",
+    "code": "SH",
+    "dial_code": "+290"
+  },
   {"name": "Saint Kitts and Nevis", "code": "KN", "dial_code": "+1869"},
   {"name": "Saint Lucia", "code": "LC", "dial_code": "+1758"},
   {"name": "Saint Martin", "code": "MF", "dial_code": "+590"},
   {"name": "Saint Pierre and Miquelon", "code": "PM", "dial_code": "+508"},
-  {"name": "Saint Vincent and the Grenadines", "code": "VC", "dial_code": "+1784"},
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "code": "VC",
+    "dial_code": "+1784"
+  },
   {"name": "Samoa", "code": "WS", "dial_code": "+685"},
   {"name": "San Marino", "code": "SM", "dial_code": "+378"},
   {"name": "Sao Tome and Principe", "code": "ST", "dial_code": "+239"},
@@ -205,7 +241,11 @@ List<Map> codes = [
   {"name": "Somalia", "code": "SO", "dial_code": "+252"},
   {"name": "South Africa", "code": "ZA", "dial_code": "+27"},
   {"name": "South Sudan", "code": "SS", "dial_code": "+211"},
-  {"name": "South Georgia and the South Sandwich Islands", "code": "GS", "dial_code": "+500"},
+  {
+    "name": "South Georgia and the South Sandwich Islands",
+    "code": "GS",
+    "dial_code": "+500"
+  },
   {"name": "Spain", "code": "ES", "dial_code": "+34"},
   {"name": "Sri Lanka", "code": "LK", "dial_code": "+94"},
   {"name": "Sudan", "code": "SD", "dial_code": "+249"},
@@ -217,7 +257,11 @@ List<Map> codes = [
   {"name": "Syrian Arab Republic", "code": "SY", "dial_code": "+963"},
   {"name": "Taiwan", "code": "TW", "dial_code": "+886"},
   {"name": "Tajikistan", "code": "TJ", "dial_code": "+992"},
-  {"name": "Tanzania, United Republic of Tanzania", "code": "TZ", "dial_code": "+255"},
+  {
+    "name": "Tanzania, United Republic of Tanzania",
+    "code": "TZ",
+    "dial_code": "+255"
+  },
   {"name": "Thailand", "code": "TH", "dial_code": "+66"},
   {"name": "Timor-Leste", "code": "TL", "dial_code": "+670"},
   {"name": "Togo", "code": "TG", "dial_code": "+228"},
@@ -237,7 +281,11 @@ List<Map> codes = [
   {"name": "Uruguay", "code": "UY", "dial_code": "+598"},
   {"name": "Uzbekistan", "code": "UZ", "dial_code": "+998"},
   {"name": "Vanuatu", "code": "VU", "dial_code": "+678"},
-  {"name": "Venezuela, Bolivarian Republic of Venezuela", "code": "VE", "dial_code": "+58"},
+  {
+    "name": "Venezuela, Bolivarian Republic of Venezuela",
+    "code": "VE",
+    "dial_code": "+58"
+  },
   {"name": "Vietnam", "code": "VN", "dial_code": "+84"},
   {"name": "Virgin Islands, British", "code": "VG", "dial_code": "+1284"},
   {"name": "Virgin Islands, U.S.", "code": "VI", "dial_code": "+1340"},

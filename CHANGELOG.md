@@ -34,6 +34,6 @@ Added some documentation
 
 Added textStyle and padding as widget parameters
 
-## 1.0
+## 1.0.0
 
 Use png flags instead of a font
