@@ -37,3 +37,7 @@ Added textStyle and padding as widget parameters
 ## 1.0.0
 
 Use png flags instead of a font
+
+## 1.0.1
+
+Correct README and update screenshots
