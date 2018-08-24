@@ -41,3 +41,7 @@ Use png flags instead of a font
 ## 1.0.1
 
 Correct README and update screenshots
+
+## 1.0.2
+
+Update framework compatiblity
