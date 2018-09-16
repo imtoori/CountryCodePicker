@@ -94,8 +94,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         .toList();
     super.initState();
 
-    _publishSelection(selectedItem);
-
+    if (mounted) {
+      _publishSelection(selectedItem);
+    }
   }
 
   void _showSelectionDialog() {
