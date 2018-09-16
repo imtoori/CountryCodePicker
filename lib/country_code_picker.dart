@@ -93,6 +93,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
             null)
         .toList();
     super.initState();
+
+    _publishSelection(selectedItem);
+
   }
 
   void _showSelectionDialog() {
@@ -105,10 +108,14 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           selectedItem = e;
         });
 
-        if (widget.onChanged != null) {
-          widget.onChanged(e);
-        }
+        _publishSelection(e);
       }
     });
+  }
+
+  void _publishSelection(CElement e) {
+    if (widget.onChanged != null) {
+      widget.onChanged(e);
+    }
   }
 }
