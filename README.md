@@ -25,6 +25,23 @@ Just put the component in your application setting the onChanged callback.
       ));
 
  ```
+> Note: Your onChnaged function can be any function of the type shown below:
+
+```dart
+(CElement)->dynamic
+
+```
+> Example:
+
+```dart
+
+void _onCountryChange(CElement cElement) {
+    //Todo : manipulate the selected country code here
+    print("New Country selected: " + cElement.toString());
+  }
+  
+```
+
 
 ## Contributions
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
