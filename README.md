@@ -25,7 +25,7 @@ Just put the component in your application setting the onChanged callback.
       ));
 
  ```
-> Note: Your onChnaged function can be any function of the type shown below:
+> Note: Your onChanged function can be any function of the type shown below:
 
 ```dart
 (CElement)->dynamic
