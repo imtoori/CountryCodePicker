@@ -45,3 +45,7 @@ Correct README and update screenshots
 ## 1.0.2
 
 Update framework compatiblity
+
+## 1.0.3
+
+Update flags dimension to reduce application size

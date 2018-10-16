@@ -1,4 +1,4 @@
-[![Pub](https://img.shields.io/badge/Pub-1.0.2-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
+[![Pub](https://img.shields.io/badge/Pub-1.0.3-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
 
 # country_code_picker
 
@@ -25,13 +25,13 @@ Just put the component in your application setting the onChanged callback.
       ));
 
  ```
-> Note: Your onChanged function can be any function of the type shown below:
+Note: Your onChanged function can be any function of the type shown below:
 
 ```dart
 (CElement)->dynamic
 
 ```
-> Example:
+Example:
 
 ```dart
 

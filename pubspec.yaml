@@ -1,6 +1,6 @@
 name: country_code_picker
 description: A flutter package for showing a country code selector. 
-version: 1.0.2
+version: 1.0.3
 author: Salvatore-Giordano <svtgiordano@gmail.com>
 homepage: https://github.com/Salvatore-Giordano/CountryCodePicker
 
