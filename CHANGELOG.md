@@ -49,3 +49,7 @@ Update framework compatiblity
 ## 1.0.3
 
 Update flags dimension to reduce application size
+
+## 1.0.4
+
+Update country name with translated version
