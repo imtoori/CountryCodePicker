@@ -1,32 +1,33 @@
 library country_code_picker;
 
-import 'package:country_code_picker/celement.dart';
+import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
 import 'package:flutter/material.dart';
 
-export 'celement.dart';
+export 'country_code.dart';
 
 class CountryCodePicker extends StatefulWidget {
-  final Function(CElement) onChanged;
+  final ValueChanged<CountryCode> onChanged;
   final String initialSelection;
   final List<String> favorite;
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
 
-  CountryCodePicker(
-      {this.onChanged,
-      this.initialSelection,
-      this.favorite,
-      this.textStyle,
-      this.padding});
+  CountryCodePicker({
+    this.onChanged,
+    this.initialSelection,
+    this.favorite = const [],
+    this.textStyle,
+    this.padding = const EdgeInsets.all(0.0),
+  });
 
   @override
   State<StatefulWidget> createState() {
     List<Map> jsonList = codes;
 
-    List<CElement> elements = jsonList
-        .map((s) => new CElement(
+    List<CountryCode> elements = jsonList
+        .map((s) => new CountryCode(
               name: s['name'],
               code: s['code'],
               dialCode: s['dial_code'],
@@ -39,9 +40,9 @@ class CountryCodePicker extends StatefulWidget {
 }
 
 class _CountryCodePickerState extends State<CountryCodePicker> {
-  CElement selectedItem;
-  List<CElement> elements = [];
-  List<CElement> favoriteElements = [];
+  CountryCode selectedItem;
+  List<CountryCode> elements = [];
+  List<CountryCode> favoriteElements = [];
 
   _CountryCodePickerState(this.elements);
 
@@ -114,7 +115,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     });
   }
 
-  void _publishSelection(CElement e) {
+  void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
       widget.onChanged(e);
     }

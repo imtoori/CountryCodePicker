@@ -1,5 +1,10 @@
+mixin ToAlias {}
+
+@deprecated
+class CElement = CountryCode with ToAlias;
+
 /// Country element. This is the element that contains all the information
-class CElement {
+class CountryCode {
   /// the name of the country
   String name;
 
@@ -12,7 +17,7 @@ class CElement {
   /// the dial code (+39,+93..)
   String dialCode;
 
-  CElement({this.name, this.flagUri, this.code, this.dialCode});
+  CountryCode({this.name, this.flagUri, this.code, this.dialCode});
 
   @override
   String toString() => "$dialCode";

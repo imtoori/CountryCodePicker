@@ -53,3 +53,7 @@ Update flags dimension to reduce application size
 ## 1.0.4
 
 Update country name with translated version
+
+## 1.1.0
+
+Changed CElement with CountryCode and fix error on favorite null

@@ -1,4 +1,4 @@
-[![Pub](https://img.shields.io/badge/Pub-1.0.4-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
+[![Pub](https://img.shields.io/badge/Pub-1.1.0-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
 
 # country_code_picker
 
@@ -22,22 +22,23 @@ Just put the component in your application setting the onChanged callback.
           initialSelection: 'IT',
           favorite: ['+39','FR'],
         ),
-      ));
+      ),
+  );
 
  ```
 Note: Your onChanged function can be any function of the type shown below:
 
 ```dart
-(CElement)->dynamic
+(CountryCode)->dynamic
 
 ```
 Example:
 
 ```dart
 
-void _onCountryChange(CElement cElement) {
+void _onCountryChange(CountryCode countryCode) {
     //Todo : manipulate the selected country code here
-    print("New Country selected: " + cElement.toString());
+    print("New Country selected: " + countryCode.toString());
   }
   
 ```
