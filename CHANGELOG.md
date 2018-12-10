@@ -57,3 +57,7 @@ Update country name with translated version
 ## 1.1.0
 
 Changed CElement with CountryCode and fix error on favorite null
+
+## 1.1.1
+
+Update allowed dart version and modify description
