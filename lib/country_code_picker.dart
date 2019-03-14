@@ -1,3 +1,4 @@
+
 library country_code_picker;
 
 import 'package:country_code_picker/country_code.dart';
@@ -13,6 +14,7 @@ class CountryCodePicker extends StatefulWidget {
   final List<String> favorite;
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
+  final bool showCountryOnly;
 
   CountryCodePicker({
     this.onChanged,
@@ -20,6 +22,7 @@ class CountryCodePicker extends StatefulWidget {
     this.favorite = const [],
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
+    this.showCountryOnly = false,
   });
 
   @override
@@ -103,7 +106,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      builder: (_) => new SelectionDialog(elements, favoriteElements),
+      builder: (_) => new SelectionDialog(elements, favoriteElements, showCountryOnly: widget.showCountryOnly),
     ).then((e) {
       if (e != null) {
         setState(() {

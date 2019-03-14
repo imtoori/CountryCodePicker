@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 /// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
+  bool showCountryOnly;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
-  SelectionDialog(this.elements, this.favoriteElements);
+  SelectionDialog(this.elements, this.favoriteElements,
+      {this.showCountryOnly});
 
   @override
   State<StatefulWidget> createState() => new _SelectionDialogState();
@@ -54,7 +56,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
                                   Flexible(
                                     fit: FlexFit.tight,
                                     child: new Text(
-                                      f.toLongString(),
+                                      widget.showCountryOnly
+                                          ? f.toCountryStringOnly()
+                                          : f.toLongString(),
                                       overflow: TextOverflow.fade,
                                     ),
                                   ),
@@ -87,7 +91,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
                       Flexible(
                         fit: FlexFit.tight,
                         child: Text(
-                          e.toLongString(),
+                          widget.showCountryOnly
+                              ? e.toCountryStringOnly()
+                              : e.toLongString(),
                           overflow: TextOverflow.fade,
                         ),
                       ),
