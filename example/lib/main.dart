@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
                   onChanged: print,
                   // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                   initialSelection: 'IT',
+                  // showCountryOnly: true,
                   favorite: ['+39', 'FR']),
             )));
   }

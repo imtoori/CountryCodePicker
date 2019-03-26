@@ -1,4 +1,3 @@
-
 library country_code_picker;
 
 import 'package:country_code_picker/country_code.dart';
@@ -67,7 +66,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
             ),
             Flexible(
               child: Text(
-                selectedItem.toString(),
+                widget.showCountryOnly
+                    ? selectedItem.toCountryStringOnly()
+                    : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
               ),
             ),
@@ -106,7 +107,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      builder: (_) => new SelectionDialog(elements, favoriteElements, showCountryOnly: widget.showCountryOnly),
+      builder: (_) => new SelectionDialog(elements, favoriteElements,
+          showCountryOnly: widget.showCountryOnly),
     ).then((e) {
       if (e != null) {
         setState(() {
