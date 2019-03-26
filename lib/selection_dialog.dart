@@ -59,28 +59,32 @@ class _SelectionDialogState extends State<SelectionDialog> {
           .toList()));
 
   Widget _buildOption(CountryCode e) {
-    return Flex(
-      direction: Axis.horizontal,
-      children: <Widget>[
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Image.asset(
-              e.flagUri,
-              package: 'country_code_picker',
-              width: 32.0,
+    return Container(
+      width: 400,
+      child: Flex(
+        direction: Axis.horizontal,
+        children: <Widget>[
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: Image.asset(
+                e.flagUri,
+                package: 'country_code_picker',
+                width: 32.0,
+              ),
             ),
           ),
-        ),
-        Flexible(
-          flex: 10,
-          fit: FlexFit.tight,
-          child: Text(
-            widget.showCountryOnly ? e.toCountryStringOnly() : e.toLongString(),
-            overflow: TextOverflow.fade,
+          Expanded(
+            flex: 4,
+            child: Text(
+              widget.showCountryOnly
+                  ? e.toCountryStringOnly()
+                  : e.toLongString(),
+              overflow: TextOverflow.fade,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
