@@ -61,3 +61,7 @@ Changed CElement with CountryCode and fix error on favorite null
 ## 1.1.1
 
 Update allowed dart version and modify description
+
+## 1.1.4
+
+Add possibility to show only country name

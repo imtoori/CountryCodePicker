@@ -1,4 +1,4 @@
-[![Pub](https://img.shields.io/badge/Pub-1.1.1-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
+[![Pub](https://img.shields.io/badge/Pub-1.1.4-orange.svg)](https://pub.dartlang.org/packages/country_code_picker)
 
 # country_code_picker
 
@@ -21,6 +21,8 @@ Just put the component in your application setting the onChanged callback.
           // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
           initialSelection: 'IT',
           favorite: ['+39','FR'],
+          // optional. Shows only country name and flag
+          showCountryOnly: false,
         ),
       ),
   );
