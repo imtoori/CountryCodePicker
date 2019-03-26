@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 /// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
-  bool showCountryOnly;
+  final bool showCountryOnly;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
-  SelectionDialog(this.elements, this.favoriteElements,
-      {this.showCountryOnly});
+  SelectionDialog(this.elements, this.favoriteElements, {this.showCountryOnly});
 
   @override
   State<StatefulWidget> createState() => new _SelectionDialogState();
@@ -39,31 +38,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                   ..addAll(widget.favoriteElements
                       .map(
                         (f) => new SimpleDialogOption(
-                              child: Flex(
-                                direction: Axis.horizontal,
-                                children: <Widget>[
-                                  Flexible(
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 16.0),
-                                      child: Image.asset(
-                                        f.flagUri,
-                                        package: 'country_code_picker',
-                                        width: 32.0,
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    fit: FlexFit.tight,
-                                    child: new Text(
-                                      widget.showCountryOnly
-                                          ? f.toCountryStringOnly()
-                                          : f.toLongString(),
-                                      overflow: TextOverflow.fade,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              child: _buildOption(f),
                               onPressed: () {
                                 _selectItem(f);
                               },
@@ -75,36 +50,43 @@ class _SelectionDialogState extends State<SelectionDialog> {
           .map(
             (e) => new SimpleDialogOption(
                   key: Key(e.toLongString()),
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    children: <Widget>[
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 16.0),
-                          child: Image.asset(
-                            e.flagUri,
-                            package: 'country_code_picker',
-                            width: 32.0,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        fit: FlexFit.tight,
-                        child: Text(
-                          widget.showCountryOnly
-                              ? e.toCountryStringOnly()
-                              : e.toLongString(),
-                          overflow: TextOverflow.fade,
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: _buildOption(e),
                   onPressed: () {
                     _selectItem(e);
                   },
                 ),
           )
           .toList()));
+
+  Widget _buildOption(CountryCode e) {
+    return Container(
+      width: 400,
+      child: Flex(
+        direction: Axis.horizontal,
+        children: <Widget>[
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: Image.asset(
+                e.flagUri,
+                package: 'country_code_picker',
+                width: 32.0,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Text(
+              widget.showCountryOnly
+                  ? e.toCountryStringOnly()
+                  : e.toLongString(),
+              overflow: TextOverflow.fade,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
