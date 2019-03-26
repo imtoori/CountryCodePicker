@@ -65,3 +65,9 @@ Update allowed dart version and modify description
 ## 1.1.4
 
 Add possibility to show only country name
+
+## 1.1.5
+
+OnlyCountrymode now also displays only the country on Textwidget when closed.
+
+
