@@ -14,6 +14,7 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
+  final InputDecoration searchDecoration;
 
   CountryCodePicker({
     this.onChanged,
@@ -22,6 +23,7 @@ class CountryCodePicker extends StatefulWidget {
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
+    this.searchDecoration,
   });
 
   @override
@@ -108,7 +110,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     showDialog(
       context: context,
       builder: (_) => new SelectionDialog(elements, favoriteElements,
-          showCountryOnly: widget.showCountryOnly),
+          showCountryOnly: widget.showCountryOnly,
+          searchDecoration: widget.searchDecoration,),
     ).then((e) {
       if (e != null) {
         setState(() {
