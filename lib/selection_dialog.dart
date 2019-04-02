@@ -6,6 +6,7 @@ class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
+  final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
 
   /// elements passed as favorite
@@ -16,6 +17,7 @@ class SelectionDialog extends StatefulWidget {
     this.showCountryOnly,
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
+    this.searchStyle,
   }) :
     this.searchDecoration = searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
     super(key: key);
@@ -33,6 +35,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
       title: Column(
         children: <Widget>[
           TextField(
+            style: widget.searchStyle,
             decoration: widget.searchDecoration,
             onChanged: _filterElements,
           ),

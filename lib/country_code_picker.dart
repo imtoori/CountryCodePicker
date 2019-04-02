@@ -15,6 +15,7 @@ class CountryCodePicker extends StatefulWidget {
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
+  final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
 
   CountryCodePicker({
@@ -25,6 +26,7 @@ class CountryCodePicker extends StatefulWidget {
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
     this.searchDecoration,
+    this.searchStyle,
     this.emptySearchBuilder,
   });
 
@@ -118,6 +120,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           showCountryOnly: widget.showCountryOnly,
           emptySearchBuilder: widget.emptySearchBuilder,
           searchDecoration: widget.searchDecoration,
+          searchStyle: widget.searchStyle,
         ),
     ).then((e) {
       if (e != null) {
