@@ -14,6 +14,8 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
+  final InputDecoration searchDecoration;
+  final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
 
   /// shows the name of the country instead of the dialcode
@@ -33,6 +35,8 @@ class CountryCodePicker extends StatefulWidget {
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
+    this.searchDecoration = const InputDecoration(),
+    this.searchStyle,
     this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
@@ -132,6 +136,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           favoriteElements,
           showCountryOnly: widget.showCountryOnly,
           emptySearchBuilder: widget.emptySearchBuilder,
+          searchDecoration: widget.searchDecoration,
+          searchStyle: widget.searchStyle,
         ),
     ).then((e) {
       if (e != null) {

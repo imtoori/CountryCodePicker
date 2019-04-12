@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
   final bool showCountryOnly;
+  final InputDecoration searchDecoration;
+  final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
 
   /// elements passed as favorite
@@ -14,7 +16,12 @@ class SelectionDialog extends StatefulWidget {
     Key key,
     this.showCountryOnly,
     this.emptySearchBuilder,
-  }) : super(key: key);
+    InputDecoration searchDecoration = const InputDecoration(),
+    this.searchStyle,
+  }) :
+    assert(searchDecoration != null, 'searchDecoration must not be null!'),
+    this.searchDecoration = searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
+    super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SelectionDialogState();
@@ -29,7 +36,8 @@ class _SelectionDialogState extends State<SelectionDialog> {
       title: Column(
         children: <Widget>[
           TextField(
-            decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
+            style: widget.searchStyle,
+            decoration: widget.searchDecoration,
             onChanged: _filterElements,
           ),
         ],
