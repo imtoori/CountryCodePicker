@@ -14,6 +14,7 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
+  final WidgetBuilder emptySearchBuilder;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -32,6 +33,7 @@ class CountryCodePicker extends StatefulWidget {
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
+    this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
   });
@@ -124,8 +126,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      builder: (_) => new SelectionDialog(elements, favoriteElements,
-          showCountryOnly: widget.showCountryOnly),
+      builder: (_) =>
+        SelectionDialog(
+          elements,
+          favoriteElements,
+          showCountryOnly: widget.showCountryOnly,
+          emptySearchBuilder: widget.emptySearchBuilder,
+        ),
     ).then((e) {
       if (e != null) {
         setState(() {
