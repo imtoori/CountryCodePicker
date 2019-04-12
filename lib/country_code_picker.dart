@@ -15,6 +15,16 @@ class CountryCodePicker extends StatefulWidget {
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
 
+  /// shows the name of the country instead of the dialcode
+  final bool showOnlyCountryWhenClosed;
+
+  /// aligns the flag and the Text left
+  ///
+  /// additionally this option also fills the available space of the widget.
+  /// this is especially usefull in combination with [showOnlyCountryWhenClosed],
+  /// because longer countrynames are displayed in one line
+  final bool alignLeft;
+
   CountryCodePicker({
     this.onChanged,
     this.initialSelection,
@@ -22,6 +32,8 @@ class CountryCodePicker extends StatefulWidget {
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
+    this.showOnlyCountryWhenClosed = false,
+    this.alignLeft = false,
   });
 
   @override
@@ -55,8 +67,12 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Flexible(
+              flex: widget.alignLeft ? 0 : 1,
+              fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: widget.alignLeft
+                    ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                    : const EdgeInsets.only(right: 16.0),
                 child: Image.asset(
                   selectedItem.flagUri,
                   package: 'country_code_picker',
@@ -65,8 +81,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
               ),
             ),
             Flexible(
+              fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
-                widget.showCountryOnly
+                widget.showOnlyCountryWhenClosed
                     ? selectedItem.toCountryStringOnly()
                     : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
