@@ -70,4 +70,8 @@ Add possibility to show only country name
 
 OnlyCountrymode now also displays only the country on Textwidget when closed.
 
+## 1.1.7
+
+Flag is now optional. Fix bug on initState.
+
 
