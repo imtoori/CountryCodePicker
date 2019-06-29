@@ -28,6 +28,9 @@ class CountryCodePicker extends StatefulWidget {
   /// because longer countrynames are displayed in one line
   final bool alignLeft;
 
+  /// shows the flag
+  final bool showFlag;
+
   CountryCodePicker({
     this.onChanged,
     this.initialSelection,
@@ -40,6 +43,7 @@ class CountryCodePicker extends StatefulWidget {
     this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
+    this.showFlag = true
   });
 
   @override
@@ -72,7 +76,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Flexible(
+            widget.showFlag ? Flexible(
               flex: widget.alignLeft ? 0 : 1,
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Padding(
@@ -85,7 +89,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
                   width: 32.0,
                 ),
               ),
-            ),
+            ) : Container(),
             Flexible(
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
@@ -134,6 +138,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           emptySearchBuilder: widget.emptySearchBuilder,
           searchDecoration: widget.searchDecoration,
           searchStyle: widget.searchStyle,
+          showFlag: widget.showFlag
         ),
     ).then((e) {
       if (e != null) {

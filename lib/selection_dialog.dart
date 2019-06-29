@@ -8,6 +8,7 @@ class SelectionDialog extends StatefulWidget {
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
+  final bool showFlag;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -18,6 +19,7 @@ class SelectionDialog extends StatefulWidget {
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
     this.searchStyle,
+    this.showFlag
   }) :
     assert(searchDecoration != null, 'searchDecoration must not be null!'),
     this.searchDecoration = searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
@@ -85,7 +87,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
       child: Flex(
         direction: Axis.horizontal,
         children: <Widget>[
-          Flexible(
+          widget.showFlag ? Flexible(
             child: Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: Image.asset(
@@ -94,7 +96,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 width: 32.0,
               ),
             ),
-          ),
+          ) : Container(),
           Expanded(
             flex: 4,
             child: Text(
