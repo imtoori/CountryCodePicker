@@ -47,7 +47,7 @@ class CountryCodePicker extends StatefulWidget {
     List<Map> jsonList = codes;
 
     List<CountryCode> elements = jsonList
-        .map((s) => new CountryCode(
+        .map((s) => CountryCode(
               name: s['name'],
               code: s['code'],
               dialCode: s['dial_code'],
@@ -67,7 +67,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   _CountryCodePickerState(this.elements);
 
   @override
-  Widget build(BuildContext context) => new FlatButton(
+  Widget build(BuildContext context) => FlatButton(
         child: Flex(
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
@@ -121,10 +121,6 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
             null)
         .toList();
     super.initState();
-
-    if (mounted) {
-      _publishSelection(selectedItem);
-    }
   }
 
   void _showSelectionDialog() {
