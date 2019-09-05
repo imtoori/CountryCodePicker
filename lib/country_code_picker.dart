@@ -76,45 +76,48 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   Widget build(BuildContext context) {
     Widget _widget;
     if (widget.customWidget != null)
-      _widget = widget.customWidget;
+      _widget = InkWell(
+        onTap: _showSelectionDialog,
+        child: widget.customWidget,
+      );
     else {
-      _widget = Flex(
-        direction: Axis.horizontal,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          widget.showFlag
-              ? Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Padding(
-                    padding: widget.alignLeft
-                        ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                        : const EdgeInsets.only(right: 16.0),
-                    child: Image.asset(
-                      selectedItem.flagUri,
-                      package: 'country_code_picker',
-                      width: 32.0,
+      _widget = FlatButton(
+        padding: widget.padding,
+        onPressed: _showSelectionDialog,
+        child: Flex(
+          direction: Axis.horizontal,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            widget.showFlag
+                ? Flexible(
+                    flex: widget.alignLeft ? 0 : 1,
+                    fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                    child: Padding(
+                      padding: widget.alignLeft
+                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                          : const EdgeInsets.only(right: 16.0),
+                      child: Image.asset(
+                        selectedItem.flagUri,
+                        package: 'country_code_picker',
+                        width: 32.0,
+                      ),
                     ),
-                  ),
-                )
-              : Container(),
-          Flexible(
-            fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-            child: Text(
-              widget.showOnlyCountryWhenClosed
-                  ? selectedItem.toCountryStringOnly()
-                  : selectedItem.toString(),
-              style: widget.textStyle ?? Theme.of(context).textTheme.button,
+                  )
+                : Container(),
+            Flexible(
+              fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+              child: Text(
+                widget.showOnlyCountryWhenClosed
+                    ? selectedItem.toCountryStringOnly()
+                    : selectedItem.toString(),
+                style: widget.textStyle ?? Theme.of(context).textTheme.button,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     }
-    return FlatButton(
-      child: _widget,
-      padding: widget.padding,
-      onPressed: _showSelectionDialog,
-    );
+    return _widget;
   }
 
   @override
