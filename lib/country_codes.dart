@@ -190,6 +190,7 @@ List<Map> codes = [
   {"name": "Polska", "code": "PL", "dial_code": "+48"},
   {"name": "Portugal", "code": "PT", "dial_code": "+351"},
   {"name": "Puerto Rico", "code": "PR", "dial_code": "+1939"},
+  {"name": "Puerto Rico", "code": "PR", "dial_code": "+1787"},
   {"name": "قطر", "code": "QA", "dial_code": "+974"},
   {"name": "România", "code": "RO", "dial_code": "+40"},
   {"name": "Россия", "code": "RU", "dial_code": "+7"},
