@@ -11,6 +11,8 @@ class CountryCodePicker extends StatefulWidget {
   final ValueChanged<CountryCode> onChanged;
   final String initialSelection;
   final List<String> favorite;
+  final List<String> showOnly;
+  final List<String> filterOut;
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
   final bool showCountryOnly;
@@ -35,6 +37,8 @@ class CountryCodePicker extends StatefulWidget {
     this.onChanged,
     this.initialSelection,
     this.favorite = const [],
+    this.showOnly = const [],
+    this.filterOut = const [],
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
@@ -43,7 +47,7 @@ class CountryCodePicker extends StatefulWidget {
     this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
-    this.showFlag = true
+    this.showFlag = true,
   });
 
   @override
@@ -58,6 +62,20 @@ class CountryCodePicker extends StatefulWidget {
               flagUri: 'flags/${s['code'].toLowerCase()}.png',
             ))
         .toList();
+
+    elements.removeWhere((element) =>
+        filterOut.contains(element.code.toUpperCase()) ||
+        filterOut.contains(element.name) ||
+        filterOut.contains(element.dialCode));
+
+    if (showOnly.isNotEmpty) {
+      elements = elements
+          .where((element) =>
+              showOnly.contains(element.code.toUpperCase()) ||
+              showOnly.contains(element.name) ||
+              showOnly.contains(element.dialCode))
+          .toList();
+    }
 
     return new _CountryCodePickerState(elements);
   }
@@ -138,7 +156,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           emptySearchBuilder: widget.emptySearchBuilder,
           searchDecoration: widget.searchDecoration,
           searchStyle: widget.searchStyle,
-          showFlag: widget.showFlag
+          showFlag: widget.showFlag,
+          shrink: widget.showOnly.isNotEmpty || widget.filterOut.isNotEmpty,
         ),
     ).then((e) {
       if (e != null) {

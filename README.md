@@ -6,6 +6,7 @@ A flutter package for showing a country code selector.
 
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen1.png" width="240"/>
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen2.png" width="240"/>
+<img src="https://raw.githubusercontent.com/zaralockheart/CountryCodePicker/master/screenshots/screen3.png" width="240"/>
 
 ## Usage
 
@@ -27,6 +28,10 @@ Just put the component in your application setting the onChanged callback.
          showOnlyCountryCodeWhenClosed: false,
          // optional. aligns the flag and the Text left
          alignLeft: false,
+         // optional. To set only few selected countries.
+         showOnly: ['MY','+39','FR', 'Burkina Faso', 'NZ'],
+         // optional. To filter out some of the country.
+         filterOut: ['+39'],
        ),
      ),
  );

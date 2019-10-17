@@ -57,6 +57,20 @@ class _MyAppState extends State<MyApp> {
                           favorite: ['+39', 'FR']),
                     ),
                   ),
+                  SizedBox(
+                    width: 400,
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CountryCodePicker(
+                          onChanged: print,
+                          showOnly: ['MY','+39','FR', 'Burkina Faso', 'NZ'],
+                          filterOut: ['+39'],
+                          initialSelection: 'MY',
+                          showOnlyCountryWhenClosed: true,
+                          favorite: ['MY', 'FR']),
+                    ),
+                  ),
                 ],
               ),
             )));

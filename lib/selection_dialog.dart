@@ -9,6 +9,7 @@ class SelectionDialog extends StatefulWidget {
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
+  final bool shrink;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -19,7 +20,8 @@ class SelectionDialog extends StatefulWidget {
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
     this.searchStyle,
-    this.showFlag
+    this.showFlag,
+    this.shrink,
   }) :
     assert(searchDecoration != null, 'searchDecoration must not be null!'),
     this.searchDecoration = searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
@@ -34,7 +36,10 @@ class _SelectionDialogState extends State<SelectionDialog> {
   List<CountryCode> filteredElements;
 
   @override
-  Widget build(BuildContext context) => SimpleDialog(
+  Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    return SimpleDialog(
       title: Column(
         children: <Widget>[
           TextField(
@@ -45,41 +50,44 @@ class _SelectionDialogState extends State<SelectionDialog> {
         ],
       ),
       children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: ListView(
-            children: [
-              widget.favoriteElements.isEmpty
-                  ? const DecoratedBox(decoration: BoxDecoration())
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[]
-                        ..addAll(widget.favoriteElements
-                            .map(
-                              (f) => SimpleDialogOption(
+        ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: widget.shrink ? 0 : height,
+              minWidth: width,
+              maxHeight: height,
+              maxWidth: width,
+            ),
+            child: ListView(
+                shrinkWrap: true,
+                children: [
+                  widget.favoriteElements.isEmpty
+                      ? const DecoratedBox(decoration: BoxDecoration())
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[]
+                            ..addAll(widget.favoriteElements
+                                .map(
+                                  (f) => SimpleDialogOption(
                                     child: _buildOption(f),
                                     onPressed: () {
                                       _selectItem(f);
                                     },
                                   ),
-                            )
-                            .toList())
-                        ..add(const Divider())),
-            ]..addAll(filteredElements.isEmpty
-                ? [_buildEmptySearchWidget(context)]
-                : filteredElements.map(
-                    (e) => SimpleDialogOption(
-                      key: Key(e.toLongString()),
-                      child: _buildOption(e),
-                      onPressed: () {
-                        _selectItem(e);
-                      },
-                    )))
-            )
-          ),
-        ],
-      );
+                                )
+                                .toList())
+                            ..add(const Divider())),
+                ]..addAll(filteredElements.isEmpty
+                    ? [_buildEmptySearchWidget(context)]
+                    : filteredElements.map((e) => SimpleDialogOption(
+                          key: Key(e.toLongString()),
+                          child: _buildOption(e),
+                          onPressed: () {
+                            _selectItem(e);
+                          },
+                        ))))),
+      ],
+    );
+  }
 
   Widget _buildOption(CountryCode e) {
     return Container(
