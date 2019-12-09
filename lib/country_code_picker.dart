@@ -31,10 +31,14 @@ class CountryCodePicker extends StatefulWidget {
   /// shows the flag
   final bool showFlag;
 
+  /// contains the country codes to load only the specified countries.
+  final List<String> onlyCountries;
+
   CountryCodePicker({
     this.onChanged,
     this.initialSelection,
     this.favorite = const [],
+    this.onlyCountries = const [],
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
@@ -58,6 +62,12 @@ class CountryCodePicker extends StatefulWidget {
               flagUri: 'flags/${s['code'].toLowerCase()}.png',
             ))
         .toList();
+
+    if(onlyCountries.length > 0) {
+      elements =  elements
+        .where((c) => onlyCountries.contains(c.code))
+        .toList();
+    }
 
     return new _CountryCodePickerState(elements);
   }
