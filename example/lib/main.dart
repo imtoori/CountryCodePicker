@@ -44,6 +44,9 @@ class _MyAppState extends State<MyApp> {
                         showCountryOnly: true,
                         showOnlyCountryWhenClosed: true,
                         alignLeft: true,
+                        builder: (countryCode) {
+                          return Text('${countryCode.code}');
+                        },
                       ),
                     ),
                   ),
