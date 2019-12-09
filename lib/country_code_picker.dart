@@ -19,6 +19,7 @@ class CountryCodePicker extends StatefulWidget {
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
+  final Widget customWidget;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -50,7 +51,8 @@ class CountryCodePicker extends StatefulWidget {
     this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
-    this.showFlag = true
+    this.showFlag = true,
+    this.customWidget,
   });
 
   @override
@@ -84,25 +86,37 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   _CountryCodePickerState(this.elements);
 
   @override
-  Widget build(BuildContext context) => FlatButton(
+  Widget build(BuildContext context) {
+    Widget _widget;
+    if (widget.customWidget != null)
+      _widget = InkWell(
+        onTap: _showSelectionDialog,
+        child: widget.customWidget,
+      );
+    else {
+      _widget = FlatButton(
+        padding: widget.padding,
+        onPressed: _showSelectionDialog,
         child: Flex(
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            widget.showFlag ? Flexible(
-              flex: widget.alignLeft ? 0 : 1,
-              fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-              child: Padding(
-                padding: widget.alignLeft
-                    ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                    : const EdgeInsets.only(right: 16.0),
-                child: Image.asset(
-                  selectedItem.flagUri,
-                  package: 'country_code_picker',
-                  width: 32.0,
-                ),
-              ),
-            ) : Container(),
+            widget.showFlag
+                ? Flexible(
+                    flex: widget.alignLeft ? 0 : 1,
+                    fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                    child: Padding(
+                      padding: widget.alignLeft
+                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                          : const EdgeInsets.only(right: 16.0),
+                      child: Image.asset(
+                        selectedItem.flagUri,
+                        package: 'country_code_picker',
+                        width: 32.0,
+                      ),
+                    ),
+                  )
+                : Container(),
             Flexible(
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
@@ -114,9 +128,10 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
             ),
           ],
         ),
-        padding: widget.padding,
-        onPressed: _showSelectionDialog,
       );
+    }
+    return _widget;
+  }
 
   @override
   initState() {
@@ -146,16 +161,12 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      builder: (_) =>
-        SelectionDialog(
-          elements,
-          favoriteElements,
+      builder: (_) => SelectionDialog(elements, favoriteElements,
           showCountryOnly: widget.showCountryOnly,
           emptySearchBuilder: widget.emptySearchBuilder,
           searchDecoration: widget.searchDecoration,
           searchStyle: widget.searchStyle,
-          showFlag: widget.showFlag
-        ),
+          showFlag: widget.showFlag),
     ).then((e) {
       if (e != null) {
         setState(() {
