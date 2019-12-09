@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
                     initialSelection: 'IT',
                     favorite: ['+39', 'FR'],
                     //Get the country information relevant to the initial selection
-                    getInitialData: (code) => print("${code.name} ${code.dialCode}"),
+                    onInit: (code) => print("${code.name} ${code.dialCode}"),
                   ),
                   SizedBox(
                     width: 400,
