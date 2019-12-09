@@ -19,7 +19,7 @@ class CountryCodePicker extends StatefulWidget {
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
-  final Widget customWidget;
+  final Function(CountryCode) builder;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -52,7 +52,7 @@ class CountryCodePicker extends StatefulWidget {
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
     this.showFlag = true,
-    this.customWidget,
+    this.builder,
   });
 
   @override
@@ -88,10 +88,10 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   @override
   Widget build(BuildContext context) {
     Widget _widget;
-    if (widget.customWidget != null)
+    if (widget.builder != null)
       _widget = InkWell(
         onTap: _showSelectionDialog,
-        child: widget.customWidget,
+        child: widget.builder(selectedItem),
       );
     else {
       _widget = FlatButton(

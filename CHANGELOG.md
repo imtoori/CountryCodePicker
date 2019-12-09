@@ -1,5 +1,7 @@
-## 1.1.8
-- Added Ability to render custom Widget instead of package one's, through [customWidget] param [@Saifallak](https://github.com/Saifallak).
+## 1.2.0
+Added Ability to render custom Widget instead of package one's.
+
+Bug fix.
 
 ## 1.1.7
 
