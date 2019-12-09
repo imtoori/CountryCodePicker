@@ -26,10 +26,13 @@ class _MyAppState extends State<MyApp> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CountryCodePicker(
-                      onChanged: print,
-                      // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                      initialSelection: 'IT',
-                      favorite: ['+39', 'FR']),
+                    onChanged: print,
+                    // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                    initialSelection: 'IT',
+                    favorite: ['+39', 'FR'],
+                    //Get the country information relevant to the initial selection
+                    getInitialData: (code) => print("${code.name} ${code.dialCode}"),
+                  ),
                   SizedBox(
                     width: 400,
                     height: 60,

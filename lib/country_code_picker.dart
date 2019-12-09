@@ -9,6 +9,8 @@ export 'country_code.dart';
 
 class CountryCodePicker extends StatefulWidget {
   final ValueChanged<CountryCode> onChanged;
+  //Exposed new method to get the initial information of the country
+  final ValueChanged<CountryCode> getInitialData;
   final String initialSelection;
   final List<String> favorite;
   final TextStyle textStyle;
@@ -36,6 +38,7 @@ class CountryCodePicker extends StatefulWidget {
 
   CountryCodePicker({
     this.onChanged,
+    this.getInitialData,
     this.initialSelection,
     this.favorite = const [],
     this.countryFilter = const [],
@@ -127,6 +130,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
       selectedItem = elements[0];
     }
 
+    //Change added: get the initial entered country information
+    _getInitialSelectedData(selectedItem);
+
     favoriteElements = elements
         .where((e) =>
             widget.favorite.firstWhere(
@@ -164,6 +170,12 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
       widget.onChanged(e);
+    }
+  }
+
+  void _getInitialSelectedData(CountryCode initialData){
+    if(widget.getInitialData != null){
+      widget.getInitialData(initialData);
     }
   }
 }
