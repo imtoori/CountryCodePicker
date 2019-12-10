@@ -24,7 +24,7 @@ Just put the component in your application setting the onChanged callback.
          // optional. Shows only country name and flag
          showCountryOnly: false,
          // optional. Shows only country name and flag when popup is closed.
-         showOnlyCountryCodeWhenClosed: false,
+         showOnlyCountryWhenClosed: false,
          // optional. aligns the flag and the Text left
          alignLeft: false,
        ),
