@@ -1,4 +1,9 @@
+## 1.2.1
+
+Fix code list.
+
 ## 1.2.0
+
 Added Ability to render custom Widget instead of package one's.
 
 Bug fix.
