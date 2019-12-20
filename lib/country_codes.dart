@@ -64,7 +64,7 @@ List<Map> codes = [
   {"name": "Danmark", "code": "DK", "dial_code": "+45"},
   {"name": "Djibouti", "code": "DJ", "dial_code": "+253"},
   {"name": "Dominica", "code": "DM", "dial_code": "+1767"},
-  {"name": "República Dominicana", "code": "DO", "dial_code": "+1849"},
+  {"name": "República Dominicana", "code": "DO", "dial_code": "+1"},
   {"name": "Ecuador", "code": "EC", "dial_code": "+593"},
   {"name": "مصر‎", "code": "EG", "dial_code": "+20"},
   {"name": "El Salvador", "code": "SV", "dial_code": "+503"},
