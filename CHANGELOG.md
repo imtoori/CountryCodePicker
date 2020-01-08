@@ -1,3 +1,7 @@
+## 1.2.3
+
+Update country code of Republica Dominicana.
+
 ## 1.2.2
 
 Fix code list.

@@ -6,3 +6,4 @@
 packages
 .vscode
 *.lock
+.dart_tool/
