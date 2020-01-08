@@ -17,11 +17,6 @@ jobs:
     - name: Publish Dart/Flutter package
       uses: sakebook/actions-flutter-pub-publisher@v1.2.1
       with:
-        # Google Account credential
         credential: ${{ secrets.CREDENTIALS }}
-        # (Optional) Publish packages type. (default: true)
-        flutter_package: true # optional, default is true
-        # (Optional) Skip test (default: false)
-        skip_test: true # optional
-        # (Optional) Package directory (default: ".")
-        package_directory: . # optional, default is .
+        flutter_package: true
+        skip_test: true
