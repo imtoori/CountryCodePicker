@@ -1,4 +1,4 @@
-name: Dart CI
+name: Publish plugin
 
 on:
   push:
@@ -6,17 +6,15 @@ on:
       - v*
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
 
-    container:
-      image:  google/dart:latest
-
     steps:
-    - name: Publish Dart/Flutter package
-      uses: sakebook/actions-flutter-pub-publisher@v1.2.1
-      with:
-        credential: ${{ secrets.CREDENTIALS }}
-        flutter_package: true
-        skip_test: true
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Publish
+        uses: sakebook/actions-flutter-pub-publisher@v1.2.1
+        with:
+          credential: ${{ secrets.CREDENTIALS }}
+          skip_test: true
