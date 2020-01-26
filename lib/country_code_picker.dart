@@ -132,6 +132,21 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     }
     return _widget;
   }
+  
+  @override
+  void didUpdateWidget(CountryCodePicker oldWidget) {
+    if(oldWidget.initialSelection != widget.initialSelection) {
+      if (widget.initialSelection != null) {
+        selectedItem = elements.firstWhere(
+                (e) =>
+            (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
+                (e.dialCode == widget.initialSelection.toString()),
+            orElse: () => elements[0]);
+      } else {
+        selectedItem = elements[0];
+      }
+    }
+  }
 
   @override
   initState() {
