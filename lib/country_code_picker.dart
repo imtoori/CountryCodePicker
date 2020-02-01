@@ -135,6 +135,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   
   @override
   void didUpdateWidget(CountryCodePicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if(oldWidget.initialSelection != widget.initialSelection) {
       if (widget.initialSelection != null) {
         selectedItem = elements.firstWhere(
