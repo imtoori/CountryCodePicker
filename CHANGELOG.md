@@ -1,3 +1,7 @@
+## 1.2.4
+
+Fixed a bug that was making impossible to update initial selection
+
 ## 1.2.3
 
 Update country code of Republica Dominicana.
