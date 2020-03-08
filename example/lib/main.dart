@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.all(8.0),
                   child: CountryCodePicker(
                     enabled: false,
-                    onChanged: print,
+                    onChanged: (c) => c.name,
                     initialSelection: 'TF',
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,

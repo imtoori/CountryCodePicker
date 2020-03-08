@@ -41,6 +41,12 @@ class CountryCode {
     return CountryCode.fromJson(jsonCode);
   }
 
+  CountryCode localize(BuildContext context) {
+    return this
+      ..name =
+          CountryLocalizations.of(context)?.translate(this.code) ?? this.name;
+  }
+
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
       name: json['name'],

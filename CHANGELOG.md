@@ -1,3 +1,7 @@
+## 1.3.3
+
+- Fix a bug in localization
+
 ## 1.3.2
 
 - Add `enable` property in order to use the disable the button

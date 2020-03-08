@@ -90,7 +90,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     if (widget.builder != null)
       _widget = InkWell(
         onTap: _showSelectionDialog,
-        child: widget.builder(selectedItem),
+        child: widget.builder(selectedItem.localize(context)),
       );
     else {
       _widget = FlatButton(
@@ -200,13 +200,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
-      widget.onChanged(e);
+      widget.onChanged(e.localize(context));
     }
   }
 
-  void _onInit(CountryCode initialData) {
+  void _onInit(CountryCode e) {
     if (widget.onInit != null) {
-      widget.onInit(initialData);
+      widget.onInit(e.localize(context));
     }
   }
 }

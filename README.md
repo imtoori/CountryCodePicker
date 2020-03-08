@@ -46,6 +46,24 @@ void _onCountryChange(CountryCode countryCode) {
 
 ```
 
+### i18n
+
+Just add the `CountryLocalizations.delegate` in the list of your app delegates
+
+```dart
+ return new MaterialApp(
+      supportedLocales: [
+        Locale('en'),
+        Locale('it'),
+        Locale('en'),
+      ],
+      localizationsDelegates: [
+        CountryLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+```
+
 ## Contributions
 
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
