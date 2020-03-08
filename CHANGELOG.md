@@ -1,5 +1,9 @@
 ## 1.3.0
 
+- Add `flagWidth` property
+
+## 1.3.0
+
 - Fixed selection dialog length
 
 - Added i18n with `CountryLocalizations`

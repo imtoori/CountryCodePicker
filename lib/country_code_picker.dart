@@ -36,6 +36,9 @@ class CountryCodePicker extends StatefulWidget {
   /// contains the country codes to load only the specified countries.
   final List<String> countryFilter;
 
+  /// Width of the flag images
+  final double flagWidth;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -52,6 +55,7 @@ class CountryCodePicker extends StatefulWidget {
     this.alignLeft = false,
     this.showFlag = true,
     this.builder,
+    this.flagWidth = 32.0,
   });
 
   @override
@@ -103,7 +107,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
                       child: Image.asset(
                         selectedItem.flagUri,
                         package: 'country_code_picker',
-                        width: 32.0,
+                        width: widget.flagWidth,
                       ),
                     ),
                   )
@@ -177,6 +181,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         searchDecoration: widget.searchDecoration,
         searchStyle: widget.searchStyle,
         showFlag: widget.showFlag,
+        flagWidth: widget.flagWidth,
       ),
     ).then((e) {
       if (e != null) {

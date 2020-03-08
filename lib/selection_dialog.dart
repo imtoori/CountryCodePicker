@@ -9,18 +9,22 @@ class SelectionDialog extends StatefulWidget {
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
+  final double flagWidth;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
-  SelectionDialog(this.elements, this.favoriteElements,
-      {Key key,
-      this.showCountryOnly,
-      this.emptySearchBuilder,
-      InputDecoration searchDecoration = const InputDecoration(),
-      this.searchStyle,
-      this.showFlag})
-      : assert(searchDecoration != null, 'searchDecoration must not be null!'),
+  SelectionDialog(
+    this.elements,
+    this.favoriteElements, {
+    Key key,
+    this.showCountryOnly,
+    this.emptySearchBuilder,
+    InputDecoration searchDecoration = const InputDecoration(),
+    this.searchStyle,
+    this.showFlag,
+    this.flagWidth = 32,
+  })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
         this.searchDecoration =
             searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
         super(key: key);
@@ -97,7 +101,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 child: Image.asset(
                   e.flagUri,
                   package: 'country_code_picker',
-                  width: 32.0,
+                  width: widget.flagWidth,
                 ),
               ),
             ),
