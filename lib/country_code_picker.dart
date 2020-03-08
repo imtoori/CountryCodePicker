@@ -45,6 +45,9 @@ class CountryCodePicker extends StatefulWidget {
   /// Width of the flag images
   final double flagWidth;
 
+  /// Use this property to change the order of the options
+  final Comparator<CountryCode> comparator;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -66,6 +69,7 @@ class CountryCodePicker extends StatefulWidget {
     this.flagWidth = 32.0,
     this.enabled = true,
     this.textOverflow = TextOverflow.ellipsis,
+    this.comparator,
   });
 
   @override
@@ -74,6 +78,10 @@ class CountryCodePicker extends StatefulWidget {
 
     List<CountryCode> elements =
         jsonList.map((json) => CountryCode.fromJson(json)).toList();
+
+    if (comparator != null) {
+      elements.sort(comparator);
+    }
 
     if (countryFilter.length > 0) {
       elements = elements.where((c) => countryFilter.contains(c.code)).toList();

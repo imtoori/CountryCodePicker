@@ -1,3 +1,7 @@
+## 1.3.5
+
+- Add `comparator` property
+
 ## 1.3.4
 
 - Add `showFlagDialog` and  `showFlagMain`
