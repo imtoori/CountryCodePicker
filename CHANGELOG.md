@@ -2,6 +2,8 @@
 
 - Add `enable` property in order to use the disable the button
 
+- Add `textOverflow` property
+
 ## 1.3.1
 
 - Add `flagWidth` property
