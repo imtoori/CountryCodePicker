@@ -1,3 +1,7 @@
+## 1.3.4
+
+- Add `showFlagDialog` and  `showFlagMain`
+
 ## 1.3.3
 
 - Fix a bug in localization

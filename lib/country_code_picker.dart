@@ -35,6 +35,10 @@ class CountryCodePicker extends StatefulWidget {
   /// shows the flag
   final bool showFlag;
 
+  final bool showFlagMain;
+
+  final bool showFlagDialog;
+
   /// contains the country codes to load only the specified countries.
   final List<String> countryFilter;
 
@@ -56,6 +60,8 @@ class CountryCodePicker extends StatefulWidget {
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
     this.showFlag = true,
+    this.showFlagDialog,
+    this.showFlagMain,
     this.builder,
     this.flagWidth = 32.0,
     this.enabled = true,
@@ -100,7 +106,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            if (widget.showFlag)
+            if (widget.showFlag || (widget.showFlagMain == true))
               Flexible(
                 flex: widget.alignLeft ? 0 : 1,
                 fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
@@ -135,6 +141,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   @override
   void didUpdateWidget(CountryCodePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
+
+    _onInit(selectedItem);
+
     if (oldWidget.initialSelection != widget.initialSelection) {
       if (widget.initialSelection != null) {
         selectedItem = elements.firstWhere(
@@ -161,9 +170,6 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
       selectedItem = elements[0];
     }
 
-    //Change added: get the initial entered country information
-    _onInit(selectedItem);
-
     favoriteElements = elements
         .where((e) =>
             widget.favorite.firstWhere(
@@ -184,7 +190,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         emptySearchBuilder: widget.emptySearchBuilder,
         searchDecoration: widget.searchDecoration,
         searchStyle: widget.searchStyle,
-        showFlag: widget.showFlag,
+        showFlag: widget.showFlag || (widget.showFlagDialog == true),
         flagWidth: widget.flagWidth,
       ),
     ).then((e) {

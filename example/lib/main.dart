@@ -42,6 +42,8 @@ class _MyAppState extends State<MyApp> {
                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
+                showFlag: false,
+                showFlagDialog: true,
                 //Get the country information relevant to the initial selection
                 onInit: (code) => print("${code.name} ${code.dialCode}"),
               ),
