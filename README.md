@@ -4,6 +4,8 @@
 
 A flutter package for showing a country code selector.
 
+It supports i18n.
+
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen1.png" width="240"/>
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen2.png" width="240"/>
 
@@ -15,8 +17,8 @@ Just put the component in your application setting the onChanged callback.
 
 @override
  Widget build(BuildContext context) => new Scaffold(
-     body: new Center(
-       child: new CountryCodePicker(
+     body: Center(
+       child: CountryCodePicker(
          onChanged: print,
          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
          initialSelection: 'IT',
@@ -33,19 +35,12 @@ Just put the component in your application setting the onChanged callback.
 
 ```
 
-Note: Your onChanged function can be any function of the type shown below:
-
-```dart
-(CountryCode)->dynamic
-
-```
-
 Example:
 
 ```dart
 
 void _onCountryChange(CountryCode countryCode) {
-    //Todo : manipulate the selected country code here
+    //TODO : manipulate the selected country code here
     print("New Country selected: " + countryCode.toString());
   }
 

@@ -9,7 +9,6 @@ export 'country_code.dart';
 
 class CountryCodePicker extends StatefulWidget {
   final ValueChanged<CountryCode> onChanged;
-  //Exposed new method to get the initial information of the country
   final ValueChanged<CountryCode> onInit;
   final String initialSelection;
   final List<String> favorite;
@@ -27,8 +26,8 @@ class CountryCodePicker extends StatefulWidget {
   /// aligns the flag and the Text left
   ///
   /// additionally this option also fills the available space of the widget.
-  /// this is especially usefull in combination with [showOnlyCountryWhenClosed],
-  /// because longer countrynames are displayed in one line
+  /// this is especially useful in combination with [showOnlyCountryWhenClosed],
+  /// because longer country names are displayed in one line
   final bool alignLeft;
 
   /// shows the flag
@@ -59,22 +58,14 @@ class CountryCodePicker extends StatefulWidget {
   State<StatefulWidget> createState() {
     List<Map> jsonList = codes;
 
-    List<CountryCode> elements = jsonList
-        .map((s) => CountryCode(
-              name: s['name'],
-              code: s['code'],
-              dialCode: s['dial_code'],
-              flagUri: 'flags/${s['code'].toLowerCase()}.png',
-            ))
-        .toList();
+    List<CountryCode> elements =
+        jsonList.map((json) => CountryCode.fromJson(json)).toList();
 
-    if(countryFilter.length > 0) {
-      elements =  elements
-        .where((c) => countryFilter.contains(c.code))
-        .toList();
+    if (countryFilter.length > 0) {
+      elements = elements.where((c) => countryFilter.contains(c.code)).toList();
     }
 
-    return new _CountryCodePickerState(elements);
+    return _CountryCodePickerState(elements);
   }
 }
 
@@ -121,7 +112,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
                 widget.showOnlyCountryWhenClosed
-                    ? selectedItem.toCountryStringOnly()
+                    ? selectedItem.toCountryStringOnly(context)
                     : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
               ),
@@ -132,15 +123,16 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     }
     return _widget;
   }
-  
+
   @override
   void didUpdateWidget(CountryCodePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if(oldWidget.initialSelection != widget.initialSelection) {
+    if (oldWidget.initialSelection != widget.initialSelection) {
       if (widget.initialSelection != null) {
         selectedItem = elements.firstWhere(
-                (e) =>
-            (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
+            (e) =>
+                (e.code.toUpperCase() ==
+                    widget.initialSelection.toUpperCase()) ||
                 (e.dialCode == widget.initialSelection.toString()),
             orElse: () => elements[0]);
       } else {
@@ -177,12 +169,15 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void _showSelectionDialog() {
     showDialog(
       context: context,
-      builder: (_) => SelectionDialog(elements, favoriteElements,
-          showCountryOnly: widget.showCountryOnly,
-          emptySearchBuilder: widget.emptySearchBuilder,
-          searchDecoration: widget.searchDecoration,
-          searchStyle: widget.searchStyle,
-          showFlag: widget.showFlag),
+      builder: (_) => SelectionDialog(
+        elements,
+        favoriteElements,
+        showCountryOnly: widget.showCountryOnly,
+        emptySearchBuilder: widget.emptySearchBuilder,
+        searchDecoration: widget.searchDecoration,
+        searchStyle: widget.searchStyle,
+        showFlag: widget.showFlag,
+      ),
     ).then((e) {
       if (e != null) {
         setState(() {
@@ -200,8 +195,8 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     }
   }
 
-  void _onInit(CountryCode initialData){
-    if(widget.onInit != null){
+  void _onInit(CountryCode initialData) {
+    if (widget.onInit != null) {
       widget.onInit(initialData);
     }
   }

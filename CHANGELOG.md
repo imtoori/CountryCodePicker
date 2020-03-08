@@ -1,3 +1,9 @@
+## 1.3.0
+
+- Fixed selection dialog length
+
+- Added i18n with `CountryLocalizations`
+
 ## 1.2.4
 
 Fixed a bug that was making impossible to update initial selection
