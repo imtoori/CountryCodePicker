@@ -1,4 +1,8 @@
-## 1.3.0
+## 1.3.2
+
+- Add `enable` property in order to use the disable the button
+
+## 1.3.1
 
 - Add `flagWidth` property
 

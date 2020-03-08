@@ -76,6 +76,21 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
+              SizedBox(
+                width: 100,
+                height: 60,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CountryCodePicker(
+                    enabled: false,
+                    onChanged: print,
+                    initialSelection: 'TF',
+                    showCountryOnly: true,
+                    showOnlyCountryWhenClosed: true,
+                    favorite: ['+39', 'FR'],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

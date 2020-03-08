@@ -19,6 +19,8 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle searchStyle;
   final WidgetBuilder emptySearchBuilder;
   final Function(CountryCode) builder;
+  final bool enabled;
+  final TextOverflow textOverflow;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -56,6 +58,8 @@ class CountryCodePicker extends StatefulWidget {
     this.showFlag = true,
     this.builder,
     this.flagWidth = 32.0,
+    this.enabled = true,
+    this.textOverflow = TextOverflow.ellipsis,
   });
 
   @override
@@ -91,27 +95,26 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     else {
       _widget = FlatButton(
         padding: widget.padding,
-        onPressed: _showSelectionDialog,
+        onPressed: widget.enabled ? _showSelectionDialog : null,
         child: Flex(
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            widget.showFlag
-                ? Flexible(
-                    flex: widget.alignLeft ? 0 : 1,
-                    fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                    child: Padding(
-                      padding: widget.alignLeft
-                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                          : const EdgeInsets.only(right: 16.0),
-                      child: Image.asset(
-                        selectedItem.flagUri,
-                        package: 'country_code_picker',
-                        width: widget.flagWidth,
-                      ),
-                    ),
-                  )
-                : Container(),
+            if (widget.showFlag)
+              Flexible(
+                flex: widget.alignLeft ? 0 : 1,
+                fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                child: Padding(
+                  padding: widget.alignLeft
+                      ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                      : const EdgeInsets.only(right: 16.0),
+                  child: Image.asset(
+                    selectedItem.flagUri,
+                    package: 'country_code_picker',
+                    width: widget.flagWidth,
+                  ),
+                ),
+              ),
             Flexible(
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
@@ -119,6 +122,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
                     ? selectedItem.toCountryStringOnly(context)
                     : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
+                overflow: widget.textOverflow,
               ),
             ),
           ],
