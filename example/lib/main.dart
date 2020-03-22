@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
                 showFlag: false,
+                customList: ['IT', 'FR'],
                 showFlagDialog: true,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection

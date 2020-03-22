@@ -21,6 +21,7 @@ class CountryCodePicker extends StatefulWidget {
   final Function(CountryCode) builder;
   final bool enabled;
   final TextOverflow textOverflow;
+  final List<String> customList;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -70,6 +71,7 @@ class CountryCodePicker extends StatefulWidget {
     this.enabled = true,
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
+    this.customList,
   });
 
   @override
@@ -81,6 +83,15 @@ class CountryCodePicker extends StatefulWidget {
 
     if (comparator != null) {
       elements.sort(comparator);
+    }
+
+    if (customList != null) {
+      elements = elements
+          .where((c) =>
+              customList.contains(c.code) ||
+              customList.contains(c.name) ||
+              customList.contains(c.dialCode))
+          .toList();
     }
 
     if (countryFilter.length > 0) {
