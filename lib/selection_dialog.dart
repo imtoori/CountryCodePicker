@@ -39,12 +39,26 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
   @override
   Widget build(BuildContext context) => SimpleDialog(
+        titlePadding: const EdgeInsets.all(0),
         title: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            TextField(
-              style: widget.searchStyle,
-              decoration: widget.searchDecoration,
-              onChanged: _filterElements,
+            IconButton(
+              padding: const EdgeInsets.all(0),
+              iconSize: 20,
+              icon: Icon(
+                Icons.close,
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: TextField(
+                style: widget.searchStyle,
+                decoration: widget.searchDecoration,
+                onChanged: _filterElements,
+              ),
             ),
           ],
         ),
