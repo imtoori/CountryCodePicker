@@ -21,6 +21,8 @@ class CountryCodePicker extends StatefulWidget {
   final Function(CountryCode) builder;
   final bool enabled;
   final TextOverflow textOverflow;
+
+  /// used to customize the country list
   final List<String> customList;
 
   /// shows the name of the country instead of the dialcode
