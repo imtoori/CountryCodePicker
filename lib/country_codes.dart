@@ -485,7 +485,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+504",
   },
   {
-    "name": "香港",
+    "name": "中国香港",
     "code": "HK",
     "dial_code": "+852",
   },
@@ -645,7 +645,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+352",
   },
   {
-    "name": "澳門",
+    "name": "中国澳门",
     "code": "MO",
     "dial_code": "+853",
   },
@@ -1085,7 +1085,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+963",
   },
   {
-    "name": "臺灣",
+    "name": "中国台湾",
     "code": "TW",
     "dial_code": "+886",
   },
