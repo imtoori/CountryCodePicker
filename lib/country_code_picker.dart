@@ -51,6 +51,9 @@ class CountryCodePicker extends StatefulWidget {
   /// Use this property to change the order of the options
   final Comparator<CountryCode> comparator;
 
+  // Enable filtering countries in the dialog using localizes string  
+  final bool filterByLocale;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -74,6 +77,7 @@ class CountryCodePicker extends StatefulWidget {
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
     this.customList,
+    this.filterByLocale = false,
   });
 
   @override
@@ -113,6 +117,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.filterByLocale) {
+      this.elements = elements.map((e) => e.localize(context)).toList();
+    }
     Widget _widget;
     if (widget.builder != null)
       _widget = InkWell(
