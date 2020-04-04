@@ -12,11 +12,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       supportedLocales: [
@@ -38,6 +33,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               CountryCodePicker(
+                key: key,
                 onChanged: print,
                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                 initialSelection: 'IT',
