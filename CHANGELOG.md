@@ -6,6 +6,8 @@
 
 - Remove customList and fix countryFilter
 
+- Fix filtering with localization
+
 ## 1.3.7
 
 - Add `customList` property
