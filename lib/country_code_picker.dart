@@ -22,6 +22,9 @@ class CountryCodePicker extends StatefulWidget {
   final bool enabled;
   final TextOverflow textOverflow;
 
+  /// the size of the selection dialog
+  final Size dialogSize;
+
   /// used to customize the country list
   final List<String> customList;
 
@@ -74,7 +77,9 @@ class CountryCodePicker extends StatefulWidget {
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
     this.customList,
-  });
+    this.dialogSize,
+    Key key,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -100,29 +105,29 @@ class CountryCodePicker extends StatefulWidget {
       elements = elements.where((c) => countryFilter.contains(c.code)).toList();
     }
 
-    return _CountryCodePickerState(elements);
+    return CountryCodePickerState(elements);
   }
 }
 
-class _CountryCodePickerState extends State<CountryCodePicker> {
+class CountryCodePickerState extends State<CountryCodePicker> {
   CountryCode selectedItem;
   List<CountryCode> elements = [];
   List<CountryCode> favoriteElements = [];
 
-  _CountryCodePickerState(this.elements);
+  CountryCodePickerState(this.elements);
 
   @override
   Widget build(BuildContext context) {
     Widget _widget;
     if (widget.builder != null)
       _widget = InkWell(
-        onTap: _showSelectionDialog,
-        child: widget.builder(selectedItem),
+        onTap: showCountryCodePickerDialog,
+        child: widget.builder(selectedItem.localize(context)),
       );
     else {
       _widget = FlatButton(
         padding: widget.padding,
-        onPressed: widget.enabled ? _showSelectionDialog : null,
+        onPressed: widget.enabled ? showCountryCodePickerDialog : null,
         child: Flex(
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
@@ -202,7 +207,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     super.initState();
   }
 
-  void _showSelectionDialog() {
+  void showCountryCodePickerDialog() {
     showDialog(
       context: context,
       builder: (_) => SelectionDialog(
@@ -214,6 +219,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         searchStyle: widget.searchStyle,
         showFlag: widget.showFlag || (widget.showFlagDialog == true),
         flagWidth: widget.flagWidth,
+        size: widget.dialogSize,
       ),
     ).then((e) {
       if (e != null) {
