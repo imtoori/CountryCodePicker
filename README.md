@@ -55,7 +55,7 @@ Just add the `CountryLocalizations.delegate` in the list of your app delegates
       supportedLocales: [
         Locale('en'),
         Locale('it'),
-        Locale('en'),
+        Locale('fr'),
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
