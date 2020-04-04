@@ -22,6 +22,9 @@ class CountryCodePicker extends StatefulWidget {
   final bool enabled;
   final TextOverflow textOverflow;
 
+  /// the size of the selection dialog
+  final Size dialogSize;
+
   /// used to customize the country list
   final List<String> customList;
 
@@ -74,6 +77,7 @@ class CountryCodePicker extends StatefulWidget {
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
     this.customList,
+    this.dialogSize,
   });
 
   @override
@@ -213,6 +217,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         searchStyle: widget.searchStyle,
         showFlag: widget.showFlag || (widget.showFlagDialog == true),
         flagWidth: widget.flagWidth,
+        size: widget.dialogSize,
       ),
     ).then((e) {
       if (e != null) {

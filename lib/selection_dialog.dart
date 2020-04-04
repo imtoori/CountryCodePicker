@@ -10,6 +10,7 @@ class SelectionDialog extends StatefulWidget {
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
   final double flagWidth;
+  final Size size;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -24,6 +25,7 @@ class SelectionDialog extends StatefulWidget {
     this.searchStyle,
     this.showFlag,
     this.flagWidth = 32,
+    this.size,
   })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
         this.searchDecoration =
             searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
@@ -64,8 +66,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
         ),
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.7,
+            width: widget.size?.width ?? MediaQuery.of(context).size.width,
+            height:
+                widget.size?.height ?? MediaQuery.of(context).size.height * 0.7,
             child: ListView(
               children: [
                 widget.favoriteElements.isEmpty
