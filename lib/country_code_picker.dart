@@ -151,7 +151,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
                 widget.showOnlyCountryWhenClosed
-                    ? selectedItem.toCountryStringOnly(context)
+                    ? selectedItem.toCountryStringOnly()
                     : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
                 overflow: widget.textOverflow,
@@ -168,6 +168,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   void didUpdateWidget(CountryCodePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
 
+    this.elements = elements.map((e) => e.localize(context)).toList();
     _onInit(selectedItem);
 
     if (oldWidget.initialSelection != widget.initialSelection) {
@@ -233,13 +234,13 @@ class CountryCodePickerState extends State<CountryCodePicker> {
 
   void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
-      widget.onChanged(e.localize(context));
+      widget.onChanged(e);
     }
   }
 
   void _onInit(CountryCode e) {
     if (widget.onInit != null) {
-      widget.onInit(e.localize(context));
+      widget.onInit(e);
     }
   }
 }
