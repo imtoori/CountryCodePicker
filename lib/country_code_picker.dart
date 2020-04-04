@@ -26,7 +26,7 @@ class CountryCodePicker extends StatefulWidget {
   final Size dialogSize;
 
   /// used to customize the country list
-  final List<String> customList;
+  final List<String> countryFilter;
 
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
@@ -45,9 +45,6 @@ class CountryCodePicker extends StatefulWidget {
 
   final bool showFlagDialog;
 
-  /// contains the country codes to load only the specified countries.
-  final List<String> countryFilter;
-
   /// Width of the flag images
   final double flagWidth;
 
@@ -59,7 +56,6 @@ class CountryCodePicker extends StatefulWidget {
     this.onInit,
     this.initialSelection,
     this.favorite = const [],
-    this.countryFilter = const [],
     this.textStyle,
     this.padding = const EdgeInsets.all(0.0),
     this.showCountryOnly = false,
@@ -76,7 +72,7 @@ class CountryCodePicker extends StatefulWidget {
     this.enabled = true,
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
-    this.customList,
+    this.countryFilter,
     this.dialogSize,
     Key key,
   }) : super(key: key);
@@ -92,17 +88,15 @@ class CountryCodePicker extends StatefulWidget {
       elements.sort(comparator);
     }
 
-    if (customList != null) {
+    if (countryFilter != null && countryFilter.isNotEmpty) {
+      final uppercaseCustomList =
+          countryFilter.map((c) => c.toUpperCase()).toList();
       elements = elements
           .where((c) =>
-              customList.contains(c.code) ||
-              customList.contains(c.name) ||
-              customList.contains(c.dialCode))
+              uppercaseCustomList.contains(c.code) ||
+              uppercaseCustomList.contains(c.name) ||
+              uppercaseCustomList.contains(c.dialCode))
           .toList();
-    }
-
-    if (countryFilter.length > 0) {
-      elements = elements.where((c) => countryFilter.contains(c.code)).toList();
     }
 
     return CountryCodePickerState(elements);
@@ -186,7 +180,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   @override
-  initState() {
+  void initState() {
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
           (e) =>

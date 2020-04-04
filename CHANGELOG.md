@@ -1,3 +1,11 @@
+## 1.3.8
+
+- Expose state to let use a key to open the dialog
+
+- Add dialog size config
+
+- Remove customList and fix countryFilter
+
 ## 1.3.7
 
 - Add `customList` property
