@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: [
         Locale('en'),
         Locale('it'),
-        Locale('en'),
+        Locale('fr'),
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CountryCodePicker(
-                    onChanged: print,
+                    onChanged: (e) => print(e.toLongString()),
                     initialSelection: 'TF',
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,

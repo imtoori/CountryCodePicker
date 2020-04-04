@@ -123,8 +123,8 @@ class _SelectionDialogState extends State<SelectionDialog> {
             flex: 4,
             child: Text(
               widget.showCountryOnly
-                  ? e.toCountryStringOnly(context)
-                  : e.toLongString(context),
+                  ? e.toCountryStringOnly()
+                  : e.toLongString(),
               overflow: TextOverflow.fade,
             ),
           ),

@@ -51,9 +51,6 @@ class CountryCodePicker extends StatefulWidget {
   /// Use this property to change the order of the options
   final Comparator<CountryCode> comparator;
 
-  // Enable filtering countries in the dialog using localizes string  
-  final bool filterByLocale;
-
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -77,7 +74,6 @@ class CountryCodePicker extends StatefulWidget {
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
     this.customList,
-    this.filterByLocale = false,
   });
 
   @override
@@ -117,14 +113,11 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.filterByLocale) {
-      this.elements = elements.map((e) => e.localize(context)).toList();
-    }
     Widget _widget;
     if (widget.builder != null)
       _widget = InkWell(
         onTap: _showSelectionDialog,
-        child: widget.builder(selectedItem.localize(context)),
+        child: widget.builder(selectedItem),
       );
     else {
       _widget = FlatButton(
@@ -153,7 +146,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
               fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
               child: Text(
                 widget.showOnlyCountryWhenClosed
-                    ? selectedItem.toCountryStringOnly(context)
+                    ? selectedItem.toCountryStringOnly()
                     : selectedItem.toString(),
                 style: widget.textStyle ?? Theme.of(context).textTheme.button,
                 overflow: widget.textOverflow,
@@ -170,6 +163,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   void didUpdateWidget(CountryCodePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
 
+    this.elements = elements.map((e) => e.localize(context)).toList();
     _onInit(selectedItem);
 
     if (oldWidget.initialSelection != widget.initialSelection) {
@@ -234,13 +228,13 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
 
   void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
-      widget.onChanged(e.localize(context));
+      widget.onChanged(e);
     }
   }
 
   void _onInit(CountryCode e) {
     if (widget.onInit != null) {
-      widget.onInit(e.localize(context));
+      widget.onInit(e);
     }
   }
 }
