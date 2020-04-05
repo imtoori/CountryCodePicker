@@ -118,9 +118,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   Widget build(BuildContext context) {
     Widget _widget;
     if (widget.builder != null)
-      _widget = InkWell(
+      _widget = GestureDetector(
         onTap: showCountryCodePickerDialog,
-        child: widget.builder(selectedItem.localize(context)),
+        child: widget.builder(selectedItem),
       );
     else {
       _widget = FlatButton(
@@ -175,7 +175,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
             (e) =>
                 (e.code.toUpperCase() ==
                     widget.initialSelection.toUpperCase()) ||
-                (e.dialCode == widget.initialSelection.toString()),
+                (e.dialCode == widget.initialSelection) ||
+                (e.name.toUpperCase() == widget.initialSelection.toUpperCase()),
             orElse: () => elements[0]);
       } else {
         selectedItem = elements[0];
@@ -190,7 +191,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       selectedItem = elements.firstWhere(
           (e) =>
               (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
-              (e.dialCode == widget.initialSelection.toString()),
+              (e.dialCode == widget.initialSelection) ||
+              (e.name.toUpperCase() == widget.initialSelection.toUpperCase()),
           orElse: () => elements[0]);
     } else {
       selectedItem = elements[0];
@@ -199,7 +201,10 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     favoriteElements = elements
         .where((e) =>
             widget.favorite.firstWhere(
-                (f) => e.code == f.toUpperCase() || e.dialCode == f.toString(),
+                (f) =>
+                    e.code.toUpperCase() == f.toUpperCase() ||
+                    e.dialCode == f ||
+                    e.name.toUpperCase() == f.toUpperCase(),
                 orElse: () => null) !=
             null)
         .toList();
