@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> {
                   child: CountryCodePicker(
                     onChanged: print,
                     initialSelection: 'TF',
+                    hideSearch: true,
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,
                     alignLeft: true,

@@ -51,6 +51,9 @@ class CountryCodePicker extends StatefulWidget {
   /// Use this property to change the order of the options
   final Comparator<CountryCode> comparator;
 
+  /// Set to true if you want to hide the search part
+  final bool hideSearch;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -73,6 +76,7 @@ class CountryCodePicker extends StatefulWidget {
     this.textOverflow = TextOverflow.ellipsis,
     this.comparator,
     this.countryFilter,
+    this.hideSearch = false,
     this.dialogSize,
     Key key,
   }) : super(key: key);
@@ -181,6 +185,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   void initState() {
+    super.initState();
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
           (e) =>
@@ -198,7 +203,6 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                 orElse: () => null) !=
             null)
         .toList();
-    super.initState();
   }
 
   void showCountryCodePickerDialog() {
@@ -214,6 +218,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         showFlag: widget.showFlag || (widget.showFlagDialog == true),
         flagWidth: widget.flagWidth,
         size: widget.dialogSize,
+        hideSearch: widget.hideSearch,
       ),
     ).then((e) {
       if (e != null) {

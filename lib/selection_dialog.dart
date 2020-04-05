@@ -11,6 +11,7 @@ class SelectionDialog extends StatefulWidget {
   final bool showFlag;
   final double flagWidth;
   final Size size;
+  final bool hideSearch;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -26,6 +27,7 @@ class SelectionDialog extends StatefulWidget {
     this.showFlag,
     this.flagWidth = 32,
     this.size,
+    this.hideSearch = false,
   })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
         this.searchDecoration =
             searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
@@ -54,14 +56,15 @@ class _SelectionDialogState extends State<SelectionDialog> {
               ),
               onPressed: () => Navigator.pop(context),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: TextField(
-                style: widget.searchStyle,
-                decoration: widget.searchDecoration,
-                onChanged: _filterElements,
+            if (!widget.hideSearch)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: TextField(
+                  style: widget.searchStyle,
+                  decoration: widget.searchDecoration,
+                  onChanged: _filterElements,
+                ),
               ),
-            ),
           ],
         ),
         children: [
