@@ -48,6 +48,7 @@ class _CountryLocalizationsDelegate
       'en',
       'it',
       'fr',
+      'es',      
     ].contains(locale.languageCode);
   }
 
