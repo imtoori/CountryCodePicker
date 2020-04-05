@@ -118,7 +118,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   Widget build(BuildContext context) {
     Widget _widget;
     if (widget.builder != null)
-      _widget = GestureDetector(
+      _widget = InkWell(
         onTap: showCountryCodePickerDialog,
         child: widget.builder(selectedItem),
       );

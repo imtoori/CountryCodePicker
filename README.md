@@ -70,7 +70,7 @@ Just add the `CountryLocalizations.delegate` in the list of your app delegates
 Here is a list of properties available to customize your widget:
 
 | Name | Type | Description |
-|-|-|
+|-----|-----|------|
 |onChanged| ValueChanged<CountryCode> | callback invoked when the selection changes |
 |onInit| ValueChanged<CountryCode> | callback invoked during initialization of the widget |
 |initialSelection| String | used to set the initial selected value |
