@@ -1,3 +1,9 @@
+## 1.3.9
+
+- Add hideSearch property
+
+- Add spanish support
+
 ## 1.3.8
 
 - Expose state to let use a key to open the dialog
