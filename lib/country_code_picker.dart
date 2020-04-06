@@ -116,6 +116,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   Widget build(BuildContext context) {
+    this.elements = elements.map((e) => e.localize(context)).toList();
     Widget _widget;
     if (widget.builder != null)
       _widget = InkWell(
@@ -165,8 +166,6 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   @override
   void didUpdateWidget(CountryCodePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    this.elements = elements.map((e) => e.localize(context)).toList();
     _onInit(selectedItem);
 
     if (oldWidget.initialSelection != widget.initialSelection) {
