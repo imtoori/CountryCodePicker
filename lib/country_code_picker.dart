@@ -185,12 +185,14 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       } else {
         selectedItem = elements[0];
       }
+      _onInit(selectedItem);
     }
   }
 
   @override
   void initState() {
     super.initState();
+
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
           (e) =>
@@ -201,6 +203,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     } else {
       selectedItem = elements[0];
     }
+
+    _onInit(selectedItem);
 
     favoriteElements = elements
         .where((e) =>

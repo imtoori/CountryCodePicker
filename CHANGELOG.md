@@ -1,4 +1,4 @@
-## 1.3.10
+## 1.3.11
 
 - Fix initialization
 
