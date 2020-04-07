@@ -1,3 +1,7 @@
+## 1.3.10
+
+- Fix initialization
+
 ## 1.3.9
 
 - Add hideSearch property
