@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
                 showFlagDialog: true,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
-                onInit: (code) => print("${code.name} ${code.dialCode}"),
+                onInit: (code) =>
+                    print("on init ${code.name} ${code.dialCode}"),
               ),
               SizedBox(
                 width: 400,

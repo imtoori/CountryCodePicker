@@ -163,11 +163,15 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   @override
-  void didUpdateWidget(CountryCodePicker oldWidget) {
-    super.didUpdateWidget(oldWidget);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     this.elements = elements.map((e) => e.localize(context)).toList();
-    _onInit(selectedItem);
+  }
+
+  @override
+  void didUpdateWidget(CountryCodePicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
     if (oldWidget.initialSelection != widget.initialSelection) {
       if (widget.initialSelection != null) {
