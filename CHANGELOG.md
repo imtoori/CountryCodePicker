@@ -1,3 +1,7 @@
+## 1.3.12
+
+- Allow to edit dialog textStyle 
+
 ## 1.3.11
 
 - Fix initialization
