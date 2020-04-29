@@ -7,6 +7,7 @@ class SelectionDialog extends StatefulWidget {
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
+  final TextStyle textStyle;
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
   final double flagWidth;
@@ -24,6 +25,7 @@ class SelectionDialog extends StatefulWidget {
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
     this.searchStyle,
+    this.textStyle,
     this.showFlag,
     this.flagWidth = 32,
     this.size,
@@ -132,6 +134,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                   ? e.toCountryStringOnly()
                   : e.toLongString(),
               overflow: TextOverflow.fade,
+              style: widget.textStyle,
             ),
           ),
         ],
