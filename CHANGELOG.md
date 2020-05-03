@@ -1,3 +1,7 @@
+## 1.3.12+1
+
+- Fix Cayman Islands code
+
 ## 1.3.12
 
 - Allow to edit dialog textStyle 

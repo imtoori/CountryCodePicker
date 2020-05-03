@@ -202,7 +202,7 @@ List<Map<String, String>> codes = [
   {
     "name": "Cayman Islands",
     "code": "KY",
-    "dial_code": "+ 345",
+    "dial_code": "+1345",
   },
   {
     "name": "Ködörösêse tî Bêafrîka",
