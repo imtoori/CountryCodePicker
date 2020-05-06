@@ -12,17 +12,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       supportedLocales: [
         Locale('en'),
         Locale('it'),
-        Locale('en'),
+        Locale('fr'),
+        Locale('es'),
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -43,11 +39,12 @@ class _MyAppState extends State<MyApp> {
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
                 showFlag: false,
-                customList: ['IT', 'FR'],
+                countryFilter: ['IT', 'FR'],
                 showFlagDialog: true,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
-                onInit: (code) => print("${code.name} ${code.dialCode}"),
+                onInit: (code) =>
+                    print("on init ${code.name} ${code.dialCode}"),
               ),
               SizedBox(
                 width: 400,
@@ -57,6 +54,7 @@ class _MyAppState extends State<MyApp> {
                   child: CountryCodePicker(
                     onChanged: print,
                     initialSelection: 'TF',
+                    hideSearch: true,
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,
                     alignLeft: true,
@@ -72,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CountryCodePicker(
-                    onChanged: print,
+                    onChanged: (e) => print(e.toLongString()),
                     initialSelection: 'TF',
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,

@@ -7,9 +7,12 @@ class SelectionDialog extends StatefulWidget {
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
+  final TextStyle textStyle;
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
   final double flagWidth;
+  final Size size;
+  final bool hideSearch;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -22,8 +25,11 @@ class SelectionDialog extends StatefulWidget {
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
     this.searchStyle,
+    this.textStyle,
     this.showFlag,
     this.flagWidth = 32,
+    this.size,
+    this.hideSearch = false,
   })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
         this.searchDecoration =
             searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
@@ -52,20 +58,22 @@ class _SelectionDialogState extends State<SelectionDialog> {
               ),
               onPressed: () => Navigator.pop(context),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: TextField(
-                style: widget.searchStyle,
-                decoration: widget.searchDecoration,
-                onChanged: _filterElements,
+            if (!widget.hideSearch)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: TextField(
+                  style: widget.searchStyle,
+                  decoration: widget.searchDecoration,
+                  onChanged: _filterElements,
+                ),
               ),
-            ),
           ],
         ),
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.7,
+            width: widget.size?.width ?? MediaQuery.of(context).size.width,
+            height:
+                widget.size?.height ?? MediaQuery.of(context).size.height * 0.7,
             child: ListView(
               children: [
                 widget.favoriteElements.isEmpty
@@ -123,9 +131,10 @@ class _SelectionDialogState extends State<SelectionDialog> {
             flex: 4,
             child: Text(
               widget.showCountryOnly
-                  ? e.toCountryStringOnly(context)
-                  : e.toLongString(context),
+                  ? e.toCountryStringOnly()
+                  : e.toLongString(),
               overflow: TextOverflow.fade,
+              style: widget.textStyle,
             ),
           ),
         ],

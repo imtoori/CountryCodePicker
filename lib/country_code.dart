@@ -59,13 +59,9 @@ class CountryCode {
   @override
   String toString() => "$dialCode";
 
-  String toLongString([BuildContext context]) =>
-      "$dialCode ${toCountryStringOnly(context)}";
+  String toLongString() => "$dialCode ${toCountryStringOnly()}";
 
-  String toCountryStringOnly([BuildContext context]) {
-    if (context != null) {
-      return CountryLocalizations.of(context)?.translate(code) ?? name;
-    }
+  String toCountryStringOnly() {
     return '$name';
   }
 }

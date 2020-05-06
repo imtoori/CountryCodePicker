@@ -1,3 +1,31 @@
+## 1.3.12+1
+
+- Fix Cayman Islands code
+
+## 1.3.12
+
+- Allow to edit dialog textStyle 
+
+## 1.3.11
+
+- Fix initialization
+
+## 1.3.9
+
+- Add hideSearch property
+
+- Add spanish support
+
+## 1.3.8
+
+- Expose state to let use a key to open the dialog
+
+- Add dialog size config
+
+- Remove customList and fix countryFilter
+
+- Fix filtering with localization
+
 ## 1.3.7
 
 - Add `customList` property
