@@ -132,7 +132,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            if (widget.showFlag || (widget.showFlagMain == true))
+            if (widget.showFlagMain != null
+                ? widget.showFlagMain
+                : widget.showFlag)
               Flexible(
                 flex: widget.alignLeft ? 0 : 1,
                 fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
@@ -231,7 +233,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         searchDecoration: widget.searchDecoration,
         searchStyle: widget.searchStyle,
         textStyle: widget.dialogTextStyle,
-        showFlag: widget.showFlag || (widget.showFlagDialog == true),
+        showFlag: widget.showFlagDialog != null
+            ? widget.showFlagDialog
+            : widget.showFlag,
         flagWidth: widget.flagWidth,
         size: widget.dialogSize,
         hideSearch: widget.hideSearch,
