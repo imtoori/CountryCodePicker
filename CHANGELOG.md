@@ -1,3 +1,7 @@
+## 1.3.13
+
+- Add `hideMainText` property
+
 ## 1.3.12+1
 
 - Fix Cayman Islands code
