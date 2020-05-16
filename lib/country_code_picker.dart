@@ -42,6 +42,8 @@ class CountryCodePicker extends StatefulWidget {
   /// shows the flag
   final bool showFlag;
 
+  final bool hideMainText;
+
   final bool showFlagMain;
 
   final bool showFlagDialog;
@@ -71,6 +73,7 @@ class CountryCodePicker extends StatefulWidget {
     this.alignLeft = false,
     this.showFlag = true,
     this.showFlagDialog,
+    this.hideMainText = false,
     this.showFlagMain,
     this.builder,
     this.flagWidth = 32.0,
@@ -132,7 +135,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            if (widget.showFlag || (widget.showFlagMain == true))
+            if (widget.showFlagMain != null
+                ? widget.showFlagMain
+                : widget.showFlag)
               Flexible(
                 flex: widget.alignLeft ? 0 : 1,
                 fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
@@ -147,16 +152,17 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   ),
                 ),
               ),
-            Flexible(
-              fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-              child: Text(
-                widget.showOnlyCountryWhenClosed
-                    ? selectedItem.toCountryStringOnly()
-                    : selectedItem.toString(),
-                style: widget.textStyle ?? Theme.of(context).textTheme.button,
-                overflow: widget.textOverflow,
+            if (!widget.hideMainText)
+              Flexible(
+                fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                child: Text(
+                  widget.showOnlyCountryWhenClosed
+                      ? selectedItem.toCountryStringOnly()
+                      : selectedItem.toString(),
+                  style: widget.textStyle ?? Theme.of(context).textTheme.button,
+                  overflow: widget.textOverflow,
+                ),
               ),
-            ),
           ],
         ),
       );
@@ -231,7 +237,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         searchDecoration: widget.searchDecoration,
         searchStyle: widget.searchStyle,
         textStyle: widget.dialogTextStyle,
-        showFlag: widget.showFlag || (widget.showFlagDialog == true),
+        showFlag: widget.showFlagDialog != null
+            ? widget.showFlagDialog
+            : widget.showFlag,
         flagWidth: widget.flagWidth,
         size: widget.dialogSize,
         hideSearch: widget.hideSearch,

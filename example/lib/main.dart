@@ -38,9 +38,8 @@ class _MyAppState extends State<MyApp> {
                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
-                showFlag: false,
                 countryFilter: ['IT', 'FR'],
-                showFlagDialog: true,
+                showFlagDialog: false,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
                 onInit: (code) =>
@@ -53,14 +52,14 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.all(8.0),
                   child: CountryCodePicker(
                     onChanged: print,
+                    hideMainText: true,
+                    showFlagMain: true,
+                    showFlag: false,
                     initialSelection: 'TF',
                     hideSearch: true,
                     showCountryOnly: true,
                     showOnlyCountryWhenClosed: true,
                     alignLeft: true,
-                    builder: (countryCode) {
-                      return Text('${countryCode.code}');
-                    },
                   ),
                 ),
               ),
