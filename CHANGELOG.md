@@ -1,3 +1,7 @@
+## 1.3.15
+
+- Add portugal and german translations
+
 ## 1.3.14
 
 - Add `hideMainText` property
