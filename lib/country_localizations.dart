@@ -50,6 +50,7 @@ class _CountryLocalizationsDelegate
       'fr',
       'es',
       'de',
+      'pt',
     ].contains(locale.languageCode);
   }
 
