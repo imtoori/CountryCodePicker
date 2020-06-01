@@ -18,3 +18,4 @@ flutter:
     - packages/country_code_picker/i18n/fr.json
     - packages/country_code_picker/i18n/es.json    
     - packages/country_code_picker/i18n/de.json
+    - packages/country_code_picker/i18n/pt.json
