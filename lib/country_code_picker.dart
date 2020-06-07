@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 export 'country_code.dart';
 
+@immutable
 class CountryCodePicker extends StatefulWidget {
   final ValueChanged<CountryCode> onChanged;
   final ValueChanged<CountryCode> onInit;
@@ -22,9 +23,11 @@ class CountryCodePicker extends StatefulWidget {
   final Function(CountryCode) builder;
   final bool enabled;
   final TextOverflow textOverflow;
-
   /// the size of the selection dialog
   final Size dialogSize;
+
+   /// user defined box button decoration
+  final CountryPickerBoxDecoration buttonDecoration;
 
   /// used to customize the country list
   final List<String> countryFilter;
@@ -83,6 +86,7 @@ class CountryCodePicker extends StatefulWidget {
     this.countryFilter,
     this.hideSearch = false,
     this.dialogSize,
+    this.buttonDecoration = const CountryPickerBoxDecoration(),
     Key key,
   }) : super(key: key);
 
@@ -131,6 +135,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       _widget = FlatButton(
         padding: widget.padding,
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
+        color: widget.buttonDecoration.buttonColor,
+
         child: Flex(
           direction: Axis.horizontal,
           mainAxisSize: MainAxisSize.min,
@@ -266,4 +272,20 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       widget.onInit(e);
     }
   }
+}
+
+// Defines the styling of the flat button, can customize the background color or button shape
+class CountryPickerBoxDecoration{
+  const CountryPickerBoxDecoration({
+    this.buttonColor,
+    this.buttonShape
+  });
+
+  /// The background color for the button.
+  /// If null, defaults to black
+  final Color buttonColor;
+
+  
+  /// The shape of the button.
+  final ShapeBorder buttonShape;
 }

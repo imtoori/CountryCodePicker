@@ -39,7 +39,9 @@ class _MyAppState extends State<MyApp> {
                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
-                countryFilter: ['IT', 'FR'],
+                buttonDecoration: CountryPickerBoxDecoration(
+                  buttonColor: Colors.green,
+                ),
                 showFlagDialog: false,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
