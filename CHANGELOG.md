@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Move onInit to didUpdateWidget in order to have localized countries
+
 ## 1.3.15
 
 - Add portugal and german translations
