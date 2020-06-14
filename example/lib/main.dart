@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
         Locale('fr'),
         Locale('es'),
         Locale('de'),
+        Locale('pt'),
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
                 onInit: (code) =>
-                    print("on init ${code.name} ${code.dialCode}"),
+                    print("on init ${code.name} ${code.dialCode} ${code.name}"),
               ),
               SizedBox(
                 width: 400,

@@ -175,6 +175,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     super.didChangeDependencies();
 
     this.elements = elements.map((e) => e.localize(context)).toList();
+    _onInit(selectedItem);
   }
 
   @override
@@ -211,8 +212,6 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     } else {
       selectedItem = elements[0];
     }
-
-    _onInit(selectedItem);
 
     favoriteElements = elements
         .where((e) =>
