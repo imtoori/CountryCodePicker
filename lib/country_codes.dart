@@ -530,7 +530,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+44",
   },
   {
-    "name": "יִשְׂרָאֵל",
+    "name": "ישראל",
     "code": "IL",
     "dial_code": "+972",
   },
