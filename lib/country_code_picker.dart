@@ -4,6 +4,7 @@ import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 export 'country_code.dart';
 
@@ -226,9 +227,11 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
-    showDialog(
+    showMaterialModalBottomSheet(
+      barrierColor: Colors.grey.withOpacity(0.5),
+      backgroundColor: Colors.transparent,
       context: context,
-      builder: (_) => SelectionDialog(
+      builder: (context, scrollController) => SelectionDialog(
         elements,
         favoriteElements,
         showCountryOnly: widget.showCountryOnly,
