@@ -16,6 +16,7 @@ flutter:
     - packages/country_code_picker/i18n/en.json
     - packages/country_code_picker/i18n/it.json
     - packages/country_code_picker/i18n/fr.json
-    - packages/country_code_picker/i18n/es.json    
+    - packages/country_code_picker/i18n/es.json
     - packages/country_code_picker/i18n/de.json
+    - packages/country_code_picker/i18n/ko.json
     - packages/country_code_picker/i18n/pt.json
