@@ -115,7 +115,6 @@ class _SelectionDialogState extends State<SelectionDialog> {
                     else
                       ...filteredElements.map(
                         (e) => SimpleDialogOption(
-                          key: Key(e.toLongString()),
                           child: _buildOption(e),
                           onPressed: () {
                             _selectItem(e);
