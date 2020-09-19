@@ -180,7 +180,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+257",
   },
   {
-    "name": "Kâmpŭchéa",
+    "name": "Cambodia",
     "code": "KH",
     "dial_code": "+855",
   },
