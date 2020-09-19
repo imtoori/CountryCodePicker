@@ -1,3 +1,9 @@
+## 1.5.0
+
+- Add ko.json translations
+- Remove key in SimpleDialogOption
+- Use bottom sheet dialog rather than SimpleDialog
+
 ## 1.4.0
 
 - Move onInit to didUpdateWidget in order to have localized countries
