@@ -44,70 +44,90 @@ class _SelectionDialogState extends State<SelectionDialog> {
   List<CountryCode> filteredElements;
 
   @override
-  Widget build(BuildContext context) => SimpleDialog(
-        titlePadding: const EdgeInsets.all(0),
-        title: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            IconButton(
-              padding: const EdgeInsets.all(0),
-              iconSize: 20,
-              icon: Icon(
-                Icons.close,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          width: widget.size?.width ?? MediaQuery.of(context).size.width,
+          height:
+              widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(1),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
               ),
-              onPressed: () => Navigator.pop(context),
-            ),
-            if (!widget.hideSearch)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: TextField(
-                  style: widget.searchStyle,
-                  decoration: widget.searchDecoration,
-                  onChanged: _filterElements,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  IconButton(
+                    padding: const EdgeInsets.all(0),
+                    iconSize: 20,
+                    icon: Icon(
+                      Icons.close,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  if (!widget.hideSearch)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: TextField(
+                        style: widget.searchStyle,
+                        decoration: widget.searchDecoration,
+                        onChanged: _filterElements,
+                      ),
+                    ),
+                ],
+              ),
+              Container(
+                width: widget.size?.width ?? MediaQuery.of(context).size.width,
+                height: widget.size?.height ??
+                    MediaQuery.of(context).size.height * 0.7,
+                child: ListView(
+                  children: [
+                    widget.favoriteElements.isEmpty
+                        ? const DecoratedBox(decoration: BoxDecoration())
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ...widget.favoriteElements.map(
+                                (f) => SimpleDialogOption(
+                                  child: _buildOption(f),
+                                  onPressed: () {
+                                    _selectItem(f);
+                                  },
+                                ),
+                              ),
+                              const Divider(),
+                            ],
+                          ),
+                    if (filteredElements.isEmpty)
+                      _buildEmptySearchWidget(context)
+                    else
+                      ...filteredElements.map(
+                        (e) => SimpleDialogOption(
+                          key: Key(e.toLongString()),
+                          child: _buildOption(e),
+                          onPressed: () {
+                            _selectItem(e);
+                          },
+                        ),
+                      ),
+                  ],
                 ),
               ),
-          ],
-        ),
-        children: [
-          Container(
-            width: widget.size?.width ?? MediaQuery.of(context).size.width,
-            height:
-                widget.size?.height ?? MediaQuery.of(context).size.height * 0.7,
-            child: ListView(
-              children: [
-                widget.favoriteElements.isEmpty
-                    ? const DecoratedBox(decoration: BoxDecoration())
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ...widget.favoriteElements.map(
-                            (f) => SimpleDialogOption(
-                              child: _buildOption(f),
-                              onPressed: () {
-                                _selectItem(f);
-                              },
-                            ),
-                          ),
-                          const Divider(),
-                        ],
-                      ),
-                if (filteredElements.isEmpty)
-                  _buildEmptySearchWidget(context)
-                else
-                  ...filteredElements.map(
-                    (e) => SimpleDialogOption(
-                      key: Key(e.toLongString()),
-                      child: _buildOption(e),
-                      onPressed: () {
-                        _selectItem(e);
-                      },
-                    ),
-                  ),
-              ],
-            ),
+            ],
           ),
-        ],
+        ),
       );
 
   Widget _buildOption(CountryCode e) {
