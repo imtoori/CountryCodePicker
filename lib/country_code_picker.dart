@@ -85,7 +85,7 @@ class CountryCodePicker extends StatefulWidget {
     this.countryFilter,
     this.hideSearch = false,
     this.dialogSize,
-    this.closeIcon = Icon(Icons.close),
+    this.closeIcon = const Icon(Icons.close),
     Key key,
   }) : super(key: key);
 
