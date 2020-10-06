@@ -23,6 +23,7 @@ class CountryCodePicker extends StatefulWidget {
   final Function(CountryCode) builder;
   final bool enabled;
   final TextOverflow textOverflow;
+  final Color bgColor;
 
   /// the size of the selection dialog
   final Size dialogSize;
@@ -58,34 +59,41 @@ class CountryCodePicker extends StatefulWidget {
   /// Set to true if you want to hide the search part
   final bool hideSearch;
 
-  CountryCodePicker({
-    this.onChanged,
-    this.onInit,
-    this.initialSelection,
-    this.favorite = const [],
-    this.textStyle,
-    this.padding = const EdgeInsets.all(0.0),
-    this.showCountryOnly = false,
-    this.searchDecoration = const InputDecoration(),
-    this.searchStyle,
-    this.dialogTextStyle,
-    this.emptySearchBuilder,
-    this.showOnlyCountryWhenClosed = false,
-    this.alignLeft = false,
-    this.showFlag = true,
-    this.showFlagDialog,
-    this.hideMainText = false,
-    this.showFlagMain,
-    this.builder,
-    this.flagWidth = 32.0,
-    this.enabled = true,
-    this.textOverflow = TextOverflow.ellipsis,
-    this.comparator,
-    this.countryFilter,
-    this.hideSearch = false,
-    this.dialogSize,
-    Key key,
-  }) : super(key: key);
+  final Color searchIconColor;
+
+  final Color cancelIconColor;
+
+  CountryCodePicker(
+      {this.onChanged,
+      this.onInit,
+      this.initialSelection,
+      this.favorite = const [],
+      this.textStyle,
+      this.padding = const EdgeInsets.all(0.0),
+      this.showCountryOnly = false,
+      this.searchDecoration = const InputDecoration(),
+      this.searchStyle,
+      this.dialogTextStyle,
+      this.emptySearchBuilder,
+      this.showOnlyCountryWhenClosed = false,
+      this.alignLeft = false,
+      this.showFlag = true,
+      this.showFlagDialog,
+      this.hideMainText = false,
+      this.showFlagMain,
+      this.builder,
+      this.flagWidth = 32.0,
+      this.enabled = true,
+      this.textOverflow = TextOverflow.ellipsis,
+      this.comparator,
+      this.countryFilter,
+      this.hideSearch = false,
+      this.dialogSize,
+      Key key,
+      this.bgColor = Colors.white,
+      this.searchIconColor = Colors.black,
+      this.cancelIconColor = Colors.black})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -245,6 +253,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         flagWidth: widget.flagWidth,
         size: widget.dialogSize,
         hideSearch: widget.hideSearch,
+        bgColor: widget.bgColor,
       ),
     ).then((e) {
       if (e != null) {
