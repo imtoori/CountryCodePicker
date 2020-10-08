@@ -15,15 +15,13 @@ class CountryLocalizations {
     );
   }
 
-  static const LocalizationsDelegate<CountryLocalizations> delegate =
-      _CountryLocalizationsDelegate();
+  static const LocalizationsDelegate<CountryLocalizations> delegate = _CountryLocalizationsDelegate();
 
   Map<String, String> _localizedStrings;
 
   Future<bool> load() async {
     print('locale.languageCode: ${locale.languageCode}');
-    String jsonString = await rootBundle.loadString(
-        'packages/country_code_picker/i18n/${locale.languageCode}.json');
+    String jsonString = await rootBundle.loadString('packages/country_code_picker/i18n/${locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
@@ -38,15 +36,15 @@ class CountryLocalizations {
   }
 }
 
-class _CountryLocalizationsDelegate
-    extends LocalizationsDelegate<CountryLocalizations> {
+class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocalizations> {
   const _CountryLocalizationsDelegate();
 
   @override
   bool isSupported(Locale locale) {
     return [
       'en',
-      'it',
+      'ar'
+          'it',
       'fr',
       'es',
       'de',
