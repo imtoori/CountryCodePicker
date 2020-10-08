@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+
 flutter:
   assets:
     - flags/
@@ -21,3 +22,5 @@ flutter:
     - packages/country_code_picker/i18n/de.json
     - packages/country_code_picker/i18n/ko.json
     - packages/country_code_picker/i18n/pt.json
+    - packages/country_code_picker/i18n/ar.json
+
