@@ -1,3 +1,10 @@
+## 1.6.0
+
+- Added option to change close icon and search icon
+- Fix bottom sheet overflow
+- Make modal_bottom_sheet use dynamic versioning
+- Add `barrierColor`, `backgroundColor` and `boxDecoration` properties
+
 ## 1.5.0
 
 - Add ko.json translations
