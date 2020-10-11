@@ -52,6 +52,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
+          clipBehavior: Clip.hardEdge,
           width: widget.size?.width ?? MediaQuery.of(context).size.width,
           height:
               widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
@@ -69,33 +70,25 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 ],
               ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  IconButton(
-                    padding: const EdgeInsets.all(0),
-                    iconSize: 20,
-                    icon: widget.closeIcon,
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  if (!widget.hideSearch)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: TextField(
-                        style: widget.searchStyle,
-                        decoration: widget.searchDecoration,
-                        onChanged: _filterElements,
-                      ),
-                    ),
-                ],
+              IconButton(
+                padding: const EdgeInsets.all(0),
+                iconSize: 20,
+                icon: widget.closeIcon,
+                onPressed: () => Navigator.pop(context),
               ),
-              Container(
-                width: widget.size?.width ?? MediaQuery.of(context).size.width,
-                height: widget.size?.height ??
-                    MediaQuery.of(context).size.height * 0.7,
+              if (!widget.hideSearch)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: TextField(
+                    style: widget.searchStyle,
+                    decoration: widget.searchDecoration,
+                    onChanged: _filterElements,
+                  ),
+                ),
+              Expanded(
                 child: ListView(
                   children: [
                     widget.favoriteElements.isEmpty
