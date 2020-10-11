@@ -8,6 +8,7 @@ class SelectionDialog extends StatefulWidget {
   final InputDecoration searchDecoration;
   final TextStyle searchStyle;
   final TextStyle textStyle;
+  final BoxDecoration boxDecoration;
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
   final double flagWidth;
@@ -27,6 +28,7 @@ class SelectionDialog extends StatefulWidget {
     InputDecoration searchDecoration = const InputDecoration(),
     this.searchStyle,
     this.textStyle,
+    this.boxDecoration,
     this.showFlag,
     this.flagWidth = 32,
     this.size,
@@ -53,18 +55,19 @@ class _SelectionDialogState extends State<SelectionDialog> {
           width: widget.size?.width ?? MediaQuery.of(context).size.width,
           height:
               widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(1),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+          decoration: widget.boxDecoration ??
+              BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(1),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
-            ],
-          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
