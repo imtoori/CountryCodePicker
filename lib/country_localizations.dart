@@ -41,16 +41,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
 
   @override
   bool isSupported(Locale locale) {
-    return [
-      'en',
-      'ar'
-          'it',
-      'fr',
-      'es',
-      'de',
-      'pt',
-      'ko',
-    ].contains(locale.languageCode);
+    return ['en', 'it', 'fr', 'es', 'de', 'pt', 'ko', 'ar'].contains(locale.languageCode);
   }
 
   @override
