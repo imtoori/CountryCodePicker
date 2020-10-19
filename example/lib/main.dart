@@ -24,7 +24,6 @@ class _MyAppState extends State<MyApp> {
         Locale('ko'),
         Locale('ar'),
       ],
-      locale: Locale("ar"),
       localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
         return locale;
       },
