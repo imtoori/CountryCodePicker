@@ -1,3 +1,11 @@
+## 1.6.2
+
+- Fix breaking change with modal_bottom_sheet: 1.0.0-dev
+- Fix Myanmar name
+- Center selection dialog to let user size it in Flutter web
+- Add ZH localization support
+- Optimize all flag images
+
 ## 1.6.1
 
 - Update to modal_bottom_sheet: ^1.0.1-dev
