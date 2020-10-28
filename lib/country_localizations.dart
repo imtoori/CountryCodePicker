@@ -52,6 +52,7 @@ class _CountryLocalizationsDelegate
       'de',
       'pt',
       'ko',
+      'zh',
     ].contains(locale.languageCode);
   }
 

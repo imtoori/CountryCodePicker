@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
         Locale('de'),
         Locale('pt'),
         Locale('ko'),
+        Locale('zh'),
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
