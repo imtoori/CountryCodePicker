@@ -1,3 +1,7 @@
+## 1.6.1
+
+- Update to modal_bottom_sheet: ^1.0.1-dev
+
 ## 1.6.0
 
 - Added option to change close icon and search icon
