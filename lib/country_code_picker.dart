@@ -245,22 +245,24 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
       backgroundColor: widget.backgroundColor ?? Colors.transparent,
       context: context,
-      builder: (context) => SelectionDialog(
-        elements,
-        favoriteElements,
-        showCountryOnly: widget.showCountryOnly,
-        emptySearchBuilder: widget.emptySearchBuilder,
-        searchDecoration: widget.searchDecoration,
-        searchStyle: widget.searchStyle,
-        textStyle: widget.dialogTextStyle,
-        boxDecoration: widget.boxDecoration,
-        showFlag: widget.showFlagDialog != null
-            ? widget.showFlagDialog
-            : widget.showFlag,
-        flagWidth: widget.flagWidth,
-        size: widget.dialogSize,
-        hideSearch: widget.hideSearch,
-        closeIcon: widget.closeIcon,
+      builder: (context) => Center(
+        child: SelectionDialog(
+          elements,
+          favoriteElements,
+          showCountryOnly: widget.showCountryOnly,
+          emptySearchBuilder: widget.emptySearchBuilder,
+          searchDecoration: widget.searchDecoration,
+          searchStyle: widget.searchStyle,
+          textStyle: widget.dialogTextStyle,
+          boxDecoration: widget.boxDecoration,
+          showFlag: widget.showFlagDialog != null
+              ? widget.showFlagDialog
+              : widget.showFlag,
+          flagWidth: widget.flagWidth,
+          size: widget.dialogSize,
+          hideSearch: widget.hideSearch,
+          closeIcon: widget.closeIcon,
+        ),
       ),
     ).then((e) {
       if (e != null) {
