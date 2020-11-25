@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  modal_bottom_sheet: ^1.0.1-dev
+  modal_bottom_sheet: ^1.0.0+1
 
 flutter:
   assets:
