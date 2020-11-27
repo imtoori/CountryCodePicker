@@ -265,6 +265,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           flagWidth: widget.flagWidth,
           size: widget.dialogSize,
           backgroundColor: widget.dialogBackgroundColor,
+          barrierColor: widget.barrierColor,
           hideSearch: widget.hideSearch,
           closeIcon: widget.closeIcon,
         ),
