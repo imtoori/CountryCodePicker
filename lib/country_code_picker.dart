@@ -37,6 +37,9 @@ class CountryCodePicker extends StatefulWidget {
   /// the size of the selection dialog
   final Size dialogSize;
 
+  /// Background color of selection dialog
+  final Color dialogBackgroundColor;
+
   /// used to customize the country list
   final List<String> countryFilter;
 
@@ -97,6 +100,7 @@ class CountryCodePicker extends StatefulWidget {
     this.countryFilter,
     this.hideSearch = false,
     this.dialogSize,
+    this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
     Key key,
   }) : super(key: key);
@@ -260,6 +264,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               : widget.showFlag,
           flagWidth: widget.flagWidth,
           size: widget.dialogSize,
+          backgroundColor: widget.dialogBackgroundColor,
           hideSearch: widget.hideSearch,
           closeIcon: widget.closeIcon,
         ),

@@ -16,6 +16,9 @@ class SelectionDialog extends StatefulWidget {
   final bool hideSearch;
   final Icon closeIcon;
 
+  /// Background color of SelectionDialog
+  final Color backgroundColor;
+
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
@@ -32,6 +35,7 @@ class SelectionDialog extends StatefulWidget {
     this.showFlag,
     this.flagWidth = 32,
     this.size,
+    this.backgroundColor,
     this.hideSearch = false,
     this.closeIcon,
   })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
@@ -58,7 +62,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
           decoration: widget.boxDecoration ??
               BoxDecoration(
-                color: Colors.white,
+                color: widget.backgroundColor ?? Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 boxShadow: [
                   BoxShadow(
