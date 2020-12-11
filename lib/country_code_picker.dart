@@ -37,6 +37,9 @@ class CountryCodePicker extends StatefulWidget {
   /// the size of the selection dialog
   final Size dialogSize;
 
+  /// Background color of selection dialog
+  final Color dialogBackgroundColor;
+
   /// used to customize the country list
   final List<String> countryFilter;
 
@@ -101,6 +104,7 @@ class CountryCodePicker extends StatefulWidget {
     this.hideSearch = false,
     this.showDropDownButton = false,
     this.dialogSize,
+    this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
     Key key,
   }) : super(key: key);
@@ -266,26 +270,27 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
       backgroundColor: widget.backgroundColor ?? Colors.transparent,
       context: context,
-      builder: (context) =>
-          Center(
-            child: SelectionDialog(
-              elements,
-              favoriteElements,
-              showCountryOnly: widget.showCountryOnly,
-              emptySearchBuilder: widget.emptySearchBuilder,
-              searchDecoration: widget.searchDecoration,
-              searchStyle: widget.searchStyle,
-              textStyle: widget.dialogTextStyle,
-              boxDecoration: widget.boxDecoration,
-              showFlag: widget.showFlagDialog != null
-                  ? widget.showFlagDialog
-                  : widget.showFlag,
-              flagWidth: widget.flagWidth,
-              size: widget.dialogSize,
-              hideSearch: widget.hideSearch,
-              closeIcon: widget.closeIcon,
-            ),
-          ),
+      builder: (context) => Center(
+        child: SelectionDialog(
+          elements,
+          favoriteElements,
+          showCountryOnly: widget.showCountryOnly,
+          emptySearchBuilder: widget.emptySearchBuilder,
+          searchDecoration: widget.searchDecoration,
+          searchStyle: widget.searchStyle,
+          textStyle: widget.dialogTextStyle,
+          boxDecoration: widget.boxDecoration,
+          showFlag: widget.showFlagDialog != null
+              ? widget.showFlagDialog
+              : widget.showFlag,
+          flagWidth: widget.flagWidth,
+          size: widget.dialogSize,
+          backgroundColor: widget.dialogBackgroundColor,
+          barrierColor: widget.barrierColor,
+          hideSearch: widget.hideSearch,
+          closeIcon: widget.closeIcon,
+        ),
+      ),
     ).then((e) {
       if (e != null) {
         setState(() {
