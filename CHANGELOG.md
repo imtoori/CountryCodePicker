@@ -1,3 +1,10 @@
+## 1.7.0
+
+- Update modal_bottom_sheet to 1.0.0+1
+- Update zh.json
+- Add background color to selection dialog
+- Add option to show dropdown button for ease of selection for user
+
 ## 1.6.2
 
 - Fix breaking change with modal_bottom_sheet: 1.0.0-dev
