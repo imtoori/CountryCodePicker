@@ -243,10 +243,11 @@
 	"VU": "Vanuatu",
 	"WF": "Wallis e Futuna",
 	"WS": "Samoa",
-  "XK": "Kosovo",
+	"XK": "Kosovo",
 	"YE": "Iêmen",
 	"YT": "Mayotte",
 	"ZA": "África do Sul",
 	"ZM": "Zâmbia",
-	"ZW": "Zimbabwe"
+	"ZW": "Zimbabwe",
+	"No country found": "Nenhum país encontrado"
 }

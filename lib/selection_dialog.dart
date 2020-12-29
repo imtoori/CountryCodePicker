@@ -1,6 +1,8 @@
 import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/material.dart';
 
+import 'country_localizations.dart';
+
 /// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
@@ -31,8 +33,7 @@ class SelectionDialog extends StatefulWidget {
     this.size,
     this.hideSearch = false,
   })  : assert(searchDecoration != null, 'searchDecoration must not be null!'),
-        this.searchDecoration =
-            searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
+        this.searchDecoration = searchDecoration.copyWith(prefixIcon: Icon(Icons.search)),
         super(key: key);
 
   @override
@@ -48,8 +49,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
         padding: const EdgeInsets.all(16.0),
         child: Container(
           width: widget.size?.width ?? MediaQuery.of(context).size.width,
-          height:
-              widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
+          height: widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -90,8 +90,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               ),
               Container(
                 width: widget.size?.width ?? MediaQuery.of(context).size.width,
-                height: widget.size?.height ??
-                    MediaQuery.of(context).size.height * 0.7,
+                height: widget.size?.height ?? MediaQuery.of(context).size.height * 0.7,
                 child: ListView(
                   children: [
                     widget.favoriteElements.isEmpty
@@ -149,9 +148,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
           Expanded(
             flex: 4,
             child: Text(
-              widget.showCountryOnly
-                  ? e.toCountryStringOnly()
-                  : e.toLongString(),
+              widget.showCountryOnly ? e.toCountryStringOnly() : e.toLongString(),
               overflow: TextOverflow.fade,
               style: widget.textStyle,
             ),
@@ -167,7 +164,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
     }
 
     return Center(
-      child: Text('No country found'),
+      child: Text(CountryLocalizations.of(context).translate('No country found')),
     );
   }
 
@@ -180,12 +177,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
   void _filterElements(String s) {
     s = s.toUpperCase();
     setState(() {
-      filteredElements = widget.elements
-          .where((e) =>
-              e.code.contains(s) ||
-              e.dialCode.contains(s) ||
-              e.name.toUpperCase().contains(s))
-          .toList();
+      filteredElements = widget.elements.where((e) => e.code.contains(s) || e.dialCode.contains(s) || e.name.toUpperCase().contains(s)).toList();
     });
   }
 
