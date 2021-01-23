@@ -92,6 +92,7 @@ Here is a list of properties available to customize your widget:
 |showFlagMain| bool | shows the flag only when closed |
 |showFlagDialog| bool | shows the flag only in dialog |
 |flagWidth| double | the width of the flags |
+|flagDecoration| Decoration | used for styling the flags |
 |comparator| Comparator<CountryCode> | use this to sort the countries in the selection dialog |
 |hideSearch| bool | if true the search feature will be disabled |
 
