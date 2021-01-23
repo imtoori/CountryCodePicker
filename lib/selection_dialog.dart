@@ -12,6 +12,7 @@ class SelectionDialog extends StatefulWidget {
   final WidgetBuilder emptySearchBuilder;
   final bool showFlag;
   final double flagWidth;
+  final Decoration flagDecoration;
   final Size size;
   final bool hideSearch;
   final Icon closeIcon;
@@ -36,6 +37,7 @@ class SelectionDialog extends StatefulWidget {
     this.textStyle,
     this.boxDecoration,
     this.showFlag,
+    this.flagDecoration,
     this.flagWidth = 32,
     this.size,
     this.backgroundColor,
@@ -142,8 +144,11 @@ class _SelectionDialogState extends State<SelectionDialog> {
         children: <Widget>[
           if (widget.showFlag)
             Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+              child: Container(
+                margin: const EdgeInsets.only(right: 16.0),
+                decoration: widget.flagDecoration,
+                clipBehavior:
+                    widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
                 child: Image.asset(
                   e.flagUri,
                   package: 'country_code_picker',

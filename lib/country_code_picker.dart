@@ -74,6 +74,9 @@ class CountryCodePicker extends StatefulWidget {
   /// Set to true if you want to show drop down button
   final bool showDropDownButton;
 
+  /// [BoxDecoration] for the flag image
+  final Decoration flagDecoration;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -92,6 +95,7 @@ class CountryCodePicker extends StatefulWidget {
     this.showFlagDialog,
     this.hideMainText = false,
     this.showFlagMain,
+    this.flagDecoration,
     this.builder,
     this.flagWidth = 32.0,
     this.enabled = true,
@@ -164,8 +168,11 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               Flexible(
                 flex: widget.alignLeft ? 0 : 1,
                 fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                child: Padding(
-                  padding: widget.alignLeft
+                child: Container(
+                  clipBehavior:
+                      widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
+                  decoration: widget.flagDecoration,
+                  margin: widget.alignLeft
                       ? const EdgeInsets.only(right: 16.0, left: 8.0)
                       : const EdgeInsets.only(right: 16.0),
                   child: Image.asset(
@@ -281,6 +288,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               ? widget.showFlagDialog
               : widget.showFlag,
           flagWidth: widget.flagWidth,
+          flagDecoration: widget.flagDecoration,
           size: widget.dialogSize,
           backgroundColor: widget.dialogBackgroundColor,
           barrierColor: widget.barrierColor,
