@@ -1,3 +1,9 @@
+## 2.0.0
+
+- support 70 languages
+- use modal_bottom_sheet 2.0.0
+- nullable integration
+
 ## 1.7.0
 
 - Update modal_bottom_sheet to 1.0.0+1

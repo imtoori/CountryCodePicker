@@ -4,23 +4,23 @@ import 'package:flutter/material.dart';
 /// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
-  final bool showCountryOnly;
+  final bool? showCountryOnly;
   final InputDecoration searchDecoration;
-  final TextStyle searchStyle;
-  final TextStyle textStyle;
-  final BoxDecoration boxDecoration;
-  final WidgetBuilder emptySearchBuilder;
-  final bool showFlag;
+  final TextStyle? searchStyle;
+  final TextStyle? textStyle;
+  final BoxDecoration? boxDecoration;
+  final WidgetBuilder? emptySearchBuilder;
+  final bool? showFlag;
   final double flagWidth;
-  final Size size;
+  final Size? size;
   final bool hideSearch;
-  final Icon closeIcon;
+  final Icon? closeIcon;
 
   /// Background color of SelectionDialog
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Boxshaow color of SelectionDialog that matches CountryCodePicker barrier color
-  final Color barrierColor;
+  final Color? barrierColor;
 
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
@@ -28,7 +28,7 @@ class SelectionDialog extends StatefulWidget {
   SelectionDialog(
     this.elements,
     this.favoriteElements, {
-    Key key,
+    Key? key,
     this.showCountryOnly,
     this.emptySearchBuilder,
     InputDecoration searchDecoration = const InputDecoration(),
@@ -54,7 +54,7 @@ class SelectionDialog extends StatefulWidget {
 
 class _SelectionDialogState extends State<SelectionDialog> {
   /// this is useful for filtering purpose
-  List<CountryCode> filteredElements;
+  late List<CountryCode> filteredElements;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -84,7 +84,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               IconButton(
                 padding: const EdgeInsets.all(0),
                 iconSize: 20,
-                icon: widget.closeIcon,
+                icon: widget.closeIcon!,
                 onPressed: () => Navigator.pop(context),
               ),
               if (!widget.hideSearch)
@@ -140,12 +140,12 @@ class _SelectionDialogState extends State<SelectionDialog> {
       child: Flex(
         direction: Axis.horizontal,
         children: <Widget>[
-          if (widget.showFlag)
+          if (widget.showFlag!)
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.only(right: 16.0),
                 child: Image.asset(
-                  e.flagUri,
+                  e.flagUri!,
                   package: 'country_code_picker',
                   width: widget.flagWidth,
                 ),
@@ -154,7 +154,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
           Expanded(
             flex: 4,
             child: Text(
-              widget.showCountryOnly
+              widget.showCountryOnly!
                   ? e.toCountryStringOnly()
                   : e.toLongString(),
               overflow: TextOverflow.fade,
@@ -168,7 +168,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
   Widget _buildEmptySearchWidget(BuildContext context) {
     if (widget.emptySearchBuilder != null) {
-      return widget.emptySearchBuilder(context);
+      return widget.emptySearchBuilder!(context);
     }
 
     return Center(
@@ -187,9 +187,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
     setState(() {
       filteredElements = widget.elements
           .where((e) =>
-              e.code.contains(s) ||
-              e.dialCode.contains(s) ||
-              e.name.toUpperCase().contains(s))
+              e.code!.contains(s) ||
+              e.dialCode!.contains(s) ||
+              e.name!.toUpperCase().contains(s))
           .toList();
     });
   }
