@@ -1,5 +1,7 @@
 library country_code_picker;
 
+import 'dart:io';
+
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
@@ -114,8 +116,9 @@ class CountryCodePicker extends StatefulWidget {
   State<StatefulWidget> createState() {
     List<Map> jsonList = codes;
 
-    List<CountryCode> elements =
-        jsonList.map((json) => CountryCode.fromJson(json as Map<String, dynamic>)).toList();
+    List<CountryCode> elements = jsonList
+        .map((json) => CountryCode.fromJson(json as Map<String, dynamic>))
+        .toList();
 
     if (comparator != null) {
       elements.sort(comparator);
@@ -227,7 +230,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                 (e.code!.toUpperCase() ==
                     widget.initialSelection!.toUpperCase()) ||
                 (e.dialCode == widget.initialSelection) ||
-                (e.name!.toUpperCase() == widget.initialSelection!.toUpperCase()),
+                (e.name!.toUpperCase() ==
+                    widget.initialSelection!.toUpperCase()),
             orElse: () => elements[0]);
       } else {
         selectedItem = elements[0];
@@ -243,7 +247,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
           (e) =>
-              (e.code!.toUpperCase() == widget.initialSelection!.toUpperCase()) ||
+              (e.code!.toUpperCase() ==
+                  widget.initialSelection!.toUpperCase()) ||
               (e.dialCode == widget.initialSelection) ||
               (e.name!.toUpperCase() == widget.initialSelection!.toUpperCase()),
           orElse: () => elements[0]);
@@ -253,50 +258,91 @@ class CountryCodePickerState extends State<CountryCodePicker> {
 
     favoriteElements = elements
         .where((e) =>
-            widget.favorite.firstWhereOrNull(
-                (f) =>
-                    e.code!.toUpperCase() == f.toUpperCase() ||
-                    e.dialCode == f ||
-                    e.name!.toUpperCase() == f.toUpperCase()) !=
+            widget.favorite.firstWhereOrNull((f) =>
+                e.code!.toUpperCase() == f.toUpperCase() ||
+                e.dialCode == f ||
+                e.name!.toUpperCase() == f.toUpperCase()) !=
             null)
         .toList();
   }
 
   void showCountryCodePickerDialog() {
-    showMaterialModalBottomSheet(
-      barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
-      backgroundColor: widget.backgroundColor ?? Colors.transparent,
-      context: context,
-      builder: (context) => Center(
-        child: SelectionDialog(
-          elements,
-          favoriteElements,
-          showCountryOnly: widget.showCountryOnly,
-          emptySearchBuilder: widget.emptySearchBuilder,
-          searchDecoration: widget.searchDecoration,
-          searchStyle: widget.searchStyle,
-          textStyle: widget.dialogTextStyle,
-          boxDecoration: widget.boxDecoration,
-          showFlag: widget.showFlagDialog != null
-              ? widget.showFlagDialog
-              : widget.showFlag,
-          flagWidth: widget.flagWidth,
-          size: widget.dialogSize,
-          backgroundColor: widget.dialogBackgroundColor,
-          barrierColor: widget.barrierColor,
-          hideSearch: widget.hideSearch,
-          closeIcon: widget.closeIcon,
+    if (Platform.isIOS || Platform.isAndroid) {
+      showMaterialModalBottomSheet(
+        barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
+        backgroundColor: widget.backgroundColor ?? Colors.transparent,
+        context: context,
+        builder: (context) => Center(
+          child: SelectionDialog(
+            elements,
+            favoriteElements,
+            showCountryOnly: widget.showCountryOnly,
+            emptySearchBuilder: widget.emptySearchBuilder,
+            searchDecoration: widget.searchDecoration,
+            searchStyle: widget.searchStyle,
+            textStyle: widget.dialogTextStyle,
+            boxDecoration: widget.boxDecoration,
+            showFlag: widget.showFlagDialog != null
+                ? widget.showFlagDialog
+                : widget.showFlag,
+            flagWidth: widget.flagWidth,
+            size: widget.dialogSize,
+            backgroundColor: widget.dialogBackgroundColor,
+            barrierColor: widget.barrierColor,
+            hideSearch: widget.hideSearch,
+            closeIcon: widget.closeIcon,
+          ),
         ),
-      ),
-    ).then((e) {
-      if (e != null) {
-        setState(() {
-          selectedItem = e;
-        });
+      ).then((e) {
+        if (e != null) {
+          setState(() {
+            selectedItem = e;
+          });
 
-        _publishSelection(e);
-      }
-    });
+          _publishSelection(e);
+        }
+      });
+    } else {
+      showDialog(
+        barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
+        // backgroundColor: widget.backgroundColor ?? Colors.transparent,
+        context: context,
+        builder: (context) => Center(
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 500, maxWidth: 400),
+            child: Dialog(
+              child: SelectionDialog(
+                elements,
+                favoriteElements,
+                showCountryOnly: widget.showCountryOnly,
+                emptySearchBuilder: widget.emptySearchBuilder,
+                searchDecoration: widget.searchDecoration,
+                searchStyle: widget.searchStyle,
+                textStyle: widget.dialogTextStyle,
+                boxDecoration: widget.boxDecoration,
+                showFlag: widget.showFlagDialog != null
+                    ? widget.showFlagDialog
+                    : widget.showFlag,
+                flagWidth: widget.flagWidth,
+                size: widget.dialogSize,
+                backgroundColor: widget.dialogBackgroundColor,
+                barrierColor: widget.barrierColor,
+                hideSearch: widget.hideSearch,
+                closeIcon: widget.closeIcon,
+              ),
+            ),
+          ),
+        ),
+      ).then((e) {
+        if (e != null) {
+          setState(() {
+            selectedItem = e;
+          });
+
+          _publishSelection(e);
+        }
+      });
+    }
   }
 
   void _publishSelection(CountryCode e) {
