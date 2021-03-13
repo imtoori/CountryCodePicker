@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Use `universal_platform` package
+
 ## 2.0.0
 
 - support 70 languages
