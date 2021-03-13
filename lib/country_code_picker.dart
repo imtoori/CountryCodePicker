@@ -6,6 +6,7 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -77,6 +78,9 @@ class CountryCodePicker extends StatefulWidget {
   /// Set to true if you want to show drop down button
   final bool showDropDownButton;
 
+  /// [BoxDecoration] for the flag image
+  final Decoration flagDecoration;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -95,6 +99,7 @@ class CountryCodePicker extends StatefulWidget {
     this.showFlagDialog,
     this.hideMainText = false,
     this.showFlagMain,
+    this.flagDecoration,
     this.builder,
     this.flagWidth = 32.0,
     this.enabled = true,
@@ -168,8 +173,11 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               Flexible(
                 flex: widget.alignLeft ? 0 : 1,
                 fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                child: Padding(
-                  padding: widget.alignLeft
+                child: Container(
+                  clipBehavior:
+                      widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
+                  decoration: widget.flagDecoration,
+                  margin: widget.alignLeft
                       ? const EdgeInsets.only(right: 16.0, left: 8.0)
                       : const EdgeInsets.only(right: 16.0),
                   child: Image.asset(
@@ -267,42 +275,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
-    if (Platform.isIOS || Platform.isAndroid) {
-      showMaterialModalBottomSheet(
-        barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
-        backgroundColor: widget.backgroundColor ?? Colors.transparent,
-        context: context,
-        builder: (context) => Center(
-          child: SelectionDialog(
-            elements,
-            favoriteElements,
-            showCountryOnly: widget.showCountryOnly,
-            emptySearchBuilder: widget.emptySearchBuilder,
-            searchDecoration: widget.searchDecoration,
-            searchStyle: widget.searchStyle,
-            textStyle: widget.dialogTextStyle,
-            boxDecoration: widget.boxDecoration,
-            showFlag: widget.showFlagDialog != null
-                ? widget.showFlagDialog
-                : widget.showFlag,
-            flagWidth: widget.flagWidth,
-            size: widget.dialogSize,
-            backgroundColor: widget.dialogBackgroundColor,
-            barrierColor: widget.barrierColor,
-            hideSearch: widget.hideSearch,
-            closeIcon: widget.closeIcon,
-          ),
-        ),
-      ).then((e) {
-        if (e != null) {
-          setState(() {
-            selectedItem = e;
-          });
-
-          _publishSelection(e);
-        }
-      });
-    } else {
+    if (kIsWeb || (!Platform.isIOS && !Platform.isAndroid)) {
       showDialog(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         // backgroundColor: widget.backgroundColor ?? Colors.transparent,
@@ -331,6 +304,42 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                 closeIcon: widget.closeIcon,
               ),
             ),
+          ),
+        ),
+      ).then((e) {
+        if (e != null) {
+          setState(() {
+            selectedItem = e;
+          });
+
+          _publishSelection(e);
+        }
+      });
+    } else {
+      showMaterialModalBottomSheet(
+        barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
+        backgroundColor: widget.backgroundColor ?? Colors.transparent,
+        context: context,
+        builder: (context) => Center(
+          child: SelectionDialog(
+            elements,
+            favoriteElements,
+            showCountryOnly: widget.showCountryOnly,
+            emptySearchBuilder: widget.emptySearchBuilder,
+            searchDecoration: widget.searchDecoration,
+            searchStyle: widget.searchStyle,
+            textStyle: widget.dialogTextStyle,
+            boxDecoration: widget.boxDecoration,
+            showFlag: widget.showFlagDialog != null
+                ? widget.showFlagDialog
+                : widget.showFlag,
+            flagWidth: widget.flagWidth,
+            flagDecoration: widget.flagDecoration,
+            size: widget.dialogSize,
+            backgroundColor: widget.dialogBackgroundColor,
+            barrierColor: widget.barrierColor,
+            hideSearch: widget.hideSearch,
+            closeIcon: widget.closeIcon,
           ),
         ),
       ).then((e) {

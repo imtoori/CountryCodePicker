@@ -111,6 +111,16 @@ class _MyAppState extends State<MyApp> {
                 onInit: (code) =>
                     print("on init ${code.name} ${code.dialCode} ${code.name}"),
               ),
+              CountryCodePicker(
+                onChanged: print,
+                // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                initialSelection: 'IT',
+                favorite: ['+39', 'FR'],
+                countryFilter: ['IT', 'FR'],
+                // flag can be styled with BoxDecoration's `borderRadius` and `shape` fields
+                flagDecoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(7)),
+              ),
               SizedBox(
                 width: 400,
                 height: 60,
