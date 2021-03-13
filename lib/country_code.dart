@@ -69,6 +69,10 @@ class CountryCode {
   String toLongString() => "$dialCode ${toCountryStringOnly()}";
 
   String toCountryStringOnly() {
-    return '$name';
+    return '$_cleanName';
+  }
+
+  String? get _cleanName {
+    return name?.replaceAll(RegExp(r'[[\]]'), '').split(',').first;
   }
 }

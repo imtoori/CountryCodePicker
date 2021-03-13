@@ -87,7 +87,7 @@ class CountryCodePicker extends StatefulWidget {
     this.initialSelection,
     this.favorite = const [],
     this.textStyle,
-    this.padding = const EdgeInsets.all(0.0),
+    this.padding = const EdgeInsets.all(8.0),
     this.showCountryOnly = false,
     this.searchDecoration = const InputDecoration(),
     this.searchStyle,
@@ -160,59 +160,63 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         child: widget.builder!(selectedItem),
       );
     else {
-      _widget = FlatButton(
-        padding: widget.padding,
+      _widget = TextButton(
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
-        child: Flex(
-          direction: Axis.horizontal,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            if (widget.showFlagMain != null
-                ? widget.showFlagMain!
-                : widget.showFlag)
-              Flexible(
-                flex: widget.alignLeft ? 0 : 1,
-                fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                child: Container(
-                  clipBehavior:
-                      widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
-                  decoration: widget.flagDecoration,
-                  margin: widget.alignLeft
-                      ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                      : const EdgeInsets.only(right: 16.0),
-                  child: Image.asset(
-                    selectedItem!.flagUri!,
-                    package: 'country_code_picker',
-                    width: widget.flagWidth,
-                  ),
-                ),
-              ),
-            if (!widget.hideMainText)
-              Flexible(
-                fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                child: Text(
-                  widget.showOnlyCountryWhenClosed
-                      ? selectedItem!.toCountryStringOnly()
-                      : selectedItem.toString(),
-                  style: widget.textStyle ?? Theme.of(context).textTheme.button,
-                  overflow: widget.textOverflow,
-                ),
-              ),
-            if (widget.showDropDownButton)
-              Flexible(
-                flex: widget.alignLeft ? 0 : 1,
-                fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                child: Padding(
-                    padding: widget.alignLeft
+        child: Padding(
+          padding: widget.padding,
+          child: Flex(
+            direction: Axis.horizontal,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              if (widget.showFlagMain != null
+                  ? widget.showFlagMain!
+                  : widget.showFlag)
+                Flexible(
+                  flex: widget.alignLeft ? 0 : 1,
+                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                  child: Container(
+                    clipBehavior: widget.flagDecoration == null
+                        ? Clip.none
+                        : Clip.hardEdge,
+                    decoration: widget.flagDecoration,
+                    margin: widget.alignLeft
                         ? const EdgeInsets.only(right: 16.0, left: 8.0)
                         : const EdgeInsets.only(right: 16.0),
-                    child: Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.grey,
-                      size: widget.flagWidth,
-                    )),
-              ),
-          ],
+                    child: Image.asset(
+                      selectedItem!.flagUri!,
+                      package: 'country_code_picker',
+                      width: widget.flagWidth,
+                    ),
+                  ),
+                ),
+              if (!widget.hideMainText)
+                Flexible(
+                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                  child: Text(
+                    widget.showOnlyCountryWhenClosed
+                        ? selectedItem!.toCountryStringOnly()
+                        : selectedItem.toString(),
+                    style:
+                        widget.textStyle ?? Theme.of(context).textTheme.button,
+                    overflow: widget.textOverflow,
+                  ),
+                ),
+              if (widget.showDropDownButton)
+                Flexible(
+                  flex: widget.alignLeft ? 0 : 1,
+                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                  child: Padding(
+                      padding: widget.alignLeft
+                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                          : const EdgeInsets.only(right: 16.0),
+                      child: Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.grey,
+                        size: widget.flagWidth,
+                      )),
+                ),
+            ],
+          ),
         ),
       );
     }

@@ -4,6 +4,7 @@
 - use modal_bottom_sheet 2.0.0
 - nullable integration
 - switch to dialog on desktop app support
+- added flagDecoration
 
 ## 1.7.0
 
