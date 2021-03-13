@@ -6,6 +6,8 @@ A flutter package for showing a country code selector.
 
 It supports i18n for 70 languages.
 
+Check the example on web! https://imtoori.dev/CountryCodePicker/#/
+
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen1.png" width="240"/>
 <img src="https://raw.githubusercontent.com/Salvatore-Giordano/CountryCodePicker/master/screenshots/screen2.png" width="240"/>
 
