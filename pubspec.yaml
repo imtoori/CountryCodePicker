@@ -1,25 +1,88 @@
 name: country_code_picker
 description: A flutter package for showing a country code selector. In addition it gives the possibility to select a list of favorites countries, as well as to search using a simple searchbox  
-version: 1.7.0
+version: 2.0.0
 homepage: https://github.com/imtoori/CountryCodePicker
 
 environment:
-  sdk: ">=2.2.2  <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  modal_bottom_sheet: ^1.0.0+1
+  modal_bottom_sheet: ^2.0.0
+  collection: ^1.15.0-nullsafety.4
 
 flutter:
   assets:
     - flags/
-    - packages/country_code_picker/i18n/en.json
-    - packages/country_code_picker/i18n/it.json
-    - packages/country_code_picker/i18n/fr.json
-    - packages/country_code_picker/i18n/es.json
+    - packages/country_code_picker/i18n/af.json
+    - packages/country_code_picker/i18n/am.json
+    - packages/country_code_picker/i18n/ha.json
+    - packages/country_code_picker/i18n/ku.json
+    - packages/country_code_picker/i18n/ml.json
+    - packages/country_code_picker/i18n/no.json
+    - packages/country_code_picker/i18n/ps.json
+    - packages/country_code_picker/i18n/sd.json
+    - packages/country_code_picker/i18n/so.json
+    - packages/country_code_picker/i18n/sq.json
+    - packages/country_code_picker/i18n/ta.json
+    - packages/country_code_picker/i18n/tg.json
+    - packages/country_code_picker/i18n/tt.json
+    - packages/country_code_picker/i18n/ug.json
+    - packages/country_code_picker/i18n/ur.json
+    - packages/country_code_picker/i18n/vi.json
+    - packages/country_code_picker/i18n/ar.json
+    - packages/country_code_picker/i18n/az.json
+    - packages/country_code_picker/i18n/be.json
+    - packages/country_code_picker/i18n/bg.json
+    - packages/country_code_picker/i18n/bn.json
+    - packages/country_code_picker/i18n/bs.json
+    - packages/country_code_picker/i18n/ca.json
+    - packages/country_code_picker/i18n/cs.json
+    - packages/country_code_picker/i18n/da.json
     - packages/country_code_picker/i18n/de.json
+    - packages/country_code_picker/i18n/el.json
+    - packages/country_code_picker/i18n/en.json
+    - packages/country_code_picker/i18n/es.json
+    - packages/country_code_picker/i18n/et.json
+    - packages/country_code_picker/i18n/fa.json
+    - packages/country_code_picker/i18n/fi.json
+    - packages/country_code_picker/i18n/fr.json
+    - packages/country_code_picker/i18n/gl.json
+    - packages/country_code_picker/i18n/el.json
+    - packages/country_code_picker/i18n/he.json
+    - packages/country_code_picker/i18n/hi.json
+    - packages/country_code_picker/i18n/hr.json
+    - packages/country_code_picker/i18n/hu.json
+    - packages/country_code_picker/i18n/hy.json
+    - packages/country_code_picker/i18n/id.json
+    - packages/country_code_picker/i18n/is.json
+    - packages/country_code_picker/i18n/it.json
+    - packages/country_code_picker/i18n/ja.json
+    - packages/country_code_picker/i18n/ka.json
+    - packages/country_code_picker/i18n/kk.json
+    - packages/country_code_picker/i18n/km.json
     - packages/country_code_picker/i18n/ko.json
+    - packages/country_code_picker/i18n/ky.json
+    - packages/country_code_picker/i18n/lt.json
+    - packages/country_code_picker/i18n/lv.json
+    - packages/country_code_picker/i18n/mk.json
+    - packages/country_code_picker/i18n/mn.json
+    - packages/country_code_picker/i18n/ms.json
+    - packages/country_code_picker/i18n/nb.json
+    - packages/country_code_picker/i18n/nl.json
+    - packages/country_code_picker/i18n/nn.json
+    - packages/country_code_picker/i18n/pl.json
     - packages/country_code_picker/i18n/pt.json
+    - packages/country_code_picker/i18n/ro.json
+    - packages/country_code_picker/i18n/ru.json
+    - packages/country_code_picker/i18n/sk.json
+    - packages/country_code_picker/i18n/sl.json
+    - packages/country_code_picker/i18n/sr.json
+    - packages/country_code_picker/i18n/sv.json
+    - packages/country_code_picker/i18n/th.json
+    - packages/country_code_picker/i18n/tr.json
+    - packages/country_code_picker/i18n/uk.json
+    - packages/country_code_picker/i18n/uz.json
     - packages/country_code_picker/i18n/zh.json
