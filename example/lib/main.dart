@@ -118,8 +118,9 @@ class _MyAppState extends State<MyApp> {
                 favorite: ['+39', 'FR'],
                 countryFilter: ['IT', 'FR'],
                 // flag can be styled with BoxDecoration's `borderRadius` and `shape` fields
-                flagDecoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(7)),
+                flagDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                ),
               ),
               SizedBox(
                 width: 400,

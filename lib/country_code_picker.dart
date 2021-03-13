@@ -79,7 +79,7 @@ class CountryCodePicker extends StatefulWidget {
   final bool showDropDownButton;
 
   /// [BoxDecoration] for the flag image
-  final Decoration flagDecoration;
+  final Decoration? flagDecoration;
 
   CountryCodePicker({
     this.onChanged,
@@ -302,6 +302,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                 barrierColor: widget.barrierColor,
                 hideSearch: widget.hideSearch,
                 closeIcon: widget.closeIcon,
+                flagDecoration: widget.flagDecoration,
               ),
             ),
           ),
