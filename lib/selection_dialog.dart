@@ -20,6 +20,8 @@ class SelectionDialog extends StatefulWidget {
   /// Background color of SelectionDialog
   final Color? backgroundColor;
 
+  final BorderRadius? corner;
+
   /// Boxshaow color of SelectionDialog that matches CountryCodePicker barrier color
   final Color? barrierColor;
 
@@ -37,6 +39,7 @@ class SelectionDialog extends StatefulWidget {
     this.textStyle,
     this.boxDecoration,
     this.showFlag,
+    this.corner,
     this.flagDecoration,
     this.flagWidth = 32,
     this.size,
@@ -63,12 +66,11 @@ class _SelectionDialogState extends State<SelectionDialog> {
         child: Container(
           clipBehavior: Clip.hardEdge,
           width: widget.size?.width ?? MediaQuery.of(context).size.width,
-          height:
-              widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
+          height: widget.size?.height ?? MediaQuery.of(context).size.height * 0.85,
           decoration: widget.boxDecoration ??
               BoxDecoration(
                 color: widget.backgroundColor ?? Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderRadius: widget.corner ?? BorderRadius.all(Radius.circular(8.0)),
                 boxShadow: [
                   BoxShadow(
                     color: widget.barrierColor ?? Colors.grey.withOpacity(1),
@@ -146,8 +148,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               child: Container(
                 margin: const EdgeInsets.only(right: 16.0),
                 decoration: widget.flagDecoration,
-                clipBehavior:
-                    widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
+                clipBehavior: widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
                 child: Image.asset(
                   e.flagUri!,
                   package: 'country_code_picker',
@@ -158,9 +159,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
           Expanded(
             flex: 4,
             child: Text(
-              widget.showCountryOnly!
-                  ? e.toCountryStringOnly()
-                  : e.toLongString(),
+              widget.showCountryOnly! ? e.toCountryStringOnly() : e.toLongString(),
               overflow: TextOverflow.fade,
               style: widget.textStyle,
             ),
@@ -190,10 +189,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
     s = s.toUpperCase();
     setState(() {
       filteredElements = widget.elements
-          .where((e) =>
-              e.code!.contains(s) ||
-              e.dialCode!.contains(s) ||
-              e.name!.toUpperCase().contains(s))
+          .where((e) => e.code!.contains(s) || e.dialCode!.contains(s) || e.name!.toUpperCase().contains(s))
           .toList();
     });
   }

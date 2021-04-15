@@ -108,8 +108,7 @@ class _MyAppState extends State<MyApp> {
                 showFlagDialog: false,
                 comparator: (a, b) => b.name.compareTo(a.name),
                 //Get the country information relevant to the initial selection
-                onInit: (code) =>
-                    print("on init ${code.name} ${code.dialCode} ${code.name}"),
+                onInit: (code) => print("on init ${code.name} ${code.dialCode} ${code.name}"),
               ),
               CountryCodePicker(
                 onChanged: print,
@@ -141,9 +140,24 @@ class _MyAppState extends State<MyApp> {
                 width: 400,
                 height: 60,
                 child: CountryCodePicker(
+                  searchDecoration: InputDecoration(
+                    // prefix: Icon(Icons.search, color: Theme.of(context).primaryColor),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                    ),
+                  ),
+                  closeIcon: const Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
                   onChanged: (e) => print(e.toLongString()),
                   initialSelection: 'TF',
-                  showCountryOnly: true,
+                  isCentral: false,
+                  corner: 20,
+                  //showCountryOnly: true,
                   showOnlyCountryWhenClosed: true,
                   favorite: ['+39', 'FR'],
                 ),
