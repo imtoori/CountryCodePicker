@@ -71,8 +71,20 @@ class _FlagPhoneNumberBottomSheetState extends State<FlagPhoneNumberBottomSheet>
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            BottomSheetComponent.draggableEdge(context),
-            const SizedBox(height: 24.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                icon: Icon(
+                  Icons.clear,
+                ),
+                splashColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            const SizedBox(height: 8.0),
             if (!widget.hideSearch)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -89,12 +101,13 @@ class _FlagPhoneNumberBottomSheetState extends State<FlagPhoneNumberBottomSheet>
                       hoverColor: Colors.transparent,
                       splashColor: Colors.transparent,
                       icon: Icon(
-                        Icons.clear,
+                        Icons.highlight_remove_outlined,
                         size: 16.0,
                         color: Colors.black.withOpacity(0.4),
                       ),
                       onPressed: () {
                         setState(() {
+                          showIconClear = false;
                           filteredElements = widget.elements!;
                         });
                         controllerFilterFormField!.text = '';

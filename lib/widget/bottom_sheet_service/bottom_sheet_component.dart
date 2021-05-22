@@ -12,13 +12,15 @@ class BottomSheetComponent {
   }
 
   static Widget container(BuildContext context, {@required Widget? child}) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 8.0,
-        left: 16.0,
-        right: 16.0,
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 8.0,
+          left: 16.0,
+          right: 16.0,
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 

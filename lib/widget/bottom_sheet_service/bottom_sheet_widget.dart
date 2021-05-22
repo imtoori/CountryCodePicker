@@ -10,7 +10,6 @@ class BottomSheetWidgetRoute<T> extends PopupRoute<T> {
     this.isPersistent,
     this.elevation,
     this.shape,
-    this.removeTop = true,
     this.clipBehavior,
     this.modalBarrierColor,
     this.isDismissible = true,
@@ -40,8 +39,6 @@ class BottomSheetWidgetRoute<T> extends PopupRoute<T> {
   final String name;
   final Duration enterBottomSheetDuration;
   final Duration exitBottomSheetDuration;
-  // remove safearea from top
-  final bool removeTop;
 
   @override
   Duration get transitionDuration => Duration(milliseconds: 700);
@@ -75,7 +72,6 @@ class BottomSheetWidgetRoute<T> extends PopupRoute<T> {
   ) {
     Widget bottomSheet = MediaQuery.removePadding(
       context: context,
-      removeTop: removeTop,
       child: Center(
         child: Container(
           constraints: BoxConstraints.expand(width: maxWidth),

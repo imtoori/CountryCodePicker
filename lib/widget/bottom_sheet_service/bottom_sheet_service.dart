@@ -47,7 +47,6 @@ class BottomSheetService {
         backgroundColor: backgroundColor ?? Colors.white,
         elevation: elevation,
         shape: shape ?? BottomSheetComponent.shape(),
-        removeTop: ignoreSafeArea ?? true,
         clipBehavior: clipBehavior,
         isDismissible: isDismissible,
         modalBarrierColor: barrierColor ?? Colors.black.withOpacity(0.4),
