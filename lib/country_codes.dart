@@ -770,7 +770,7 @@ List<Map<String, String>> codes = [
     "dial_code": "+674",
   },
   {
-    "name": "नपल",
+    "name": "नेपाल",
     "code": "NP",
     "dial_code": "+977",
   },
