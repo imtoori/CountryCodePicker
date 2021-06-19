@@ -80,9 +80,9 @@ class CountryCodePicker extends StatefulWidget {
   /// [BoxDecoration] for the flag image
   final Decoration? flagDecoration;
 
-  /// An optional argument for inject list of countries
+  /// An optional argument for injecting a list of countries
   /// with customized codes.
-  final List<Map<String, dynamic>> countryList;
+  final List<Map<String, String>> countryList;
 
   CountryCodePicker({
     this.onChanged,
@@ -123,11 +123,10 @@ class CountryCodePicker extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    List<Map> jsonList = countryList;
+    List<Map<String, String>> jsonList = countryList;
 
-    List<CountryCode> elements = jsonList
-        .map((json) => CountryCode.fromJson(json as Map<String, dynamic>))
-        .toList();
+    List<CountryCode> elements =
+        jsonList.map((json) => CountryCode.fromJson(json)).toList();
 
     if (comparator != null) {
       elements.sort(comparator);
