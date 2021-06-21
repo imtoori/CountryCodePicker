@@ -1,3 +1,9 @@
+## 2.0.2
+
+- added localization for no_country text in italian and english (please open a pr with other languages if you know them 🙏)
+- added possibility to inject a custom list of countries using `CountryCodePicker.countryList`
+- minor fixes
+
 ## 2.0.1
 
 - Use `universal_platform` package

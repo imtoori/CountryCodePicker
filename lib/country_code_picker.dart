@@ -83,6 +83,10 @@ class CountryCodePicker extends StatefulWidget {
   /// Set to true if you want to use showMaterialModalBottomSheet instead of showDialog in platforms other than mobile
   final bool alwaysShowAsSheet;
 
+  /// An optional argument for injecting a list of countries
+  /// with customized codes.
+  final List<Map<String, String>> countryList;
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -117,6 +121,7 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
     this.alwaysShowAsSheet = false,
+    this.countryList = codes,
     Key? key,
   }) : super(key: key);
 
