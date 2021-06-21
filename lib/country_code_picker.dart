@@ -127,11 +127,10 @@ class CountryCodePicker extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    List<Map> jsonList = codes;
+    List<Map<String, String>> jsonList = countryList;
 
-    List<CountryCode> elements = jsonList
-        .map((json) => CountryCode.fromJson(json as Map<String, dynamic>))
-        .toList();
+    List<CountryCode> elements =
+        jsonList.map((json) => CountryCode.fromJson(json)).toList();
 
     if (comparator != null) {
       elements.sort(comparator);
