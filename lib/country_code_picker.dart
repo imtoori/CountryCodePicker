@@ -80,8 +80,8 @@ class CountryCodePicker extends StatefulWidget {
   /// [BoxDecoration] for the flag image
   final Decoration? flagDecoration;
 
-  /// Set to false if you want to use showMaterialModalBottomSheet instead of showDialog in platforms other than mobile
-  final bool useDifferentBehaviorForNonMobilePlatforms;
+  /// Set to true if you want to use showMaterialModalBottomSheet instead of showDialog in platforms other than mobile
+  final bool alwaysShowAsSheet;
 
   CountryCodePicker({
     this.onChanged,
@@ -116,7 +116,7 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogSize,
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
-    this.useDifferentBehaviorForNonMobilePlatforms = true,
+    this.alwaysShowAsSheet = false,
     Key? key,
   }) : super(key: key);
 
@@ -282,8 +282,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
-    if (widget.useDifferentBehaviorForNonMobilePlatforms &&
-        !(UniversalPlatform.isAndroid || UniversalPlatform.isIOS)) {
+    if (!widget.alwaysShowAsSheet &&
+        !UniversalPlatform.isAndroid &&
+        !UniversalPlatform.isIOS) {
       showDialog(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         // backgroundColor: widget.backgroundColor ?? Colors.transparent,
