@@ -16,6 +16,12 @@
 - switch to dialog on desktop app support
 - added flagDecoration
 
+
+## 1.7.5
+
+- support version<=2.0 
+- include latest 2.0.2 modify content
+
 ## 1.7.0
 
 - Update modal_bottom_sheet to 1.0.0+1
