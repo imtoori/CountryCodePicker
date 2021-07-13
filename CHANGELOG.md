@@ -20,7 +20,7 @@
 ## 1.7.5
 
 - support version<=2.0 
-- include 2.0.2 modify content
+- include latest 2.0.2 modify content
 
 ## 1.7.0
 
