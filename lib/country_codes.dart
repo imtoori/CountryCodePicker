@@ -500,7 +500,7 @@ const List<Map<String, String>> codes = [
     "dial_code": "+354",
   },
   {
-    "name": "भारत",
+    "name": "India",
     "code": "IN",
     "dial_code": "+91",
   },
