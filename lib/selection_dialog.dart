@@ -100,6 +100,8 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 ),
               Expanded(
                 child: ListView(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
                   children: [
                     widget.favoriteElements.isEmpty
                         ? const DecoratedBox(decoration: BoxDecoration())
