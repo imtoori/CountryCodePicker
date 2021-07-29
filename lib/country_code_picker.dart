@@ -28,6 +28,9 @@ class CountryCodePicker extends StatefulWidget {
   final TextOverflow textOverflow;
   final Icon closeIcon;
 
+  // allow user to keep showing dialog instead of bottom sheet for their own login
+  final bool isDialog;
+
   /// Barrier color of ModalBottomSheet
   final Color? barrierColor;
 
@@ -117,6 +120,7 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogSize,
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
+    this.isDialog = false,
     this.countryList = codes,
     Key? key,
   }) : super(key: key);
@@ -282,7 +286,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
-    if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
+    if ((!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) ||
+        widget.isDialog) {
       showDialog(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         // backgroundColor: widget.backgroundColor ?? Colors.transparent,
