@@ -165,6 +165,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     else {
       _widget = TextButton(
          style: TextButton.styleFrom(
+           primary: Colors.pink,
       padding: EdgeInsets.zero,
       alignment: Alignment.center),
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
@@ -178,12 +179,12 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   ? widget.showFlagMain!
                   : widget.showFlag)
                 Flexible(
-                  //flex: widget.alignLeft ? 0 : 1,
-                  //fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                  flex: widget.alignLeft ? 0 : 1,
+                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
                   child: Container(
-                    //clipBehavior: widget.flagDecoration == null
-                      //  ? Clip.none
-                      //  : Clip.hardEdge,
+                    clipBehavior: widget.flagDecoration == null
+                        ? Clip.none
+                        : Clip.hardEdge,
                     decoration: widget.flagDecoration,
                     margin: widget.alignLeft
                         ? EdgeInsets.zero
