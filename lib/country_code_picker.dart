@@ -169,7 +169,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       alignment: Alignment.center),
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
-          padding: widget.padding,
+          //padding: widget.padding,
           child: Flex(
             direction: Axis.horizontal,
             mainAxisSize: MainAxisSize.min,
@@ -178,12 +178,12 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   ? widget.showFlagMain!
                   : widget.showFlag)
                 Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                  //flex: widget.alignLeft ? 0 : 1,
+                  //fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
                   child: Container(
-                    clipBehavior: widget.flagDecoration == null
-                        ? Clip.none
-                        : Clip.hardEdge,
+                    //clipBehavior: widget.flagDecoration == null
+                      //  ? Clip.none
+                      //  : Clip.hardEdge,
                     decoration: widget.flagDecoration,
                     margin: widget.alignLeft
                         ? EdgeInsets.zero
