@@ -171,6 +171,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
           //padding: widget.padding,
+          padding:EdgetInsets.zero,
           child: Flex(
             direction: Axis.horizontal,
             mainAxisSize: MainAxisSize.min,
