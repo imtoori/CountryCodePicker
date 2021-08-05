@@ -164,10 +164,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       );
     else {
       _widget = GestureDetector(
-        onTap () => widget.enabled ? showCountryCodePickerDialog : null,
+        onTap: () => widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
-          //padding: widget.padding,
-          padding:EdgeInsets.zero,
+          padding: widget.padding,
           child: Flex(
             direction: Axis.horizontal,
             mainAxisSize: MainAxisSize.min,
