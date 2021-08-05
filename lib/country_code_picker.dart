@@ -163,12 +163,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         child: widget.builder!(selectedItem),
       );
     else {
-      _widget = TextButton(
-         style: TextButton.styleFrom(
-           primary: Colors.pink,
-      padding: EdgeInsets.zero,
-      alignment: Alignment.center),
-        onPressed: widget.enabled ? showCountryCodePickerDialog : null,
+      _widget = GestureDetector(
+        onTap () => widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
           //padding: widget.padding,
           padding:EdgeInsets.zero,
