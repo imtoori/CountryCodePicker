@@ -183,8 +183,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                         : Clip.hardEdge,
                     decoration: widget.flagDecoration,
                     margin: widget.alignLeft
-                        ? const EdgeInsets.zero
-                        : const EdgeInsets.zero,
+                        ? const EdgeInsets.zero()
+                        : const EdgeInsets.zero(),
                     child: Image.asset(
                       selectedItem!.flagUri!,
                       package: 'country_code_picker',
