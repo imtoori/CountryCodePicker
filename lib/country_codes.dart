@@ -1,11 +1,11 @@
 const List<Map<String, String>> codes = [
     {
-    "name": "No Country",
-    "code": "",
+    "name": "None",
+    "code": "--",
     "dial_code": "",
     },    
     {
-    "name": "No Flag",
+    "name": "No Country",
     "code": "XX",
     "dial_code": "+000",
   },
