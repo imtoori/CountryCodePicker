@@ -336,7 +336,6 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         context: context,
         builder: (context) => Center(
           child: SelectionDialog(
-            key: CountryCodePicker.countryCodePickerDialogKey,
             elements,
             favoriteElements,
             showCountryOnly: widget.showCountryOnly,
