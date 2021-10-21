@@ -84,6 +84,9 @@ class CountryCodePicker extends StatefulWidget {
   /// with customized codes.
   final List<Map<String, String>> countryList;
 
+  static const Key countryCodePickerDialogKey = Key
+    ("countryCodePickerDialogKey");
+
   CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -282,13 +285,23 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
+    favoriteElements = elements
+        .where((e) =>
+            widget.favorite.firstWhereOrNull((f) =>
+                e.code!.toUpperCase() == f.toUpperCase() ||
+                e.dialCode == f ||
+                e.name!.toUpperCase() == f.toUpperCase()) !=
+            null)
+        .toList();
     if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       showDialog(
+        useRootNavigator: false,
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         // backgroundColor: widget.backgroundColor ?? Colors.transparent,
         context: context,
         builder: (context) => Center(
           child: Container(
+            key: CountryCodePicker.countryCodePickerDialogKey,
             constraints: BoxConstraints(maxHeight: 500, maxWidth: 400),
             child: Dialog(
               child: SelectionDialog(
@@ -327,6 +340,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       showMaterialModalBottomSheet(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         backgroundColor: widget.backgroundColor ?? Colors.transparent,
+        useRootNavigator: false,
         context: context,
         builder: (context) => Center(
           child: SelectionDialog(
