@@ -285,6 +285,14 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   void showCountryCodePickerDialog() {
+    favoriteElements = elements
+        .where((e) =>
+            widget.favorite.firstWhereOrNull((f) =>
+                e.code!.toUpperCase() == f.toUpperCase() ||
+                e.dialCode == f ||
+                e.name!.toUpperCase() == f.toUpperCase()) !=
+            null)
+        .toList();
     if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       showDialog(
         useRootNavigator: false,
