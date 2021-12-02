@@ -316,11 +316,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         ),
       ).then((e) {
         if (e != null) {
-          setState(() {
-            selectedItem = e;
-          });
-
-          _publishSelection(e);
+          updateCountryCode(e);
         }
       });
     } else {
@@ -352,14 +348,18 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         ),
       ).then((e) {
         if (e != null) {
-          setState(() {
-            selectedItem = e;
-          });
-
-          _publishSelection(e);
+          updateCountryCode(e);
         }
       });
     }
+  }
+
+  void updateCountryCode(CountryCode e) {
+    setState(() {
+      selectedItem = e;
+    });
+
+    _publishSelection(e);
   }
 
   void _publishSelection(CountryCode e) {
