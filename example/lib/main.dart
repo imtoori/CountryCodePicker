@@ -84,6 +84,7 @@ class _MyAppState extends State<MyApp> {
         Locale("ur"),
         Locale("uz"),
         Locale("vi"),
+        Locale("fa"),
         Locale("zh")
       ],
       localizationsDelegates: [
