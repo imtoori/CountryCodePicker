@@ -288,31 +288,28 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         // backgroundColor: widget.backgroundColor ?? Colors.transparent,
         context: context,
         builder: (context) => Center(
-          child: Directionality(
-            textDirection: TextDirection.ltr,
-            child: Container(
-              constraints: BoxConstraints(maxHeight: 500, maxWidth: 400),
-              child: Dialog(
-                child: SelectionDialog(
-                  elements,
-                  favoriteElements,
-                  showCountryOnly: widget.showCountryOnly,
-                  emptySearchBuilder: widget.emptySearchBuilder,
-                  searchDecoration: widget.searchDecoration,
-                  searchStyle: widget.searchStyle,
-                  textStyle: widget.dialogTextStyle,
-                  boxDecoration: widget.boxDecoration,
-                  showFlag: widget.showFlagDialog != null
-                      ? widget.showFlagDialog
-                      : widget.showFlag,
-                  flagWidth: widget.flagWidth,
-                  size: widget.dialogSize,
-                  backgroundColor: widget.dialogBackgroundColor,
-                  barrierColor: widget.barrierColor,
-                  hideSearch: widget.hideSearch,
-                  closeIcon: widget.closeIcon,
-                  flagDecoration: widget.flagDecoration,
-                ),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 500, maxWidth: 400),
+            child: Dialog(
+              child: SelectionDialog(
+                elements,
+                favoriteElements,
+                showCountryOnly: widget.showCountryOnly,
+                emptySearchBuilder: widget.emptySearchBuilder,
+                searchDecoration: widget.searchDecoration,
+                searchStyle: widget.searchStyle,
+                textStyle: widget.dialogTextStyle,
+                boxDecoration: widget.boxDecoration,
+                showFlag: widget.showFlagDialog != null
+                    ? widget.showFlagDialog
+                    : widget.showFlag,
+                flagWidth: widget.flagWidth,
+                size: widget.dialogSize,
+                backgroundColor: widget.dialogBackgroundColor,
+                barrierColor: widget.barrierColor,
+                hideSearch: widget.hideSearch,
+                closeIcon: widget.closeIcon,
+                flagDecoration: widget.flagDecoration,
               ),
             ),
           ),
