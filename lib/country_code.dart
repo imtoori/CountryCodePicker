@@ -56,7 +56,7 @@ class CountryCode {
 
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
-      name: json['name'],
+      name: json['name'] is List ? json['name'].first : json['name'],
       code: json['code'],
       dialCode: json['dial_code'],
       flagUri: 'flags/${json['code'].toLowerCase()}.png',
@@ -68,11 +68,5 @@ class CountryCode {
 
   String toLongString() => "$dialCode ${toCountryStringOnly()}";
 
-  String toCountryStringOnly() {
-    return '$_cleanName';
-  }
-
-  String? get _cleanName {
-    return name?.replaceAll(RegExp(r'[[\]]'), '').split(',').first;
-  }
+  String toCountryStringOnly() => name ?? '';
 }
