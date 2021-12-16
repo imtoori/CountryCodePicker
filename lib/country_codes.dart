@@ -135,6 +135,11 @@ const List<Map<String, String>> codes = [
     "dial_code": "+591",
   },
   {
+    "name": "Bonaire, Saint Eustatius and Saba",
+    "code": "BQ",
+    "dial_code": "+599",
+  },
+  {
     "name": "Bosna i Hercegovina",
     "code": "BA",
     "dial_code": "+387",
@@ -203,6 +208,11 @@ const List<Map<String, String>> codes = [
     "name": "Cayman Islands",
     "code": "KY",
     "dial_code": "+1345",
+  },
+  {
+    "name": "Curaçao",
+    "code": "CW",
+    "dial_code": "+5999",
   },
   {
     "name": "Ködörösêse tî Bêafrîka",
@@ -778,11 +788,6 @@ const List<Map<String, String>> codes = [
     "name": "Nederland",
     "code": "NL",
     "dial_code": "+31",
-  },
-  {
-    "name": "Netherlands Antilles",
-    "code": "AN",
-    "dial_code": "+599",
   },
   {
     "name": "Nouvelle-Calédonie",
