@@ -84,7 +84,9 @@ class _MyAppState extends State<MyApp> {
         Locale("ur"),
         Locale("uz"),
         Locale("vi"),
-        Locale("zh")
+        Locale("zh"),
+        Locale("zh", "CN"),
+        Locale("zh", "TW")
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,

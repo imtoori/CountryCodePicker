@@ -15,14 +15,15 @@ class CountryLocalizations {
     );
   }
 
-  static const LocalizationsDelegate<CountryLocalizations> delegate =
+  static const _CountryLocalizationsDelegate delegate =
       _CountryLocalizationsDelegate();
 
   late Map<String, String> _localizedStrings;
 
   Future<bool> load() async {
-    String jsonString = await rootBundle.loadString(
-        'packages/country_code_picker/i18n/${locale.languageCode}.json');
+    String fileName = delegate.resolveLocale(locale);
+    String jsonString = await rootBundle
+        .loadString('packages/country_code_picker/i18n/$fileName.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
@@ -43,78 +44,22 @@ class _CountryLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return [
-      "af",
-      "am",
-      "ar",
-      "az",
-      "be",
-      "bg",
-      "bn",
-      "bs",
-      "ca",
-      "cs",
-      "da",
-      "de",
-      "el",
-      "en",
-      "es",
-      "et",
-      "fa",
-      "fi",
-      "fr",
-      "gl",
-      "ha",
-      "he",
-      "hi",
-      "hr",
-      "hu",
-      "hy",
-      "id",
-      "is",
-      "it",
-      "ja",
-      "ka",
-      "kk",
-      "km",
-      "ko",
-      "ku",
-      "ky",
-      "lt",
-      "lv",
-      "mk",
-      "ml",
-      "mn",
-      "ms",
-      "nb",
-      "nl",
-      "nn",
-      "no",
-      "pl",
-      "ps",
-      "pt",
-      "ro",
-      "ru",
-      "sd",
-      "sk",
-      "sl",
-      "so",
-      "sq",
-      "sr",
-      "sv",
-      "ta",
-      "tg",
-      "th",
-      "tk",
-      "tr",
-      "tt",
-      "uk",
-      "ug",
-      "ur",
-      "uz",
-      "vi",
-      "zh",
-    ].contains(locale.languageCode);
+    final codeWithCountry = '${locale.languageCode}' +
+        (locale.countryCode == null ? '' : '-${locale.countryCode}');
+    return supportedLocales.contains(codeWithCountry) ||
+        supportedLocales.contains(locale.languageCode);
+  }
+
+  String resolveLocale(Locale locale) {
+    final codeWithCountry = '${locale.languageCode}' +
+        (locale.countryCode == null ? '' : '-${locale.countryCode}');
+    if (supportedLocales.contains(codeWithCountry)) {
+      return codeWithCountry;
+    }
+    if (supportedLocales.contains(locale.languageCode)) {
+      return locale.languageCode;
+    }
+    return "en";
   }
 
   @override
@@ -126,4 +71,79 @@ class _CountryLocalizationsDelegate
 
   @override
   bool shouldReload(_CountryLocalizationsDelegate old) => false;
+
+  static const supportedLocales = [
+    "af",
+    "am",
+    "ar",
+    "az",
+    "be",
+    "bg",
+    "bn",
+    "bs",
+    "ca",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "en",
+    "es",
+    "et",
+    "fa",
+    "fi",
+    "fr",
+    "gl",
+    "ha",
+    "he",
+    "hi",
+    "hr",
+    "hu",
+    "hy",
+    "id",
+    "is",
+    "it",
+    "ja",
+    "ka",
+    "kk",
+    "km",
+    "ko",
+    "ku",
+    "ky",
+    "lt",
+    "lv",
+    "mk",
+    "ml",
+    "mn",
+    "ms",
+    "nb",
+    "nl",
+    "nn",
+    "no",
+    "pl",
+    "ps",
+    "pt",
+    "ro",
+    "ru",
+    "sd",
+    "sk",
+    "sl",
+    "so",
+    "sq",
+    "sr",
+    "sv",
+    "ta",
+    "tg",
+    "th",
+    "tk",
+    "tr",
+    "tt",
+    "uk",
+    "ug",
+    "ur",
+    "uz",
+    "vi",
+    "zh",
+    "zh-CN",
+    "zh-TW",
+  ];
 }
