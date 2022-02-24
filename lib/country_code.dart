@@ -31,7 +31,7 @@ class CountryCode extends Equatable {
   });
 
   @override
-  List<Object> get props => [name, flagUri, code, dialCode];
+  List<Object?> get props => [name, flagUri, code, dialCode];
 
   @Deprecated('Use `fromCountryCode` instead.')
   factory CountryCode.fromCode(String isoCode) {
