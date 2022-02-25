@@ -13,6 +13,7 @@ dependencies:
   modal_bottom_sheet: ^2.0.0
   collection: ^1.15.0
   universal_platform: ^1.0.0+1
+  equatable: ^2.0.3
 
 flutter:
   assets:

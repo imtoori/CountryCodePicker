@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/country_localizations.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 mixin ToAlias {}
@@ -9,7 +10,7 @@ mixin ToAlias {}
 class CElement = CountryCode with ToAlias;
 
 /// Country element. This is the element that contains all the information
-class CountryCode {
+class CountryCode extends Equatable {
   /// the name of the country
   String? name;
 
@@ -28,6 +29,9 @@ class CountryCode {
     this.code,
     this.dialCode,
   });
+
+  @override
+  List<Object?> get props => [name, flagUri, code, dialCode];
 
   @Deprecated('Use `fromCountryCode` instead.')
   factory CountryCode.fromCode(String isoCode) {
