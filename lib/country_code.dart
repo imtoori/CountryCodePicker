@@ -36,7 +36,7 @@ class CountryCode {
 
   factory CountryCode.fromCountryCode(String countryCode) {
     final Map<String, String>? jsonCode = codes.firstWhereOrNull(
-      (code) => code['code'] == countryCode,
+      (code) => code['code']?.toUpperCase() == countryCode.toUpperCase(),
     );
     return CountryCode.fromJson(jsonCode!);
   }
