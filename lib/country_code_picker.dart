@@ -74,8 +74,14 @@ class CountryCodePicker extends StatefulWidget {
   /// Set to true if you want to hide the search part
   final bool hideSearch;
 
+  /// Set to true if you want to hide the Splash Button
+  final bool hideSplash;
+
   /// Set to true if you want to show drop down button
   final bool showDropDownButton;
+
+  /// Set to true if you want to show drop down button
+  final Widget? customDropDownButton;
 
   /// [BoxDecoration] for the flag image
   final Decoration? flagDecoration;
@@ -113,7 +119,9 @@ class CountryCodePicker extends StatefulWidget {
     this.comparator,
     this.countryFilter,
     this.hideSearch = false,
+    this.hideSplash = false,
     this.showDropDownButton = false,
+    this.customDropDownButton,
     this.dialogSize,
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
@@ -159,11 +167,15 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     Widget _widget;
     if (widget.builder != null)
       _widget = InkWell(
+        splashFactory: widget.hideSplash ? NoSplash.splashFactory : null,
         onTap: showCountryCodePickerDialog,
         child: widget.builder!(selectedItem),
       );
     else {
       _widget = TextButton(
+        style: TextButton.styleFrom(
+          splashFactory: widget.hideSplash ? NoSplash.splashFactory : null
+        ),
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
           padding: widget.padding,
@@ -205,19 +217,23 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   ),
                 ),
               if (widget.showDropDownButton)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Padding(
-                      padding: widget.alignLeft
-                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                          : const EdgeInsets.only(right: 16.0),
-                      child: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey,
-                        size: widget.flagWidth,
-                      )),
-                ),
+                if(widget.customDropDownButton==null)...[
+                  Flexible(
+                    flex: widget.alignLeft ? 0 : 1,
+                    fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                    child: Padding(
+                        padding: widget.alignLeft
+                            ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                            : const EdgeInsets.only(right: 16.0),
+                        child: Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.grey,
+                          size: widget.flagWidth,
+                        )),
+                  ),
+                ]else ...[
+                  widget.customDropDownButton!,
+                ]
             ],
           ),
         ),

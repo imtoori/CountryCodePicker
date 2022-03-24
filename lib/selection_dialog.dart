@@ -79,35 +79,40 @@ class _SelectionDialogState extends State<SelectionDialog> {
                   ),
                 ],
               ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(
-                padding: const EdgeInsets.all(0),
-                iconSize: 20,
-                icon: widget.closeIcon!,
-                onPressed: () => Navigator.pop(context),
-              ),
-              if (!widget.hideSearch)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: TextField(
-                    style: widget.searchStyle,
-                    decoration: widget.searchDecoration,
-                    onChanged: _filterElements,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    iconSize: 20,
+                    icon: widget.closeIcon!,
+                    onPressed: () => Navigator.pop(context),
                   ),
                 ),
-              Expanded(
-                child: ListView(
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    widget.favoriteElements.isEmpty
-                        ? const DecoratedBox(decoration: BoxDecoration())
-                        : Column(
+                    if (!widget.hideSearch)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+                        child: TextField(
+                          style: widget.searchStyle,
+                          decoration: widget.searchDecoration,
+                          onChanged: _filterElements,
+                        ),
+                      ),
+                    Expanded(
+                      child: ListView(
+                        children: [
+                          widget.favoriteElements.isEmpty
+                              ? const DecoratedBox(decoration: BoxDecoration())
+                              : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ...widget.favoriteElements.map(
-                                (f) => SimpleDialogOption(
+                                    (f) => SimpleDialogOption(
                                   child: _buildOption(f),
                                   onPressed: () {
                                     _selectItem(f);
@@ -117,22 +122,24 @@ class _SelectionDialogState extends State<SelectionDialog> {
                               const Divider(),
                             ],
                           ),
-                    if (filteredElements.isEmpty)
-                      _buildEmptySearchWidget(context)
-                    else
-                      ...filteredElements.map(
-                        (e) => SimpleDialogOption(
-                          child: _buildOption(e),
-                          onPressed: () {
-                            _selectItem(e);
-                          },
-                        ),
+                          if (filteredElements.isEmpty)
+                            _buildEmptySearchWidget(context)
+                          else
+                            ...filteredElements.map(
+                                  (e) => SimpleDialogOption(
+                                child: _buildOption(e),
+                                onPressed: () {
+                                  _selectItem(e);
+                                },
+                              ),
+                            ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
-              ),
-            ],
-          ),
+              ],
+          )
         ),
       );
 
