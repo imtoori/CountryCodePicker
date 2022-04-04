@@ -22,11 +22,14 @@ class CountryCode {
   /// the dial code (+39,+93..)
   final String? dialCode;
 
+  /// fixed id for countries you might be add it from the server
+  final String? id;
   CountryCode({
     this.name,
     this.flagUri,
     this.code,
     this.dialCode,
+    this.id,
   });
 
   @Deprecated('Use `fromCountryCode` instead.')
@@ -50,14 +53,14 @@ class CountryCode {
 
   CountryCode localize(BuildContext context) {
     return this
-      ..name =
-          CountryLocalizations.of(context)?.translate(this.code) ?? this.name;
+      ..name = CountryLocalizations.of(context)?.translate(this.code) ?? this.name;
   }
 
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
       name: json['name'],
       code: json['code'],
+      id: json['id'],
       dialCode: json['dial_code'],
       flagUri: 'flags/${json['code'].toLowerCase()}.png',
     );
