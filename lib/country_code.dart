@@ -50,16 +50,15 @@ class CountryCode {
 
   CountryCode localize(BuildContext context) {
     return this
-      ..name =
-          CountryLocalizations.of(context)?.translate(this.code) ?? this.name;
+      ..name = CountryLocalizations.of(context)?.translate(code) ?? name;
   }
 
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
-      name: json['name'],
-      code: json['code'],
-      dialCode: json['dial_code'],
-      flagUri: 'flags/${json['code'].toLowerCase()}.png',
+      name: json['name'] as String,
+      code: json['code'] as String,
+      dialCode: json['dial_code'] as String,
+      flagUri: 'flags/${(json['code'] as String).toLowerCase()}.png',
     );
   }
 
