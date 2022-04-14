@@ -4,7 +4,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:universal_platform/universal_platform.dart';
@@ -27,6 +26,8 @@ class CountryCodePicker extends StatefulWidget {
   final bool enabled;
   final TextOverflow textOverflow;
   final Icon closeIcon;
+
+  final Widget Function(String? selectedItem)? customWidget;
 
   /// Barrier color of ModalBottomSheet
   final Color? barrierColor;
@@ -118,6 +119,7 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
     this.countryList = codes,
+    this.customWidget,
     Key? key,
   }) : super(key: key);
 
@@ -195,14 +197,20 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               if (!widget.hideMainText)
                 Flexible(
                   fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Text(
-                    widget.showOnlyCountryWhenClosed
-                        ? selectedItem!.toCountryStringOnly()
-                        : selectedItem.toString(),
-                    style:
-                        widget.textStyle ?? Theme.of(context).textTheme.button,
-                    overflow: widget.textOverflow,
-                  ),
+                  child: widget.customWidget != null
+                      ? widget.customWidget!(
+                          widget.showOnlyCountryWhenClosed
+                              ? selectedItem!.toCountryStringOnly()
+                              : selectedItem.toString(),
+                        )
+                      : Text(
+                          widget.showOnlyCountryWhenClosed
+                              ? selectedItem!.toCountryStringOnly()
+                              : selectedItem.toString(),
+                          style: widget.textStyle ??
+                              Theme.of(context).textTheme.button,
+                          overflow: widget.textOverflow,
+                        ),
                 ),
               if (widget.showDropDownButton)
                 Flexible(
