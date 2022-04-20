@@ -49,6 +49,9 @@ class CountryCodePicker extends StatefulWidget {
   /// shows the name of the country instead of the dialcode
   final bool showOnlyCountryWhenClosed;
 
+  /// whether to show the dialog using the root navigator
+  final bool useRootNavigator;
+
   /// aligns the flag and the Text left
   ///
   /// additionally this option also fills the available space of the widget.
@@ -97,6 +100,7 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogTextStyle,
     this.emptySearchBuilder,
     this.showOnlyCountryWhenClosed = false,
+    this.useRootNavigator = false,
     this.alignLeft = false,
     this.showFlag = true,
     this.showFlagDialog,
@@ -327,6 +331,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       showMaterialModalBottomSheet(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         backgroundColor: widget.backgroundColor ?? Colors.transparent,
+        useRootNavigator: widget.useRootNavigator,
         context: context,
         builder: (context) => Center(
           child: SelectionDialog(
