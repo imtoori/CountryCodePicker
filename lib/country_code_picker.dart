@@ -90,7 +90,7 @@ class CountryCodePicker extends StatefulWidget {
     this.initialSelection,
     this.favorite = const [],
     this.textStyle,
-    this.padding = const EdgeInsets.all(8.0),
+    this.padding = const EdgeInsets.all(80.0),
     this.showCountryOnly = false,
     this.searchDecoration = const InputDecoration(),
     this.searchStyle,
@@ -163,8 +163,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         child: widget.builder!(selectedItem),
       );
     else {
-      _widget = TextButton(
-        onPressed: widget.enabled ? showCountryCodePickerDialog : null,
+      _widget = GestureDetector(
+        onTap: () => widget.enabled ? showCountryCodePickerDialog() : null,
         child: Padding(
           padding: widget.padding,
           child: Flex(
@@ -183,8 +183,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                         : Clip.hardEdge,
                     decoration: widget.flagDecoration,
                     margin: widget.alignLeft
-                        ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                        : const EdgeInsets.only(right: 16.0),
+                        ? EdgeInsets.zero
+                        : EdgeInsets.zero,
                     child: Image.asset(
                       selectedItem!.flagUri!,
                       package: 'country_code_picker',
@@ -197,8 +197,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
                   child: Text(
                     widget.showOnlyCountryWhenClosed
-                        ? selectedItem!.toCountryStringOnly()
-                        : selectedItem.toString(),
+                        ? '    '+selectedItem!.toCountryStringOnly()
+                        : '    '+selectedItem.toString(),
                     style:
                         widget.textStyle ?? Theme.of(context).textTheme.button,
                     overflow: widget.textOverflow,
