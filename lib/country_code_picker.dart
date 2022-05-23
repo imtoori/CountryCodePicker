@@ -169,41 +169,41 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
         child: Padding(
           padding: widget.padding,
-          child: Flex(
-            direction: Axis.horizontal,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              if (widget.showFlagMain != null
-                  ? widget.showFlagMain!
-                  : widget.showFlag)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Container(
-                    clipBehavior: widget.flagDecoration == null
-                        ? Clip.none
-                        : Clip.hardEdge,
-                    decoration: widget.flagDecoration,
-                    margin: widget.alignLeft
-                        ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                        : const EdgeInsets.only(right: 16.0),
-                    child: Image.asset(
-                      selectedItem!.flagUri!,
-                      package: 'country_code_picker',
-                      width: widget.flagWidth,
-                    ),
-                  ),
-                ),
-              if (!widget.hideMainText)
-                Flexible(
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: widget.customWidget != null
-                      ? widget.customWidget!(
-                          widget.showOnlyCountryWhenClosed
-                              ? selectedItem!.toCountryStringOnly()
-                              : selectedItem.toString(),
-                        )
-                      : Text(
+          child: widget.customWidget != null
+              ? widget.customWidget!(
+                  widget.showOnlyCountryWhenClosed
+                      ? selectedItem!.toCountryStringOnly()
+                      : selectedItem.toString(),
+                )
+              : Flex(
+                  direction: Axis.horizontal,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    if (widget.showFlagMain != null
+                        ? widget.showFlagMain!
+                        : widget.showFlag)
+                      Flexible(
+                        flex: widget.alignLeft ? 0 : 1,
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Container(
+                          clipBehavior: widget.flagDecoration == null
+                              ? Clip.none
+                              : Clip.hardEdge,
+                          decoration: widget.flagDecoration,
+                          margin: widget.alignLeft
+                              ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                              : const EdgeInsets.only(right: 16.0),
+                          child: Image.asset(
+                            selectedItem!.flagUri!,
+                            package: 'country_code_picker',
+                            width: widget.flagWidth,
+                          ),
+                        ),
+                      ),
+                    if (!widget.hideMainText)
+                      Flexible(
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Text(
                           widget.showOnlyCountryWhenClosed
                               ? selectedItem!.toCountryStringOnly()
                               : selectedItem.toString(),
@@ -211,23 +211,23 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                               Theme.of(context).textTheme.button,
                           overflow: widget.textOverflow,
                         ),
+                      ),
+                    if (widget.showDropDownButton)
+                      Flexible(
+                        flex: widget.alignLeft ? 0 : 1,
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Padding(
+                            padding: widget.alignLeft
+                                ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                                : const EdgeInsets.only(right: 16.0),
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.grey,
+                              size: widget.flagWidth,
+                            )),
+                      ),
+                  ],
                 ),
-              if (widget.showDropDownButton)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Padding(
-                      padding: widget.alignLeft
-                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                          : const EdgeInsets.only(right: 16.0),
-                      child: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey,
-                        size: widget.flagWidth,
-                      )),
-                ),
-            ],
-          ),
         ),
       );
     }
