@@ -154,6 +154,7 @@ Here is a list of properties available to customize your widget:
 |textOverflow| TextOverflow | the button text overflow behaviour |
 |dialogSize| Size | the size of the selection dialog |
 |countryFilter| List<String> | uses a list of strings to filter a sublist of countries |
+|excludeCountries| List<String> | uses a list of strings to exclude a sublist of countries |
 |showOnlyCountryWhenClosed| bool | if true it'll show only the country |
 |alignLeft| bool | aligns the flag and the Text to the left |
 |showFlag| bool | shows the flag everywhere |
