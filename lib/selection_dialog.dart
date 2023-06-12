@@ -24,6 +24,8 @@ class SelectionDialog extends StatefulWidget {
   /// Boxshaow color of SelectionDialog that matches CountryCodePicker barrier color
   final Color? barrierColor;
 
+  final Color? borderColor;
+
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
@@ -43,6 +45,7 @@ class SelectionDialog extends StatefulWidget {
     this.size,
     this.backgroundColor,
     this.barrierColor,
+    this.borderColor,
     this.hideSearch = false,
     this.closeIcon,
   })  : this.searchDecoration = searchDecoration.prefixIcon == null
@@ -69,15 +72,11 @@ class _SelectionDialogState extends State<SelectionDialog> {
           decoration: widget.boxDecoration ??
               BoxDecoration(
                 color: widget.backgroundColor ?? Colors.white,
+                border: Border.all(
+                  width: 3.0,
+                  color: widget.borderColor ?? Colors.transparent,
+                ),
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: widget.barrierColor ?? Colors.grey.withOpacity(1),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
               ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
