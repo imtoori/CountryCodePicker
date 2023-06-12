@@ -43,6 +43,8 @@ class CountryCodePicker extends StatefulWidget {
   /// Background color of selection dialog
   final Color? dialogBackgroundColor;
 
+  final Color? dialogBorderColor;
+
   /// used to customize the country list
   final List<String>? countryFilter;
 
@@ -116,6 +118,7 @@ class CountryCodePicker extends StatefulWidget {
     this.showDropDownButton = false,
     this.dialogSize,
     this.dialogBackgroundColor,
+    this.dialogBorderColor,
     this.closeIcon = const Icon(Icons.close),
     this.countryList = codes,
     Key? key,
@@ -285,7 +288,6 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       showDialog(
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
-        // backgroundColor: widget.backgroundColor ?? Colors.transparent,
         context: context,
         builder: (context) => Center(
           child: Container(
@@ -306,6 +308,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                 flagWidth: widget.flagWidth,
                 size: widget.dialogSize,
                 backgroundColor: widget.dialogBackgroundColor,
+                borderColor: widget.dialogBorderColor,
                 barrierColor: widget.barrierColor,
                 hideSearch: widget.hideSearch,
                 closeIcon: widget.closeIcon,
